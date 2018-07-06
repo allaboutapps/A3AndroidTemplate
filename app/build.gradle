@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'at.allaboutapps.gradle-plugin'
+apply plugin: 'io.fabric'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "at.allaboutapps.a3template"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary true
+
+    }
+    buildTypes {
+        debug {
+            //nothing to do here
+        }
+        preview {
+            matchingFallbacks = ['release']
+        }
+    }
+
+    productFlavors {
+        development {
+            dimension "environment"
+
+            // Speed up debug builds
+            aaptOptions {
+                cruncherEnabled = false
+            }
+        }
+        staging {
+            dimension "environment"
+        }
+        live {
+            dimension "environment"
+            // for playstore (production-environment)
+            manifestPlaceholders = [allowBackup: true]
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        incremental true
+        preDexLibraries true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+}
+
+ext {
+    playServicesVersion = "15.0.2"
+    supportLibVersion = "27.1.1"
+    daggerVersion = "2.15"
+    moshiVersion = "1.5.0"
+    glideVersion = "4.4.0"
+    lifecycleVersion = "1.1.1"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+
+    // aaa libs
+    implementation 'at.allaboutapps.a3utilities:a3utilities:1.0.3'
+    implementation 'at.allaboutapps.web:a3webview:0.1.0'
+    implementation 'at.allaboutapps.recyclerview:a3recyclerview-decorations:1.0.1'
+
+    // play services
+    implementation "com.google.android.gms:play-services-analytics:$playServicesVersion"
+
+    // crash reporting
+    implementation('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true
+    }
+
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+
+    //     Support library depends on this lightweight import
+    implementation "android.arch.lifecycle:runtime:$lifecycle_version"
+
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+
+    // optional - ReactiveStreams support for LiveData
+    implementation "android.arch.lifecycle:reactivestreams:$lifecycle_version"
+
+    // logging
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+}

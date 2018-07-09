@@ -1,13 +1,13 @@
 package at.allaboutapps.a3template.features.start
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import at.allaboutapps.a3template.R
+import at.allaboutapps.a3template.base.BaseActivity
 import at.allaboutapps.a3template.features.start.ui.main.MainViewModel
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var viewModel: MainViewModel
 

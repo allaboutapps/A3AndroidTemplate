@@ -17,6 +17,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "SERVER_API_URL", "\"https://www.example-debug.com/\""
+        }
+        preview {
+            matchingFallbacks = ['release']
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

@@ -1,4 +1,4 @@
-package at.allaboutapps.networking.apiclient
+package at.allaboutapps.networking.services
 
 const val API_VERSION = "v1"
 

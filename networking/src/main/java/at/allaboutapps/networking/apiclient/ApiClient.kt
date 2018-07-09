@@ -2,6 +2,7 @@ package at.allaboutapps.networking.apiclient
 
 import android.util.Log
 import at.allaboutapps.networking.BuildConfig
+import at.allaboutapps.networking.services.ApiService
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -28,8 +29,8 @@ object ApiClient {
         loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
 
         val okHttpClient = OkHttpClient.Builder()
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(120, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
             .build()

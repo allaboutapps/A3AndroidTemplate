@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'at.allaboutapps.gradle-plugin'
-apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
+//apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 28
@@ -27,6 +28,8 @@ android {
         }
     }
 
+    flavorDimensions "environment"
+
     productFlavors {
         development {
             dimension "environment"
@@ -47,12 +50,17 @@ android {
     }
 
     packagingOptions {
-        exclude 'META-INF/rxjava.properties'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
     }
 
     dexOptions {
         javaMaxHeapSize "4g"
-        incremental true
         preDexLibraries true
     }
 
@@ -63,42 +71,66 @@ android {
 
 ext {
     playServicesVersion = "15.0.2"
-    supportLibVersion = "27.1.1"
+    androidxVersion = "1.0.0-beta01"
+    kotlinExtensionsVersion = "1.0.0-beta01"
     daggerVersion = "2.15"
-    moshiVersion = "1.5.0"
-    glideVersion = "4.4.0"
+
+    glideVersion = "4.7.1"
     lifecycleVersion = "1.1.1"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation "androidx.appcompat:appcompat:$androidxVersion"
 
     // aaa libs
     implementation 'at.allaboutapps.a3utilities:a3utilities:1.0.3'
-    implementation 'at.allaboutapps.web:a3webview:0.1.0'
     implementation 'at.allaboutapps.recyclerview:a3recyclerview-decorations:1.0.1'
-
-    // play services
-    implementation "com.google.android.gms:play-services-analytics:$playServicesVersion"
 
     // crash reporting
     implementation('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
         transitive = true
     }
 
+    //Android Kotlin Extensions by Google
+    //https://developer.android.com/kotlin/ktx
+    implementation "androidx.core:core-ktx:$kotlinExtensionsVersion"
+
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
 
     //     Support library depends on this lightweight import
-    implementation "android.arch.lifecycle:runtime:$lifecycle_version"
+    implementation "android.arch.lifecycle:runtime:$lifecycleVersion"
 
-    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycleVersion"
 
     // optional - ReactiveStreams support for LiveData
-    implementation "android.arch.lifecycle:reactivestreams:$lifecycle_version"
+    implementation "android.arch.lifecycle:reactivestreams:$lifecycleVersion"
+
+    //image loading
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     // logging
     implementation 'com.jakewharton.timber:timber:4.7.0'
+}
+
+
+task updateStrings(type: Exec, group: "localization") {
+    def executableName
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        executableName = ["cmd", '/c', "google-docs-i18n-strings"]
+    } else {
+        executableName = ["google-docs-i18n-strings"]
+
+    }
+    commandLine = (executableName + [
+            "-a", "src/main/res/values",
+            "-p", "android",
+            "-s", "FILL_IN"
+    ])
 }

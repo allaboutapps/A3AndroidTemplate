@@ -5,6 +5,9 @@ import android.app.Application
 import android.os.Bundle
 import at.allaboutapps.a3template.R
 
+/**
+ * Helper that switches the Activity Theme before it gets created to allow for a SplashScreen.
+ */
 internal class SplashScreenHelper : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
@@ -21,4 +24,14 @@ internal class SplashScreenHelper : Application.ActivityLifecycleCallbacks {
     override fun onActivitySaveInstanceState(p0: Activity?, p1: Bundle?) = Unit
     override fun onActivityStopped(p0: Activity?) = Unit
     // endregion
+
+    companion object {
+
+        /**
+         * Will register a `SpashScreenHelper` to switch the theme of Activities before they get created.
+         */
+        fun register(app: Application) {
+            app.registerActivityLifecycleCallbacks(SplashScreenHelper())
+        }
+    }
 }

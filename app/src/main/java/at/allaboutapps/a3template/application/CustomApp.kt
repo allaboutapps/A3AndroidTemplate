@@ -4,15 +4,14 @@ import android.app.Application
 import at.allaboutapps.a3template.BuildConfig
 import timber.log.Timber
 
-
 class CustomApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
         initLogging()
-        // register the util to remove splash screen after loading
-        registerActivityLifecycleCallbacks(SplashScreenHelper())
+
+        SplashScreenHelper.register(this)
     }
 
     private fun initLogging() {

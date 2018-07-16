@@ -1,4 +1,4 @@
-package at.allaboutapps.a3template.base
+package {{ cookiecutter.package_name }}.base
 
 import androidx.appcompat.app.AppCompatActivity
 

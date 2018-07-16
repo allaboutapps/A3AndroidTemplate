@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="at.allaboutapps.a3template">
+    package="{{ cookiecutter.package_name }}">
 
     <application
         android:name=".application.CustomApp"

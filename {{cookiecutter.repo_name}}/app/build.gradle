@@ -8,7 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "at.allaboutapps.a3template"
+        applicationId "{{cookiecutter.package_name}}"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -131,6 +131,6 @@ task updateStrings(type: Exec, group: "localization") {
     commandLine = (executableName + [
             "-a", "src/main/res/values",
             "-p", "android",
-            "-s", "FILL_IN"
+            "-s", "{{cookiecutter.strings_sheet_id}}"
     ])
 }

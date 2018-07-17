@@ -26,6 +26,21 @@ Template contains:
 * SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
 
 ---
+##Setup
+###Install cookiecutter
+http://cookiecutter.readthedocs.io/en/latest/installation.html
+
+###Setup a new project
+
+cookiecutter gh:allaboutapps/A3AndroidTemplate
+
+Fill in the following values:
+1) repo_name        - name of cloned directory  (eg   mycards-android)
+2) app_name         - app name
+3) package_name     - "com.example.app",
+4) strings_sheet_id - Sheet ID for strings (eg 1234565432345) 
+
+---
 
 Du suchst einen spannenden Job im Mobile Bereich?
 https://www.allaboutapps.at/jobs/

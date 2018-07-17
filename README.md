@@ -26,11 +26,12 @@ Template contains:
 * SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
 
 ---
-##Setup
-###Install cookiecutter
+
+## Setup
+### Install cookiecutter
 http://cookiecutter.readthedocs.io/en/latest/installation.html
 
-###Setup a new project
+### Setup a new project
 
 cookiecutter gh:allaboutapps/A3AndroidTemplate
 

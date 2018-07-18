@@ -44,6 +44,8 @@ Fill in the following values:
 ---
 
 Du suchst einen spannenden Job im Mobile Bereich?
+Looking for a job mobile developer?
+
 https://www.allaboutapps.at/jobs/
 
 

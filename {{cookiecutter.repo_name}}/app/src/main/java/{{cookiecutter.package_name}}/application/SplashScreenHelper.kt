@@ -1,9 +1,9 @@
-package at.allaboutapps.a3template.application
+package {{ cookiecutter.package_name }}.application
 
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import at.allaboutapps.a3template.R
+import {{ cookiecutter.package_name }}.R
 
 /**
  * Helper that switches the Activity Theme before it gets created to allow for a SplashScreen.

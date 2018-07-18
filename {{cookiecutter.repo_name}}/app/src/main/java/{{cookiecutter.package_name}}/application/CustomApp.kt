@@ -1,7 +1,7 @@
-package at.allaboutapps.a3template.application
+package {{ cookiecutter.package_name }}.application
 
 import android.app.Application
-import at.allaboutapps.a3template.BuildConfig
+import {{ cookiecutter.package_name }}.BuildConfig
 import timber.log.Timber
 
 class CustomApp : Application() {

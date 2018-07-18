@@ -1,4 +1,4 @@
-package at.allaboutapps.a3template.features.start.ui.main
+package {{ cookiecutter.package_name }}.features.start.ui.main
 
 import androidx.lifecycle.ViewModel
 

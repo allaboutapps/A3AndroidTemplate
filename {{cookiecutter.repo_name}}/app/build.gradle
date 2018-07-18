@@ -8,7 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "at.allaboutapps.a3template"
+        applicationId "{{cookiecutter.package_name}}"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -70,13 +70,14 @@ android {
 }
 
 ext {
-    playServicesVersion = "15.0.2"
+    playServicesVersion = "15.0.1"
     androidxVersion = "1.0.0-beta01"
     kotlinExtensionsVersion = "1.0.0-beta01"
     daggerVersion = "2.15"
 
     glideVersion = "4.7.1"
     lifecycleVersion = "1.1.1"
+    rxKotlinVersion = "2.2.0"
 }
 
 dependencies {
@@ -103,8 +104,6 @@ dependencies {
     //     Support library depends on this lightweight import
     implementation "android.arch.lifecycle:runtime:$lifecycleVersion"
 
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycleVersion"
 
@@ -117,6 +116,8 @@ dependencies {
 
     // logging
     implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 }
 
 
@@ -131,6 +132,6 @@ task updateStrings(type: Exec, group: "localization") {
     commandLine = (executableName + [
             "-a", "src/main/res/values",
             "-p", "android",
-            "-s", "FILL_IN"
+            "-s", "{{cookiecutter.strings_sheet_id}}"
     ])
 }

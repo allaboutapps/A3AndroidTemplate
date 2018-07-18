@@ -1,10 +1,10 @@
-package at.allaboutapps.a3template.features.start
+package {{ cookiecutter.package_name }}.features.start
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import at.allaboutapps.a3template.R
-import at.allaboutapps.a3template.base.BaseActivity
-import at.allaboutapps.a3template.features.start.ui.main.MainViewModel
+import {{ cookiecutter.package_name }}.R
+import {{ cookiecutter.package_name }}.base.BaseActivity
+import {{ cookiecutter.package_name }}.features.start.ui.main.MainViewModel
 import timber.log.Timber
 
 class MainActivity : BaseActivity() {

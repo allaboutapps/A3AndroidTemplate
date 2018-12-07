@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 //apply plugin: 'io.fabric'
@@ -9,22 +10,22 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "{{cookiecutter.package_name}}"
+
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
-
     }
+
     buildTypes {
         debug {
-            //nothing to do here
-        }
-        preview {
-            matchingFallbacks = ['release']
+            aaptOptions {
+                // Speed up debug builds
+                cruncherEnabled = false
+            }
         }
     }
 
@@ -34,16 +35,18 @@ android {
         development {
             dimension "environment"
 
-            // Speed up debug builds
-            aaptOptions {
-                cruncherEnabled = false
-            }
+            buildConfigField "String", "SERVER_API_URL", "\"https://debug.example.com/\""
         }
         staging {
             dimension "environment"
+
+            buildConfigField "String", "SERVER_API_URL", "\"https://staging.example.com/\""
         }
         live {
             dimension "environment"
+
+            buildConfigField "String", "SERVER_API_URL", "\"https://www.example.com/\""
+
             // for playstore (production-environment)
             manifestPlaceholders = [allowBackup: true]
         }
@@ -81,6 +84,8 @@ ext {
 }
 
 dependencies {
+    implementation project(':networking')
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$androidxVersion"
@@ -101,25 +106,32 @@ dependencies {
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
 
-    //     Support library depends on this lightweight import
+    // Support library depends on this lightweight import
     implementation "android.arch.lifecycle:runtime:$lifecycleVersion"
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
-    annotationProcessor "android.arch.lifecycle:compiler:$lifecycleVersion"
+    kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
 
     // optional - ReactiveStreams support for LiveData
     implementation "android.arch.lifecycle:reactivestreams:$lifecycleVersion"
 
     //image loading
     implementation "com.github.bumptech.glide:glide:$glideVersion"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
     // logging
     implementation 'com.jakewharton.timber:timber:4.7.0'
-
+    
+    implementation "io.reactivex.rxjava2:rxjava:$rxJava2Version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
-}
 
+    // networking
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.squareup.moshi:moshi:$moshiVersion"
+}
 
 task updateStrings(type: Exec, group: "localization") {
     def executableName

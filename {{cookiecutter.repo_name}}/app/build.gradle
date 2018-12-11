@@ -142,7 +142,7 @@ task updateStrings(type: Exec, group: "localization") {
 
     }
     commandLine = (executableName + [
-            "-a", "src/main/res/values",
+            "-a", "src/main/res",
             "-p", "android",
             "-s", "{{cookiecutter.strings_sheet_id}}"
     ])

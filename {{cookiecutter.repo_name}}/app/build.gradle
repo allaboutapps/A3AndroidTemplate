@@ -73,12 +73,11 @@ android {
 }
 
 ext {
-    playServicesVersion = "15.0.1"
-    androidxVersion = "1.0.0-beta01"
-    kotlinExtensionsVersion = "1.0.0-beta01"
+    androidxVersion = "1.0.2"
+    kotlinExtensionsVersion = "1.0.1"
     daggerVersion = "2.15"
 
-    glideVersion = "4.7.1"
+    glideVersion = "4.8.0"
     lifecycleVersion = "1.1.1"
     rxKotlinVersion = "2.2.0"
 }
@@ -109,7 +108,7 @@ dependencies {
     // Support library depends on this lightweight import
     implementation "android.arch.lifecycle:runtime:$lifecycleVersion"
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-beta01'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
 
     // optional - ReactiveStreams support for LiveData
@@ -120,7 +119,7 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
     // logging
-    implementation 'com.jakewharton.timber:timber:4.7.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
     
     implementation "io.reactivex.rxjava2:rxjava:$rxJava2Version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"

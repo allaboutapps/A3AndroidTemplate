@@ -12,6 +12,12 @@
         android:supportsRtl="false"
         android:theme="@style/SplashTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <!--example placeholder-->
+        <meta-data
+            android:name="apiKey"
+            android:value="${apiKey}" />
+
         <activity android:name=".features.start.MainActivity">
 
             <intent-filter>

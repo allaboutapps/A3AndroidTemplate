@@ -18,6 +18,8 @@ android {
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
+
+        manifestPlaceholders = [apiKey: "secret"] // use with ${apiKey} in manifest
     }
 
     buildTypes {
@@ -46,9 +48,6 @@ android {
             dimension "environment"
 
             buildConfigField "String", "SERVER_API_URL", "\"https://www.example.com/\""
-
-            // for playstore (production-environment)
-            manifestPlaceholders = [allowBackup: true]
         }
     }
 

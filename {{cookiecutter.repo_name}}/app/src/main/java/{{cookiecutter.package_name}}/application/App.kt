@@ -4,7 +4,7 @@ import android.app.Application
 import {{ cookiecutter.package_name }}.BuildConfig
 import timber.log.Timber
 
-class CustomApp : Application() {
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()

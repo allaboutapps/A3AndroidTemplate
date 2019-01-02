@@ -28,6 +28,8 @@ android {
                 // Speed up debug builds
                 cruncherEnabled = false
             }
+            // prevent crashlytics from updating its id
+            ext.alwaysUpdateBuildId = false
         }
     }
 

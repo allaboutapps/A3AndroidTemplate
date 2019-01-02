@@ -40,11 +40,13 @@ android {
     productFlavors {
         development {
             dimension "environment"
+            ext.neverBuildRelease = true
 
             buildConfigField "String", "SERVER_API_URL", "\"https://debug.example.com/\""
         }
         staging {
             dimension "environment"
+            ext.neverBuildRelease = true
 
             buildConfigField "String", "SERVER_API_URL", "\"https://staging.example.com/\""
         }

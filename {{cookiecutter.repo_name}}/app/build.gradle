@@ -20,6 +20,8 @@ android {
         vectorDrawables.useSupportLibrary true
 
         manifestPlaceholders = [apiKey: "secret"] // use with ${apiKey} in manifest
+
+        resConfigs "de" // todo specify default locale(s)
     }
 
     buildTypes {

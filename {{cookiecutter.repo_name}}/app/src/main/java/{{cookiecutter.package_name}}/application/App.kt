@@ -1,10 +1,16 @@
 package {{ cookiecutter.package_name }}.application
 
-import android.app.Application
 import {{ cookiecutter.package_name }}.BuildConfig
+import {{ cookiecutter.package_name }}.di.AppInjector
+import {{ cookiecutter.package_name }}.di.app.DaggerAppComponent
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
 import timber.log.Timber
 
-class App : Application() {
+class App : DaggerApplication() {
+
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
+            DaggerAppComponent.builder().create(this)
 
     override fun onCreate() {
         super.onCreate()
@@ -12,6 +18,7 @@ class App : Application() {
         initLogging()
 
         SplashScreenHelper.register(this)
+        AppInjector.init(this)
     }
 
     private fun initLogging() {

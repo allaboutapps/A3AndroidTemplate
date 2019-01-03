@@ -25,6 +25,7 @@ ext {
     okhttpVersion = "3.11.0"
     moshiVersion = "1.6.0"
     rxJava2Version = "2.1.16"
+    daggerVersion = "2.20"
 }
 
 allprojects {

@@ -18,6 +18,10 @@ android {
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
+
+        manifestPlaceholders = [apiKey: "secret"] // use with ${apiKey} in manifest
+
+        resConfigs "de" // todo specify default locale(s)
     }
 
     buildTypes {
@@ -26,6 +30,8 @@ android {
                 // Speed up debug builds
                 cruncherEnabled = false
             }
+            // prevent crashlytics from updating its id
+            ext.alwaysUpdateBuildId = false
         }
     }
 
@@ -34,11 +40,13 @@ android {
     productFlavors {
         development {
             dimension "environment"
+            ext.neverBuildRelease = true
 
             buildConfigField "String", "SERVER_API_URL", "\"https://debug.example.com/\""
         }
         staging {
             dimension "environment"
+            ext.neverBuildRelease = true
 
             buildConfigField "String", "SERVER_API_URL", "\"https://staging.example.com/\""
         }
@@ -46,9 +54,6 @@ android {
             dimension "environment"
 
             buildConfigField "String", "SERVER_API_URL", "\"https://www.example.com/\""
-
-            // for playstore (production-environment)
-            manifestPlaceholders = [allowBackup: true]
         }
     }
 

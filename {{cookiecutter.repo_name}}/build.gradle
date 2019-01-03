@@ -20,6 +20,12 @@ buildscript {
     }
 }
 
+if (!project.hasProperty("devBuild")) {
+    // flag used for some build performance improvements
+    // add `devBuild=true` to your global gradle.properties to use
+    project.ext.devBuild = false
+}
+
 ext {
     retrofitVersion = "2.4.0"
     okhttpVersion = "3.11.0"

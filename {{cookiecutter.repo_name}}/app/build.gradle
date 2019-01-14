@@ -80,15 +80,23 @@ android {
 ext {
     androidxVersion = "1.0.2"
     kotlinExtensionsVersion = "1.0.1"
-    daggerVersion = "2.15"
-
     glideVersion = "4.8.0"
     lifecycleVersion = "1.1.1"
     rxKotlinVersion = "2.2.0"
 }
 
+kapt {
+    arguments {
+        if (project.devBuild) {
+            // disable code formatting on local builds
+            arg("dagger.formatGeneratedSource", "disabled")
+        }
+    }
+}
+
 dependencies {
     implementation project(':networking')
+    implementation project(':unwrapretrofit')
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -125,7 +133,7 @@ dependencies {
 
     // logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    
+
     implementation "io.reactivex.rxjava2:rxjava:$rxJava2Version"
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 
@@ -135,6 +143,14 @@ dependencies {
 
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 }
 
 task updateStrings(type: Exec, group: "localization") {

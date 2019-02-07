@@ -6,6 +6,7 @@ apply plugin: 'idea'
 sourceSets.main.java.srcDirs += sourceSets.main.kotlin.srcDirs
 
 dependencies {
+    implementation project(':unwrapretrofit')
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
 

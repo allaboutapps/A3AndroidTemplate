@@ -28,8 +28,8 @@ if (!project.hasProperty("devBuild")) {
 
 ext {
     retrofitVersion = "2.5.0"
-    okhttpVersion = "3.11.0"
-    moshiVersion = "1.6.0"
+    okhttpVersion = "3.14.2"
+    moshiVersion = "1.8.0"
     rxJava2Version = "2.1.16"
     daggerVersion = "2.22.1"
 }

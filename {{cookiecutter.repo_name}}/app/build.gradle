@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "{{cookiecutter.package_name}}"
 
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -79,8 +79,8 @@ android {
 
 ext {
     androidxVersion = "1.0.2"
-    kotlinExtensionsVersion = "1.0.1"
-    glideVersion = "4.8.0"
+    kotlinExtensionsVersion = "1.0.2"
+    glideVersion = "4.9.0"
     lifecycleVersion = "1.1.1"
     rxKotlinVersion = "2.2.0"
 }

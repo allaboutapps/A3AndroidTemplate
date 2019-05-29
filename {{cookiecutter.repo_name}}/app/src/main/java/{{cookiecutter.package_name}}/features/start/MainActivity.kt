@@ -1,9 +1,9 @@
-package {{ cookiecutter.package_name }}.features.start
+package {{cookiecutter.package_name}}.features.start
 
 import android.os.Bundle
-import {{ cookiecutter.package_name }}.R
-import {{ cookiecutter.package_name }}.base.BaseActivity
-import {{ cookiecutter.package_name }}.features.start.ui.main.MainViewModel
+import {{cookiecutter.package_name}}.R
+import {{cookiecutter.package_name}}.base.BaseActivity
+import {{cookiecutter.package_name}}.features.start.ui.main.MainViewModel
 import timber.log.Timber
 
 class MainActivity : BaseActivity() {
@@ -12,9 +12,8 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.activity_main)
         viewModel = viewModel()
-
         Timber.d("hallo log")
     }
 }

@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "{{cookiecutter.package_name}}"
 
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -75,12 +75,15 @@ android {
     androidExtensions {
         experimental = true
     }
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
 }
 
 ext {
-    androidxVersion = "1.0.2"
-    kotlinExtensionsVersion = "1.0.1"
-    glideVersion = "4.8.0"
+    kotlinExtensionsVersion = "1.0.2"
+    glideVersion = "4.9.0"
     lifecycleVersion = "1.1.1"
     rxKotlinVersion = "2.2.0"
 }
@@ -100,7 +103,7 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:$androidxVersion"
+    implementation "androidx.appcompat:appcompat:1.0.2"
 
     // aaa libs
     implementation 'at.allaboutapps.a3utilities:a3utilities:1.0.3'

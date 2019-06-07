@@ -82,7 +82,6 @@ android {
 }
 
 ext {
-    kotlinExtensionsVersion = "1.0.2"
     glideVersion = "4.9.0"
     lifecycleVersion = "1.1.1"
     rxKotlinVersion = "2.2.0"
@@ -103,20 +102,18 @@ dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:1.0.2"
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
 
     // aaa libs
     implementation 'at.allaboutapps.a3utilities:a3utilities:1.0.3'
     implementation 'at.allaboutapps.recyclerview:a3recyclerview-decorations:1.0.1'
 
     // crash reporting
-    implementation('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
-        transitive = true
-    }
+    implementation "com.crashlytics.sdk.android:crashlytics:2.10.0"
 
     //Android Kotlin Extensions by Google
     //https://developer.android.com/kotlin/ktx
-    implementation "androidx.core:core-ktx:$kotlinExtensionsVersion"
+    implementation "androidx.core:core-ktx:1.0.2"
 
     // ViewModel and LiveData
     implementation "android.arch.lifecycle:extensions:$lifecycleVersion"

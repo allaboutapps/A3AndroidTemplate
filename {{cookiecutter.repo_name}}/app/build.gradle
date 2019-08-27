@@ -74,15 +74,6 @@ android {
     }
 }
 
-kapt {
-    arguments {
-        if (project.devBuild) {
-            // disable code formatting on local builds
-            arg("dagger.formatGeneratedSource", "disabled")
-        }
-    }
-}
-
 dependencies {
     implementation project(':networking')
     implementation project(':unwrapretrofit')

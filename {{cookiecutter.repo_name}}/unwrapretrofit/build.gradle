@@ -1,10 +1,6 @@
+apply plugin: 'BuildPlugin'
 apply plugin: 'java-library'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation Dependencies.Retrofit
 }
-
-sourceCompatibility = "1.6"
-targetCompatibility = "1.6"

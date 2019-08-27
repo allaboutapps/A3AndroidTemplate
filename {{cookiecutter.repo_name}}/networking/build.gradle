@@ -1,3 +1,4 @@
+apply plugin: 'BuildPlugin'
 apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-kapt'
@@ -7,13 +8,13 @@ sourceSets.main.java.srcDirs += sourceSets.main.kotlin.srcDirs
 
 dependencies {
     implementation project(':unwrapretrofit')
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation Dependencies.Retrofit
+    implementation Dependencies.OkHttp
 
-    implementation "com.squareup.moshi:moshi:$moshiVersion"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    implementation Dependencies.Moshi
+    kapt Dependencies.MoshiCodegen
 
-    implementation "io.reactivex.rxjava2:rxjava:$rxJava2Version"
+    implementation Dependencies.RxJava
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 }

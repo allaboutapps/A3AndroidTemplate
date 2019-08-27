@@ -26,14 +26,6 @@ if (!project.hasProperty("devBuild")) {
     project.ext.devBuild = false
 }
 
-ext {
-    retrofitVersion = "2.5.0"
-    okhttpVersion = "3.14.2"
-    moshiVersion = "1.8.0"
-    rxJava2Version = "2.1.16"
-    daggerVersion = "2.22.1"
-}
-
 allprojects {
     repositories {
         google()

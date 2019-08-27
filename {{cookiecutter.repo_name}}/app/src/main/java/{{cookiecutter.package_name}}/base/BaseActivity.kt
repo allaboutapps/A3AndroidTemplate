@@ -1,28 +1,27 @@
 package {{ cookiecutter.package_name }}.base
 
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import {{ cookiecutter.package_name }}.di.Injectable
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelFactory
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
 /**
  * Base class to use for this application
  */
-abstract class BaseActivity : AppCompatActivity(), Injectable, HasSupportFragmentInjector {
+abstract class BaseActivity : AppCompatActivity(), Injectable, HasAndroidInjector {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
     @Inject
-    lateinit var supportFragmentInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = supportFragmentInjector
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
     /**
      * Request a ViewModel from the factory

@@ -105,8 +105,7 @@ dependencies {
     implementation Dependencies.AndroidArchLifecycleReactiveStreams
 
     // image loading
-    implementation Dependencies.Glide
-    kapt Dependencies.GlideCompiler
+    implementation project(':glide')
 
     // logging
     implementation Dependencies.Timber

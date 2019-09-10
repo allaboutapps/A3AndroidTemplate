@@ -44,9 +44,6 @@ object Dependencies {
     const val DaggerCompilerAndroid =
         "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
 
-    const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
-    const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
-
     const val Epoxy = "com.airbnb.android:epoxy:3.7.0"
 
     const val KotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}"

@@ -1,1 +1,4 @@
-include ':app', ':networking', ':unwrapretrofit'
+include ':app'
+include ':networking'
+include ':glide'
+include ':unwrapretrofit'

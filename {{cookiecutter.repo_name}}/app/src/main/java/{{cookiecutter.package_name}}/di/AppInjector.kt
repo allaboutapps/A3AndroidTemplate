@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentManager
 import {{ cookiecutter.package_name }}.application.App
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
-import dagger.android.support.HasSupportFragmentInjector
 
 /**
  * Helper class to automatically inject fragments if they implement [Injectable].

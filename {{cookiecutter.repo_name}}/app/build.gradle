@@ -1,23 +1,20 @@
+apply plugin: 'BuildPlugin'
 apply plugin: 'com.android.application'
 apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
-//apply plugin: 'io.fabric'
+// apply plugin: 'io.fabric'
 
 android {
-    compileSdkVersion 28
     defaultConfig {
         applicationId "{{cookiecutter.package_name}}"
-
-        minSdkVersion 23
-        targetSdkVersion 28
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
-        vectorDrawables.useSupportLibrary true
+        vectorDrawables.useSupportLibrary false // only for < API 21
 
         manifestPlaceholders = [apiKey: "secret"] // use with ${apiKey} in manifest
 
@@ -75,82 +72,61 @@ android {
     androidExtensions {
         experimental = true
     }
-    compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
-    }
-}
-
-ext {
-    glideVersion = "4.9.0"
-    lifecycleVersion = "1.1.1"
-    rxKotlinVersion = "2.2.0"
-}
-
-kapt {
-    arguments {
-        if (project.devBuild) {
-            // disable code formatting on local builds
-            arg("dagger.formatGeneratedSource", "disabled")
-        }
-    }
 }
 
 dependencies {
     implementation project(':networking')
     implementation project(':unwrapretrofit')
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.google.android.material:material:1.1.0-alpha06'
+    implementation Dependencies.KotlinStdLib
+    implementation Dependencies.MaterialComponents
 
     // aaa libs
-    implementation 'at.allaboutapps.a3utilities:a3utilities:1.0.3'
-    implementation 'at.allaboutapps.recyclerview:a3recyclerview-decorations:1.0.1'
+    implementation Dependencies.A3Utilities
+    implementation Dependencies.A3RecyclerViewDecorations
 
     // crash reporting
-    implementation "com.crashlytics.sdk.android:crashlytics:2.10.0"
+    implementation Dependencies.Crashlytics
 
-    //Android Kotlin Extensions by Google
-    //https://developer.android.com/kotlin/ktx
-    implementation "androidx.core:core-ktx:1.0.2"
+    // Android Kotlin Extensions by Google
+    // https://developer.android.com/kotlin/ktx
+    implementation Dependencies.AndroidXCoreKtx
 
     // ViewModel and LiveData
-    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+    implementation Dependencies.AndroidArchLifecycle
 
     // Support library depends on this lightweight import
-    implementation "android.arch.lifecycle:runtime:$lifecycleVersion"
+    implementation Dependencies.AndroidArchLifecycleRuntime
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    kapt "android.arch.lifecycle:compiler:$lifecycleVersion"
+    implementation Dependencies.AndroidArchLifecycleExtensions
+    kapt Dependencies.AndroidArchLifecycleCompiler
 
     // optional - ReactiveStreams support for LiveData
-    implementation "android.arch.lifecycle:reactivestreams:$lifecycleVersion"
+    implementation Dependencies.AndroidArchLifecycleReactiveStreams
 
-    //image loading
-    implementation "com.github.bumptech.glide:glide:$glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    // image loading
+    implementation project(':glide')
 
     // logging
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation Dependencies.Timber
 
-    implementation "io.reactivex.rxjava2:rxjava:$rxJava2Version"
-    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+    implementation Dependencies.RxJava
+    implementation Dependencies.RxKotlin
 
     // networking
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    implementation Dependencies.RetrofitAdapterRxJava2
+    implementation Dependencies.RetrofitConverterMoshi
 
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
-    implementation "com.squareup.moshi:moshi:$moshiVersion"
-    implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
+    implementation Dependencies.OkHttpLoggingInterceptor
+    implementation Dependencies.Moshi
+    implementation Dependencies.MoshiAdapters
 
     // dependency injection
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation Dependencies.Dagger
+    implementation Dependencies.DaggerAndroid
+    implementation Dependencies.DaggerAndroidSupport
+    kapt Dependencies.DaggerCompiler
+    kapt Dependencies.DaggerCompilerAndroid
 }
 
 task updateStrings(type: Exec, group: "localization") {
@@ -159,7 +135,6 @@ task updateStrings(type: Exec, group: "localization") {
         executableName = ["cmd", '/c', "google-docs-i18n-strings"]
     } else {
         executableName = ["google-docs-i18n-strings"]
-
     }
     commandLine = (executableName + [
             "-a", "src/main/res",

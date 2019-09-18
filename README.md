@@ -23,6 +23,7 @@ Template contains:
 
 * flavor for `dev`, `staging`, `live`
 * retrofit setup
+* firebase analytics and messaging setup
 * SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
 
 ---
@@ -39,7 +40,9 @@ Fill in the following values:
 1) repo_name        - name of cloned directory  (eg   mycards-android)
 2) app_name         - app name
 3) package_name     - "com.example.app",
-4) strings_sheet_id - Sheet ID for strings (eg 1234565432345) 
+4) firebase_analytics - Setup firebase analytics
+5) firebase_messaging - Basic setup for FCM
+6) strings_sheet_id - Sheet ID for strings (eg 1234565432345) (AAA internal tool for translations - just leave it empty if you don't know what this is) 
 
 ---
 

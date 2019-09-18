@@ -3,12 +3,16 @@ package {{ cookiecutter.package_name }}.di.app
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import at.allaboutapps.retrofit.converter.unwrap.UnwrapConverterFactory
 import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelModule
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
+{% if cookiecutter.firebase_messaging == "yes" %}
+import {{ cookiecutter.package_name }}.features.fcm.FirebaseTokenService
+import {{ cookiecutter.package_name }}.features.fcm.FirebaseTokenHandler
+{% endif %}
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import dagger.Binds
@@ -77,4 +81,19 @@ class AppModule {
     @Reusable
     @Provides
     fun preferences(app: Application): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(app)
+
+    {% if cookiecutter.firebase_messaging == "yes" %}
+    @Singleton
+    @Provides
+    fun provideFirebaseTokenService(apiService: ApiService): FirebaseTokenService {
+        return FirebaseTokenService(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFirebaseTokenHandler(firebaseTokenService: FirebaseTokenService): FirebaseTokenHandler {
+        return FirebaseTokenHandler(firebaseTokenService)
+    }
+    {% endif %}
+
 }

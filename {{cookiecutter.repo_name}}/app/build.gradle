@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+//apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android-extensions'
 
 // apply plugin: 'io.fabric'
@@ -81,16 +82,30 @@ dependencies {
     implementation Dependencies.KotlinStdLib
     implementation Dependencies.MaterialComponents
 
+    {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
+    // Firebase Libs
+        {%- if cookiecutter.firebase_messaging == "yes" -%}
+            {%- if cookiecutter.firebase_analytics == "no" -%}
+    implementation Dependencies.FirebaseCore
+            {% endif %}
+    implementation Dependencies.FirebaseMessaging
+        {% endif %}
+    {%- if cookiecutter.firebase_analytics == "yes" -%}
+    implementation Dependencies.FirebaseAnalytics
+    {% endif %}
+    {% endif %}
+
     // aaa libs
     implementation Dependencies.A3Utilities
     implementation Dependencies.A3RecyclerViewDecorations
 
     // crash reporting
-    implementation Dependencies.Crashlytics
+    //implementation Dependencies.Crashlytics
 
     // Android Kotlin Extensions by Google
     // https://developer.android.com/kotlin/ktx
     implementation Dependencies.AndroidXCoreKtx
+    implementation Dependencies.AndroidXPreferenceManager
 
     // ViewModel and LiveData
     implementation Dependencies.AndroidArchLifecycle
@@ -128,6 +143,9 @@ dependencies {
     kapt Dependencies.DaggerCompiler
     kapt Dependencies.DaggerCompilerAndroid
 }
+{% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
+    apply plugin: 'com.google.gms.google-services'
+{% endif %}
 
 task updateStrings(type: Exec, group: "localization") {
     def executableName

@@ -28,6 +28,6 @@ if re.search(PACKAGE_REGEX, package_name):
     sys.exit(1)
 
 
-
+print ('\n\n###############################')
 print ('Setup for "{}" started.'.format(app_name))
-print ('Please wait a few minutes...........')
+print ('Please wait a few minutes...........\n')

@@ -15,15 +15,15 @@ import androidx.annotation.DrawableRes
 //TODO: set ID of notification channel
 const val CHANNEL_ID_DEFAULT_NOTIFICATION = "default_notification"
 
-/*
-Contains helper functions for notifications,
-especially firebase push notifications
+/**
+ * Contains helper functions for notifications, especially firebase push notifications
  */
 object NotificationsUtils {
 
-    /*
-    Creates all used notification channels,
-    only used in >= Build.VERSION_CODES.O
+    /**
+     * Creates all used notification channels, only used in >= Build.VERSION_CODES.O
+     *
+     * @param context
      */
     fun createAllNotificationChannels(context: Context) {
 
@@ -38,10 +38,15 @@ object NotificationsUtils {
 
     }
 
-    /*
-    Creates the notification channel as specified,
-    only used in >= Build.VERSION_CODES.O
-   */
+    /**
+     * Creates the notification channel as specified, only used in >= Build.VERSION_CODES.O
+     *
+     * @param context
+     * @param channelId Id of the notification channel
+     * @param name name of the notification channel
+     * @param description description of the notification channel
+     * @param importance priority of the notification channel
+     */
     fun createNotificationChannel(
         context: Context,
         channelId: String,
@@ -54,23 +59,29 @@ object NotificationsUtils {
                 this.description = description
             }
 
-            val notificationManager =
-                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
 
 
-    /*
-    Wraps the given intent in a pending intent
-    and sends a notification using the given notification channel and the app's icon
+    /**
+     * Wraps the given intent in a pending intent and sends a notification using the given notification channel and the app's icon
+     *
+     * @param context
+     * @param channelId id of matching notification channel
+     * @param title title of notification
+     * @param text text of notification
+     * @param intent intent to open on tap
+     * @param smallIcon icon of notification @DrawableRes
      */
     fun sendNotificationWithPendingIntent(
         context: Context,
         channelId: String,
         title: String,
         text: String,
-        intent: Intent, @DrawableRes smallIcon: Int
+        intent: Intent,
+        @DrawableRes smallIcon: Int
     ) {
         val notificationId = Random.nextInt() // notifications should not override each other
 
@@ -91,6 +102,4 @@ object NotificationsUtils {
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(notificationId, notificationBuilder.build())
     }
-
-
 }

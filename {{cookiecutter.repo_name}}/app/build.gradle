@@ -1,5 +1,6 @@
 apply plugin: 'BuildPlugin'
 apply plugin: 'com.android.application'
+apply plugin: 'com.jaredsburrows.license'
 apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
@@ -74,10 +75,18 @@ android {
     }
 }
 
+licenseReport {
+    generateHtmlReport = true
+    generateJsonReport = false
+}
+
 dependencies {
     implementation project(':networking')
     implementation project(':unwrapretrofit')
-
+    implementation project(':oss_licenses')
+    implementation project(':glide')
+    
+    
     implementation Dependencies.KotlinStdLib
     implementation Dependencies.MaterialComponents
 
@@ -118,8 +127,6 @@ dependencies {
     // optional - ReactiveStreams support for LiveData
     implementation Dependencies.AndroidArchLifecycleReactiveStreams
 
-    // image loading
-    implementation project(':glide')
 
     // logging
     implementation Dependencies.Timber

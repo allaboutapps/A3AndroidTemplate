@@ -23,6 +23,7 @@ object Dependencies {
     const val AndroidXRecyclerView = "androidx.recyclerview:recyclerview:1.0.0"
     const val AndroidXCardView = "androidx.cardview:cardview:1.0.0"
     const val AndroidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta1"
+    const val AndroidXPreferenceManager = "androidx.preference:preference-ktx:1.1.0"
 
     const val AndroidArchLifecycle = "android.arch.lifecycle:extensions:${Versions.LifecycleVersion}"
     const val AndroidArchLifecycleRuntime = "android.arch.lifecycle:runtime:${Versions.LifecycleVersion}"
@@ -30,12 +31,16 @@ object Dependencies {
     const val AndroidArchLifecycleCompiler = "android.arch.lifecycle:compiler:${Versions.LifecycleVersion}"
     const val AndroidArchLifecycleReactiveStreams = "android.arch.lifecycle:reactivestreams:${Versions.LifecycleVersion}"
 
+    const val FirebaseCore = "com.google.firebase:firebase-core:16.0.8"
+    const val FirebaseMessaging = "com.google.firebase:firebase-messaging:20.0.0"
+    const val FirebaseAnalytics = "com.google.firebase:firebase-analytics:17.2.0"
+
     const val A3Utilities = "at.allaboutapps.a3utilities:a3utilities:1.0.3"
     const val A3WebView = "at.allaboutapps.web:a3webview:0.1.0"
     const val A3RecyclerViewDecorations =
         "at.allaboutapps.recyclerview:a3recyclerview-decorations:1.0.1"
 
-    const val Crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.0"
+    const val Crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.1"
 
     const val Dagger = "com.google.dagger:dagger:${Versions.Dagger}"
     const val DaggerAndroid = "com.google.dagger:dagger-android:${Versions.Dagger}"

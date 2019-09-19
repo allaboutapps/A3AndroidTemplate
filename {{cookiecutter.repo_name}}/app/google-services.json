@@ -1,0 +1,33 @@
+{
+  "project_info": {
+    "project_number": "123234234",
+    "firebase_url": "",
+    "project_id": "template",
+    "storage_bucket": ""
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:dfg45:sdf:ff02c1d88a79ad4e",
+        "android_client_info": {
+          "package_name": "{{ cookiecutter.package_name }}"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456-asdf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": ""
+        }
+      ],
+      "services": {
+
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

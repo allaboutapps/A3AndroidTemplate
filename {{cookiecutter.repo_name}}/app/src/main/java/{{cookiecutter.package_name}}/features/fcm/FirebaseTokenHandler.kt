@@ -3,13 +3,13 @@ package {{ cookiecutter.package_name }}.features.fcm
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask
-import {{ cookiecutter.package_name }}.features.fcm.FirebaseTokenService
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import timber.log.Timber
 import javax.inject.Inject
+import javax.inject.Singleton
 
-
+@Singleton
 class FirebaseTokenHandler @Inject constructor(private val firebaseTokenService: FirebaseTokenService) {
 
   fun sendFirebaseTokenToServer() {

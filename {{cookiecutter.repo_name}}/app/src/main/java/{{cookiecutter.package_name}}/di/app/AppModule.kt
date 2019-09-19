@@ -81,19 +81,4 @@ class AppModule {
     @Reusable
     @Provides
     fun preferences(app: Application): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(app)
-
-    {% if cookiecutter.firebase_messaging == "yes" %}
-    @Singleton
-    @Provides
-    fun provideFirebaseTokenService(apiService: ApiService): FirebaseTokenService {
-        return FirebaseTokenService(apiService)
-    }
-
-    @Singleton
-    @Provides
-    fun provideFirebaseTokenHandler(firebaseTokenService: FirebaseTokenService): FirebaseTokenHandler {
-        return FirebaseTokenHandler(firebaseTokenService)
-    }
-    {% endif %}
-
 }

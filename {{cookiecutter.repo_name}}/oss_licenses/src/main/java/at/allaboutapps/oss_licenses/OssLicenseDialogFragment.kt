@@ -28,7 +28,7 @@ class OssLicenseDialogFragment : DialogFragment() {
         val settings = arguments?.getParcelable<LicenseScreenSettings>("settings")
 
         val webView = WebView(requireActivity())
-        webView.loadUrl("file:///android_asset/open_source_licenses.html")
+        webView.loadUrl("file:///android_asset/index.html")
 
         return AlertDialog.Builder(requireActivity())
                 .setTitle(settings?.title)

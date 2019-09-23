@@ -27,7 +27,7 @@ class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
             title = settings.title
             supportActionBar?.setDisplayHomeAsUpEnabled(settings.showUpArrow)
         }
-        web.loadUrl("file:///android_asset/open_source_licenses.html")
+        web.loadUrl("file:///android_asset/index.html")
 
     }
 

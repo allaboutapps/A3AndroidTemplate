@@ -1,6 +1,6 @@
 apply plugin: 'BuildPlugin'
 apply plugin: 'com.android.application'
-apply plugin: 'com.jaredsburrows.license'
+apply plugin: 'com.github.jk1.dependency-license-report'
 apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
@@ -76,8 +76,11 @@ android {
 }
 
 licenseReport {
-    generateHtmlReport = true
-    generateJsonReport = false
+    outputDir = "$projectDir/src/main/assets"
+    projects = [project] + project.subprojects
+    configurations = ['liveReleaseRuntimeClasspath']
+    allowedLicensesFile = new File("$projectDir/../config/allowed_licenses.json")
+    excludeGroups = ['at.allaboutapps.*', 'com.theartofdev.*', 'com.savvi.*', 'com.android.volley.*']
 }
 
 dependencies {

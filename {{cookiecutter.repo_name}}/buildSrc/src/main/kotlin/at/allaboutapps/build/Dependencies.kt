@@ -16,7 +16,7 @@ object Versions {
 
 object Dependencies {
     const val AndroidXAnnotations = "androidx.annotation:annotation:1.0.2"
-    const val AndroidXAppCompat = "androidx.appcompat:appcompat:1.0.2"
+    const val AndroidXAppCompat = "androidx.appcompat:appcompat:1.1.0"
     const val AndroidXBiometric = "androidx.biometric:biometric:1.0.0-alpha04"
     const val AndroidXCoreKtx = "androidx.core:core-ktx:1.0.2"
     const val AndroidXMultiDex = "androidx.multidex:multidex:2.0.1"

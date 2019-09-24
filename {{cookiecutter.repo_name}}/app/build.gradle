@@ -76,7 +76,7 @@ android {
 }
 
 licenseReport {
-    outputDir = "$projectDir/src/main/assets"
+    outputDir = "$projectDir/src/main/assets/licenses"
     projects = [project] + project.subprojects
     configurations = ['liveReleaseRuntimeClasspath']
     allowedLicensesFile = new File("$projectDir/../config/allowed_licenses.json")

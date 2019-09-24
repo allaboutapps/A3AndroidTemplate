@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_oss.*
 
+
 class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
 
     companion object {
@@ -27,7 +28,8 @@ class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
             title = settings.title
             supportActionBar?.setDisplayHomeAsUpEnabled(settings.showUpArrow)
         }
-        web.loadUrl("file:///android_asset/index.html")
+
+        web.loadWithSettings(GlobalWebviewSettings.prepareWebviewSettings())
 
     }
 

@@ -11,10 +11,11 @@ import kotlinx.android.synthetic.main.activity_oss.*
 class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
 
     companion object {
+        private const val ARG_SETTINGS = "arg_settings"
         fun showLicenses(context: Context, settings: LicenseScreenSettings) {
             val intent = Intent(context, OssLicenseActivity::class.java)
 
-            intent.putExtra("settings", settings)
+            intent.putExtra(ARG_SETTINGS, settings)
             context.startActivity(intent)
         }
     }
@@ -22,7 +23,7 @@ class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val settings = intent.extras?.getParcelable<LicenseScreenSettings>("settings")
+        val settings = intent.extras?.getParcelable<LicenseScreenSettings>(ARG_SETTINGS)
 
         settings?.let {
             title = settings.title

@@ -13,10 +13,12 @@ import at.allaboutapps.web.webview.A3WebView
 class OssLicenseDialogFragment : DialogFragment() {
 
     companion object {
+        private const val ARG_SETTINGS = "arg_settings"
+
         fun showLicenseDialog(fragmentManager: FragmentManager, settings: LicenseScreenSettings) {
             val fragment = OssLicenseDialogFragment()
             val args = Bundle()
-            args.putParcelable("settings", settings)
+            args.putParcelable(ARG_SETTINGS, settings)
 
             fragment.arguments = args
 
@@ -26,7 +28,7 @@ class OssLicenseDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val settings = arguments?.getParcelable<LicenseScreenSettings>("settings")
+        val settings = arguments?.getParcelable<LicenseScreenSettings>(ARG_SETTINGS)
 
         val webView = A3WebView(requireActivity())
 

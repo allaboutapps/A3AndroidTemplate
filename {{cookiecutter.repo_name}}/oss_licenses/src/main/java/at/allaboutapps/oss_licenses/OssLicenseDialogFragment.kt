@@ -28,14 +28,14 @@ class OssLicenseDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val settings = arguments?.getParcelable<LicenseScreenSettings>(ARG_SETTINGS)
+        val settings = arguments!!.getParcelable<LicenseScreenSettings>(ARG_SETTINGS)!!
 
         val webView = A3WebView(requireActivity())
 
         webView.loadWithSettings(GlobalWebviewSettings.prepareWebviewSettings())
 
         return AlertDialog.Builder(requireActivity())
-                .setTitle(settings?.title)
+                .setTitle(settings.title)
                 .setView(webView)
                 .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
                 .create()

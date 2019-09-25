@@ -23,12 +23,10 @@ class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val settings = intent.extras?.getParcelable<LicenseScreenSettings>(ARG_SETTINGS)
+        val settings = intent.extras!!.getParcelable<LicenseScreenSettings>(ARG_SETTINGS)!!
 
-        settings?.let {
-            title = settings.title
-            supportActionBar?.setDisplayHomeAsUpEnabled(settings.showUpArrow)
-        }
+        title = settings.title
+        supportActionBar?.setDisplayHomeAsUpEnabled(settings.showUpArrow)
 
         web.loadWithSettings(GlobalWebviewSettings.prepareWebviewSettings())
 

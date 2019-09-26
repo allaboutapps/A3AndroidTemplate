@@ -1,0 +1,24 @@
+apply plugin: 'BuildPlugin'
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+
+    defaultConfig {
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation Dependencies.KotlinStdLib
+    implementation Dependencies.AndroidXAppCompat
+    implementation Dependencies.AndroidXCoreKtx
+    implementation Dependencies.A3WebView
+}

@@ -1,5 +1,6 @@
 apply plugin: 'BuildPlugin'
 apply plugin: 'com.android.application'
+apply plugin: 'com.github.jk1.dependency-license-report'
 apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
@@ -72,12 +73,28 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    sourceSets {
+        // generate oss license html to build folder
+        main.assets.srcDirs += "${project.buildDir}/a3generated"
+    }
+}
+
+licenseReport {
+    outputDir = "${project.buildDir}/a3generated/licenses"
+    projects = [project] + project.subprojects
+    configurations = ['liveReleaseRuntimeClasspath']
+    allowedLicensesFile = new File("$projectDir/../oss_licenses/src/main/assets/allowed_licenses.json")
+    excludeGroups = ['at.allaboutapps.*', 'com.theartofdev.*', 'com.savvi.*', 'com.android.volley.*']
 }
 
 dependencies {
     implementation project(':networking')
     implementation project(':unwrapretrofit')
-
+    implementation project(':oss_licenses')
+    implementation project(':glide')
+    
+    
     implementation Dependencies.KotlinStdLib
     implementation Dependencies.MaterialComponents
 
@@ -118,8 +135,6 @@ dependencies {
     // optional - ReactiveStreams support for LiveData
     implementation Dependencies.AndroidArchLifecycleReactiveStreams
 
-    // image loading
-    implementation project(':glide')
 
     // logging
     implementation Dependencies.Timber

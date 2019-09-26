@@ -1,0 +1,35 @@
+{
+  "allowedLicenses": [
+
+    {
+      "moduleLicense": ".*Apache.*2.0"
+    },
+    {
+      "moduleLicense": "Answers Terms of Service"
+    },
+    {
+      "moduleLicense": "Facebook Platform License"
+    },
+    {
+      "moduleLicense": "Crashlytics Terms of Service"
+    },
+    {
+      "moduleLicense": "Fabric Software and Services Agreement"
+    },
+    {
+      "moduleLicense": "CC0"
+    },
+    {
+      "moduleLicense": "Android Software Development Kit License"
+    },
+    {
+      "moduleLicense": ".*MIT.*"
+    },
+    {
+      "moduleLicense": "Google Maps Platform Terms of Service"
+    },
+    {
+      "moduleLicense": ".*BSD.*"
+    }
+  ]
+}

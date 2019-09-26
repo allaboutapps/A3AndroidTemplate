@@ -25,6 +25,7 @@ Template contains:
 * retrofit setup
 * firebase analytics and messaging setup
 * SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
+* Code to show [Open Source Licenses](#open-source-licenses) as standalone activity or dialog
 
 ---
 
@@ -43,6 +44,27 @@ Fill in the following values:
 4) firebase_analytics - Setup firebase analytics
 5) firebase_messaging - Basic setup for FCM
 6) strings_sheet_id - Sheet ID for strings (eg 1234565432345) (AAA internal tool for translations - just leave it empty if you don't know what this is) 
+
+
+
+---
+## Open Source Licenses
+
+The oss_licenses module is setup to generate a html file containing licenses of all dependencies. Just run the gradle task checkLicenses to generate everything (Bitrise Step preferred)
+
+The file allowed_licenses.json contains license descriptions that are allowed to be used in our apps. If you find a valid license that is not supported feel free to start a pull request.
+
+Shoing an open source dialog or activity is easy as that:
+
+```kotlin
+    val licenseScreenSettings = LicenseScreenSettings(title = "License Screen", showUpArrow = true)
+        
+    // open an activity    
+    OssLicenseActivity.showLicenses(this, licenseScreenSettings)
+    
+    // or open a DialogFragment
+    OssLicenseDialogFragment.showLicenseDialog(supportFragmentManager, licenseScreenSettings)
+```
 
 ---
 

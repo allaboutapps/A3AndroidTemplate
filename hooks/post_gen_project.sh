@@ -7,7 +7,7 @@ USE_FB_MESSAGING="{{ cookiecutter.firebase_messaging }}"
 echo "*) Project ($APP_NAME) created"
 
 git init > /dev/null
-git add -A
+git add .
 
 cd ..
 chmod -R 777 "{{ cookiecutter.repo_name }}"

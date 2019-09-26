@@ -13,5 +13,3 @@
 /build
 /captures
 .externalNativeBuild
-app/src/main/assets/dependencies-without-allowed-license.json
-app/src/main/assets/project-licenses-for-check-license-task.json

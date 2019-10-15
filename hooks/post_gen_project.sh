@@ -43,4 +43,4 @@ then
     rm -rf fcm
 fi
 
-echo "\nProject setup completed -> Happy coding\n\n"
+echo -e "\nProject setup completed -> Happy coding\n\n"

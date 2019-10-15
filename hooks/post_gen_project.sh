@@ -10,7 +10,6 @@ git init > /dev/null
 git add .
 
 cd ..
-chmod -R 777 "{{ cookiecutter.repo_name }}"
 
 echo "*) GIT setup completed"
 

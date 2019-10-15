@@ -50,7 +50,7 @@ Fill in the following values:
 ---
 ## Open Source Licenses
 
-The oss_licenses module is setup to generate a html file containing licenses of all dependencies. Just run the gradle task checkLicenses to generate everything (Bitrise Step preferred)
+The oss_licenses module is setup to generate a html file containing licenses of all dependencies. Just run the gradle task checkLicense to generate everything (Bitrise Step preferred)
 
 The file allowed_licenses.json contains license descriptions that are allowed to be used in our apps. If you find a valid license that is not supported feel free to start a pull request.
 

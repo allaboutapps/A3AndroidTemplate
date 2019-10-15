@@ -80,12 +80,22 @@ android {
     }
 }
 
+import com.github.jk1.license.importer.XmlReportImporter
+
 licenseReport {
     outputDir = "${project.buildDir}/a3generated/licenses"
     projects = [project] + project.subprojects
     configurations = ['liveReleaseRuntimeClasspath']
     allowedLicensesFile = new File("$projectDir/../oss_licenses/src/main/assets/allowed_licenses.json")
-    excludeGroups = ['at.allaboutapps.*', 'com.theartofdev.*', 'com.savvi.*', 'com.android.volley.*']
+    excludeGroups = ['at.allaboutapps.*']
+    excludes = [
+
+    ]
+    importers = [
+            // Add excluded licenses back
+            new XmlReportImporter("More",
+                    new File("$projectDir/../oss_licenses/src/main/assets/more_licenses.xml"))
+    ]
 }
 
 dependencies {

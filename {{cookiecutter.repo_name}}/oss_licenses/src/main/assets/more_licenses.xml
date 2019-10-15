@@ -1,0 +1,26 @@
+<topic>
+    <chunk>
+        <chapter>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                    <th>License</th>
+                </tr>
+                <!--<tr>
+                    <td>
+                        <a href="https://example.org">
+                            CHANGEME!
+                        </a>
+                    </td>
+                    <td />
+                    <td>
+                        <a href="https://example.org/LICENSE">
+                            Apache 2.0
+                        </a>
+                    </td>
+                </tr>-->
+            </table>
+        </chapter>
+    </chunk>
+</topic>

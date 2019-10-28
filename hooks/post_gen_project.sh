@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 APP_NAME="{{ cookiecutter.app_name }}"
 USE_ANALYTICS="{{ cookiecutter.firebase_analytics }}"

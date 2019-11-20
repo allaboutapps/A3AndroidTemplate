@@ -5,7 +5,7 @@
 object Versions {
     const val Dagger = "2.24"
     const val Glide = "4.9.0"
-    const val Kotlin = "1.3.50"
+    const val Kotlin = "1.3.60"
     const val Moshi = "1.8.0"
     const val OkHttp = "3.12.3"
     const val Retrofit = "2.6.1"

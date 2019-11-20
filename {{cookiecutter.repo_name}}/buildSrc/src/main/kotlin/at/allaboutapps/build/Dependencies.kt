@@ -10,7 +10,7 @@ object Versions {
     const val OkHttp = "3.12.6"
     const val Retrofit = "2.6.1"
     const val Room = "2.1.0"
-    const val RxJava = "2.2.11"
+    const val RxJava = "2.2.14"
     const val LifecycleVersion = "1.1.1"
 }
 

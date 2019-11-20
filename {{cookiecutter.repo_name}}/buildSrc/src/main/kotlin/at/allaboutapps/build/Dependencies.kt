@@ -3,14 +3,14 @@
 // no package so that we don't need an import
 
 object Versions {
-    const val Dagger = "2.24"
+    const val Dagger = "2.25.2"
     const val Glide = "4.9.0"
-    const val Kotlin = "1.3.50"
-    const val Moshi = "1.8.0"
-    const val OkHttp = "3.12.3"
+    const val Kotlin = "1.3.60"
+    const val Moshi = "1.9.2"
+    const val OkHttp = "3.12.6"
     const val Retrofit = "2.6.1"
     const val Room = "2.1.0"
-    const val RxJava = "2.2.11"
+    const val RxJava = "2.2.14"
     const val LifecycleVersion = "1.1.1"
 }
 

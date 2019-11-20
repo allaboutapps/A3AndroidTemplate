@@ -1,10 +1,6 @@
 package at.allaboutapps.build
 
-import com.android.build.gradle.AppExtension
-import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.LibraryExtension
-import com.android.build.gradle.LibraryPlugin
-import com.android.build.gradle.TestedExtension
+import com.android.build.gradle.*
 import org.gradle.api.JavaVersion
 import org.gradle.api.JavaVersion.VERSION_1_8
 import org.gradle.api.Plugin
@@ -14,43 +10,44 @@ import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.plugins.JavaPluginConvention
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.getPlugin
-import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 import org.jetbrains.kotlin.gradle.plugin.KotlinBasePluginWrapper
 
 class BuildPlugin : Plugin<Project> {
-    override fun apply(project: Project) {
 
-        project.plugins.all { plugin ->
-            when (plugin) {
-                is JavaPlugin,
-                is JavaLibraryPlugin -> {
-                    val convention = project.convention.getPlugin<JavaPluginConvention>()
-                    convention.apply {
-                        sourceCompatibility = VERSION_1_8
-                        targetCompatibility = VERSION_1_8
-                    }
-                    project.afterEvaluate {
-                        verifyJava8Targeting(convention.sourceCompatibility)
-                    }
+    override fun apply(project: Project) {
+        project.plugins.all { setupPlugin(this, project) }
+    }
+
+    private fun setupPlugin(plugin: Plugin<*>, project: Project) {
+        when (plugin) {
+            is JavaPlugin,
+            is JavaLibraryPlugin -> {
+                val convention = project.convention.getPlugin<JavaPluginConvention>()
+                convention.apply {
+                    sourceCompatibility = VERSION_1_8
+                    targetCompatibility = VERSION_1_8
                 }
-                is LibraryPlugin -> {
-                    project.extensions.getByType<LibraryExtension>().apply {
-                        configureAndroidCommonOptions(project)
-                    }
+                project.afterEvaluate {
+                    verifyJava8Targeting(convention.sourceCompatibility)
                 }
-                is AppPlugin -> {
-                    project.extensions.getByType<AppExtension>().apply {
-                        configureAndroidCommonOptions(project)
-                        configureAndroidApplicationOptions(project)
-                    }
+            }
+            is LibraryPlugin -> {
+                project.extensions.getByType<LibraryExtension>().apply {
+                    configureAndroidCommonOptions(project)
                 }
-                is KotlinBasePluginWrapper -> {
-                    project.tasks.withType(KotlinJvmCompile::class.java) {
-                        it.kotlinOptions.jvmTarget = VERSION_1_8.toString()
-                    }
-                    project.tasks.withType(KotlinCompile::class.java).configureEach { compile ->
-                        // compile.kotlinOptions.allWarningsAsErrors = true
+            }
+            is AppPlugin -> {
+                project.extensions.getByType<AppExtension>().apply {
+                    configureAndroidCommonOptions(project)
+                    configureAndroidApplicationOptions(project)
+                }
+            }
+            is KotlinBasePluginWrapper -> {
+                project.tasks.withType<KotlinJvmCompile> {
+                    kotlinOptions {
+                        jvmTarget = VERSION_1_8.toString()
                     }
                 }
             }

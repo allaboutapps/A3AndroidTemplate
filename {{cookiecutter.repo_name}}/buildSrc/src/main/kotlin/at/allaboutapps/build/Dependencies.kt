@@ -3,7 +3,7 @@
 // no package so that we don't need an import
 
 object Versions {
-    const val Dagger = "2.24"
+    const val Dagger = "2.25.2"
     const val Glide = "4.9.0"
     const val Kotlin = "1.3.60"
     const val Moshi = "1.8.0"

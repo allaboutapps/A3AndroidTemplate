@@ -3,6 +3,9 @@
 APP_NAME="{{ cookiecutter.app_name }}"
 USE_ANALYTICS="{{ cookiecutter.firebase_analytics }}"
 USE_FB_MESSAGING="{{ cookiecutter.firebase_messaging }}"
+STRING_TOOL="{{ cookiecutter.string_tool }}"
+PACKAGE_NAME="{{ cookiecutter.package_name }}"
+DIRECTORY=`dirname $0`
 
 echo "*) Project ($APP_NAME) created"
 
@@ -41,6 +44,18 @@ then
 
     cd src/main/java/{{ cookiecutter.package_name }}/features
     rm -rf fcm
+
+    cd ../../../../../../ #back to project root
+fi
+
+if [[ $STRING_TOOL != "texterify" ]]
+then
+    echo "*) Setup for Google Sheet Strings tool"
+    cd app
+    rm texterify.json
+    cd ../ #back to project root
 fi
 
 echo -e "\nProject setup completed -> Happy coding\n\n"
+
+

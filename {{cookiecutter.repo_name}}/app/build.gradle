@@ -103,8 +103,8 @@ dependencies {
     implementation project(':unwrapretrofit')
     implementation project(':oss_licenses')
     implementation project(':glide')
-    
-    
+
+
     implementation Dependencies.KotlinStdLib
     implementation Dependencies.MaterialComponents
 
@@ -171,6 +171,22 @@ dependencies {
     apply plugin: 'com.google.gms.google-services'
 {% endif %}
 
+
+{% if cookiecutter.string_tool == "texterify" %}
+    task updateStringsTexterify(type: Exec, group: "localization") {
+    def executableName
+    if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+        executableName = ["cmd", '/c', "texterify"]
+    } else {
+        executableName = ["texterify"]
+    }
+    commandLine = (executableName + [
+            "download"
+    ])
+}
+{% endif %}
+
+{% if cookiecutter.string_tool == "googlesheet" %}
 task updateStrings(type: Exec, group: "localization") {
     def executableName
     if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
@@ -184,3 +200,4 @@ task updateStrings(type: Exec, group: "localization") {
             "-s", "{{cookiecutter.strings_sheet_id}}"
     ])
 }
+{% endif %}

@@ -173,7 +173,7 @@ dependencies {
 
 
 {% if cookiecutter.string_tool == "texterify" %}
-    task updateStringsTexterify(type: Exec, group: "localization") {
+task updateStrings(type: Exec, group: "localization") {
     def executableName
     if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
         executableName = ["cmd", '/c', "texterify"]

@@ -3,6 +3,10 @@
 APP_NAME="{{ cookiecutter.app_name }}"
 USE_ANALYTICS="{{ cookiecutter.firebase_analytics }}"
 USE_FB_MESSAGING="{{ cookiecutter.firebase_messaging }}"
+STRING_TOOL="{{ cookiecutter.string_tool }}"
+PACKAGE_NAME="{{ cookiecutter.package_name }}"
+REPO_NAME="{{ cookiecutter.repo_name }}"
+ROOT_DIRECTORY="${PWD%/*}/$REPO_NAME"
 
 echo "*) Project ($APP_NAME) created"
 
@@ -41,6 +45,17 @@ then
 
     cd src/main/java/{{ cookiecutter.package_name }}/features
     rm -rf fcm
+
+    cd $ROOT_DIRECTORY #back to project root
+fi
+
+if [[ $STRING_TOOL != "texterify" ]]
+then
+    cd app
+    rm texterify.json
+    cd $ROOT_DIRECTORY #back to project root
 fi
 
 echo -e "\nProject setup completed -> Happy coding\n\n"
+
+

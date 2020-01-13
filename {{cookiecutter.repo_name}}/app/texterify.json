@@ -1,0 +1,8 @@
+{
+  "api_base_url": "https://texterify.allaboutapps.at/api",
+  "api_version": "v1",
+  "project_id": "{{cookiecutter.texterify_project_id}}",
+  "export_configuration_id": "{{cookiecutter.texterify_export_config}}",
+  "export_directory": "src/main/res",
+  "project_path": ""
+}

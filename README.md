@@ -26,6 +26,7 @@ Template contains:
 * firebase analytics and messaging setup
 * SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
 * Code to show [Open Source Licenses](#open-source-licenses) as standalone activity or dialog
+* (optional) Texterify: texterify.json setup
 
 ---
 
@@ -41,11 +42,16 @@ Fill in the following values:
 1) repo_name        - name of cloned directory  (eg   mycards-android)
 2) app_name         - app name
 3) package_name     - "com.example.app",
-4) firebase_analytics - Setup firebase analytics
-5) firebase_messaging - Basic setup for FCM
-6) strings_sheet_id - Sheet ID for strings (eg 1234565432345) (AAA internal tool for translations - just leave it empty if you don't know what this is) 
+4) string_tool      - Choose your selected string tool for this project (none, googlesheet or texterify)
+5) texterify_project_id - project id of your texterify project - default: empty
+6) texterify_export_config - export configuration id of your texterify project - default: empty
+7) firebase_analytics - Setup firebase analytics
+8) firebase_messaging - Basic setup for FCM
+9) strings_sheet_id - Sheet ID for strings (eg 1234565432345) (AAA internal tool for translations - just leave it empty if you don't know what this is) default: empty 
 
 
+### Texterify
+To use [Texterify](https://github.com/chrztoph/texterify) just run the gradle task updateStrings. The file texterify.json is located in /app directory.
 
 ---
 ## Open Source Licenses

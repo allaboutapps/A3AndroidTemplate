@@ -51,7 +51,7 @@ Fill in the following values:
 
 
 ### Texterify
-To use [Texterify](https://github.com/chrztoph/texterify) just run the gradle task updateStringsTexterify. The file texterify.json is located in /app directory.
+To use [Texterify](https://github.com/chrztoph/texterify) just run the gradle task updateStrings. The file texterify.json is located in /app directory.
 
 ---
 ## Open Source Licenses

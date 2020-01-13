@@ -51,7 +51,6 @@ fi
 
 if [[ $STRING_TOOL != "texterify" ]]
 then
-    echo "*) Setup for Google Sheet Strings tool"
     cd app
     rm texterify.json
     cd $ROOT_DIRECTORY #back to project root

@@ -1,0 +1,3 @@
+<resources>
+    <string name="leak_canary_display_activity_label">{{ cookiecutter.app_name }} Leaks</string>
+</resources>

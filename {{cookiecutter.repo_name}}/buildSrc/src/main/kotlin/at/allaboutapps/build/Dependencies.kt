@@ -46,8 +46,9 @@ object Dependencies {
     const val DaggerAndroid = "com.google.dagger:dagger-android:${Versions.Dagger}"
     const val DaggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.Dagger}"
     const val DaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.Dagger}"
-    const val DaggerCompilerAndroid =
-        "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
+    const val DaggerCompilerAndroid = "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
+
+    const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:2.1"
 
     const val Epoxy = "com.airbnb.android:epoxy:3.7.0"
 

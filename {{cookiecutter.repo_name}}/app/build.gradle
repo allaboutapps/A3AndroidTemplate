@@ -104,7 +104,6 @@ dependencies {
     implementation project(':oss_licenses')
     implementation project(':glide')
 
-
     implementation Dependencies.KotlinStdLib
     implementation Dependencies.MaterialComponents
 
@@ -166,9 +165,13 @@ dependencies {
     implementation Dependencies.DaggerAndroidSupport
     kapt Dependencies.DaggerCompiler
     kapt Dependencies.DaggerCompilerAndroid
+
+    // Leak Canary
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation Dependencies.LeakCanary
 }
 {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
-    apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'
 {% endif %}
 
 

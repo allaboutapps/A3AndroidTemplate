@@ -19,6 +19,7 @@ Template contains:
     * architecture components
     * a3 libraries
     * timber
+    * LeakCanary
 
 
 * flavor for `dev`, `staging`, `live`

@@ -4,7 +4,7 @@
     <!-- https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html -->
     <!-- use this as default theme for all activities -->
     <!-- just change splash screen drawable -->
-    <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight">
+    <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 

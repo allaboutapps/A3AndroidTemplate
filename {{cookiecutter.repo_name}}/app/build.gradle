@@ -4,7 +4,7 @@ apply plugin: 'com.github.jk1.dependency-license-report'
 apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-//apply plugin: 'io.fabric'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-android-extensions'
 
 

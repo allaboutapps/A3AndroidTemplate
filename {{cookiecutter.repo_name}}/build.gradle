@@ -16,6 +16,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Versions.Kotlin"
         classpath 'at.allaboutapps.gradle:plugin:3.0.9'
         classpath 'com.github.jk1:gradle-license-report:1.11'
+        classpath Dependencies.AndroidXNavigationSafeArgs
 
         //classpath 'io.fabric.tools:gradle:1.31.0'
 

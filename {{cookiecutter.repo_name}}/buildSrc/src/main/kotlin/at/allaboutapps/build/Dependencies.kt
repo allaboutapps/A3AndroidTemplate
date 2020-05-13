@@ -35,6 +35,7 @@ object Dependencies {
     // Navigation
     const val AndroidXNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.NavVersion}"
     const val AndroidXNavigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.NavVersion}"
+    const val AndroidXNavigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NavVersion}"
 
     // Firebase
     const val FirebaseMessaging = "com.google.firebase:firebase-messaging:20.1.7"

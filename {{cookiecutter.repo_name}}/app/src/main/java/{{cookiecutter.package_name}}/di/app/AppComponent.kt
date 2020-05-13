@@ -3,6 +3,7 @@ package {{ cookiecutter.package_name }}.di.app
 import android.app.Application
 import {{ cookiecutter.package_name }}.application.App
 import {{ cookiecutter.package_name }}.di.ActivityModule
+import {{ cookiecutter.package_name }}.di.FragmentModule
 import {{ cookiecutter.package_name }}.networking.services.ApiService
 import dagger.BindsInstance
 import dagger.Component
@@ -15,7 +16,8 @@ import javax.inject.Singleton
         modules = [
             AndroidSupportInjectionModule::class,
             AppModule::class,
-            ActivityModule::class
+            ActivityModule::class,
+            FragmentModule::class
         ]
 )
 interface AppComponent : AndroidInjector<App> {

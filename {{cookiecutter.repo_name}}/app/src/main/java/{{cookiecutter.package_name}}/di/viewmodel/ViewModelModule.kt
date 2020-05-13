@@ -2,7 +2,7 @@ package {{ cookiecutter.package_name }}.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import {{ cookiecutter.package_name }}.features.start.ui.main.MainViewModel
+import {{ cookiecutter.package_name }}.features.start.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -2,7 +2,7 @@ package {{ cookiecutter.package_name }}.base
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import {{ cookiecutter.package_name }}.di.Injectable
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelFactory
 import javax.inject.Inject
@@ -19,11 +19,11 @@ abstract class BaseFragment : Fragment(), Injectable {
      * Request a ViewModel from the factory
      * @see ViewModelFactory
      */
-    inline fun <reified T : ViewModel> viewModel() = ViewModelProviders.of(this, viewModelFactory).get(T::class.java)
+    inline fun <reified T : ViewModel> viewModel() = ViewModelProvider(this).get(T::class.java)
 
     /**
      * Request a ViewModel scoped to the Activity from the factory
      * @see ViewModelFactory
      */
-    inline fun <reified T : ViewModel> activityViewModel() = ViewModelProviders.of(requireActivity(), viewModelFactory).get(T::class.java)
+    inline fun <reified T : ViewModel> activityViewModel() = ViewModelProvider(requireActivity()).get(T::class.java)
 }

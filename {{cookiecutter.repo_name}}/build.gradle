@@ -12,7 +12,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Versions.Kotlin"
         classpath 'at.allaboutapps.gradle:plugin:3.0.9'
         classpath 'com.github.jk1:gradle-license-report:1.11'
@@ -21,7 +21,7 @@ buildscript {
 
 
         {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
-        classpath 'com.google.gms:google-services:4.3.2'
+        classpath 'com.google.gms:google-services:4.3.3'
         {% endif %}
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

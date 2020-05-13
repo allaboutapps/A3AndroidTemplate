@@ -132,13 +132,10 @@ dependencies {
     implementation Dependencies.AndroidXCoreKtx
     implementation Dependencies.AndroidXPreferenceManager
 
-    // ViewModel and LiveData
-    implementation Dependencies.AndroidArchLifecycle
-
     // Support library depends on this lightweight import
-    implementation Dependencies.AndroidArchLifecycleRuntime
+    implementation Dependencies.AndroidArchLifecycleViewModel
+    implementation Dependencies.AndroidArchLifecycleLiveData
 
-    implementation Dependencies.AndroidArchLifecycleExtensions
     kapt Dependencies.AndroidArchLifecycleCompiler
 
     // optional - ReactiveStreams support for LiveData

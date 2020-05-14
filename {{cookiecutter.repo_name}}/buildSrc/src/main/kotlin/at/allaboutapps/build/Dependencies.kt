@@ -27,10 +27,10 @@ object Dependencies {
     const val AndroidXPreferenceManager = "androidx.preference:preference-ktx:1.1.1"
 
     // Lifecycle
-    const val AndroidArchLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LifecycleVersion}"
-    const val AndroidArchLifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LifecycleVersion}"
-    const val AndroidArchLifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.LifecycleVersion}"
-    const val AndroidArchLifecycleReactiveStreams = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.LifecycleVersion}"
+    const val AndroidXLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LifecycleVersion}"
+    const val AndroidXLifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LifecycleVersion}"
+    const val AndroidXLifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.LifecycleVersion}"
+    const val AndroidXLifecycleReactiveStreams = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.LifecycleVersion}"
 
     // Navigation
     const val AndroidXNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.NavVersion}"

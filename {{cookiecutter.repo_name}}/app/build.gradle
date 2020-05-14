@@ -133,13 +133,13 @@ dependencies {
     implementation Dependencies.AndroidXPreferenceManager
 
     // Support library depends on this lightweight import
-    implementation Dependencies.AndroidArchLifecycleViewModel
-    implementation Dependencies.AndroidArchLifecycleLiveData
+    implementation Dependencies.AndroidXLifecycleViewModel
+    implementation Dependencies.AndroidXLifecycleLiveData
 
-    kapt Dependencies.AndroidArchLifecycleCompiler
+    kapt Dependencies.AndroidXLifecycleCompiler
 
     // optional - ReactiveStreams support for LiveData
-    implementation Dependencies.AndroidArchLifecycleReactiveStreams
+    implementation Dependencies.AndroidXLifecycleReactiveStreams
 
 
     // logging

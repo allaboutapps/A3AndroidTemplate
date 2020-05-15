@@ -5,6 +5,7 @@
   "string_tool" : ["none", "googlesheet", "texterify"],
   "texterify_project_id": "",
   "texterify_export_config": "",
+  "firebase_crashlytics": ["no", "yes"],
   "firebase_analytics": ["no", "yes"],
   "firebase_messaging": ["no", "yes"],
   "strings_sheet_id": ""

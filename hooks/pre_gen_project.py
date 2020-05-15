@@ -30,4 +30,4 @@ if re.search(PACKAGE_REGEX, package_name):
 
 print ('\n\n###############################')
 print ('Setup for "{}" started.'.format(app_name))
-print ('Please wait a few minutes...........\n')
+print ('Please wait a few seconds...........\n')

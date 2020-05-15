@@ -17,6 +17,7 @@ Template contains:
     * retrofit
     * moshi
     * architecture components
+    * navigation + safe args
     * a3 libraries
     * timber
     * LeakCanary

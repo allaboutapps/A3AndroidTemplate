@@ -40,7 +40,7 @@ object Dependencies {
     // Firebase
     const val FirebaseMessaging = "com.google.firebase:firebase-messaging:20.1.7"
     const val FirebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:17.4.1"
-    const val FirebaseCrashlytics = "com.google.firebase:firebase-analytics-ktx:17.4.1"
+    const val FirebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0"
 
     // Play Services
     const val PlayServicesMaps = "com.google.android.gms:play-services-location:17.0.0"

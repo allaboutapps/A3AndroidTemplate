@@ -2,7 +2,7 @@
 # APT - Android Project Template
 
 
-![all about apps](https://allaboutapps.at/wp-content/uploads/2019/11/aaa-logo-white@2x.png "all about apps")
+![all about apps](https://kcdn.at/company/51740/3214808/aaa3000.png "all about apps")
 
 ---
 

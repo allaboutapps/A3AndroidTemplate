@@ -6,7 +6,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-android-extensions'
-
+{% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_analytics == "yes" %}apply plugin: 'com.google.gms.google-services' {% endif %}
+{% if cookiecutter.firebase_crashlytics == "yes" %}apply plugin: 'com.google.firebase.crashlytics'{% endif %}
 
 android {
     defaultConfig {
@@ -107,25 +108,15 @@ dependencies {
     implementation Dependencies.KotlinStdLib
     implementation Dependencies.MaterialComponents
 
-    {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
     // Firebase Libs
-        {%- if cookiecutter.firebase_messaging == "yes" -%}
-            {%- if cookiecutter.firebase_analytics == "no" -%}
-    implementation Dependencies.FirebaseCore
-            {% endif %}
-    implementation Dependencies.FirebaseMessaging
-        {% endif %}
-    {%- if cookiecutter.firebase_analytics == "yes" -%}
-    implementation Dependencies.FirebaseAnalytics
-    {% endif %}
-    {% endif %}
+    {% if cookiecutter.firebase_crashlytics == "yes" %}implementation Dependencies.FirebaseCrashlytics{% endif %}
+    {% if cookiecutter.firebase_messaging == "yes" %}implementation Dependencies.FirebaseMessaging{% endif %}
+
+    {% if cookiecutter.firebase_analytics == "yes" %}implementation Dependencies.FirebaseAnalytics {% endif %}
 
     // aaa libs
     implementation Dependencies.A3Utilities
     implementation Dependencies.A3RecyclerViewDecorations
-
-    // crash reporting
-    //implementation Dependencies.Crashlytics
 
     // Android Kotlin Extensions by Google
     // https://developer.android.com/kotlin/ktx
@@ -170,11 +161,7 @@ dependencies {
     implementation Dependencies.AndroidXNavigationFragment
     implementation Dependencies.AndroidXNavigationUI
 }
-{% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
-apply plugin: 'com.google.gms.google-services'
-{% endif %}
-
-
+{% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}apply plugin: 'com.google.gms.google-services'{% endif %}
 {% if cookiecutter.string_tool == "texterify" %}
 task updateStrings(type: Exec, group: "localization") {
     def executableName
@@ -188,7 +175,6 @@ task updateStrings(type: Exec, group: "localization") {
     ])
 }
 {% endif %}
-
 {% if cookiecutter.string_tool == "googlesheet" %}
 task updateStrings(type: Exec, group: "localization") {
     def executableName

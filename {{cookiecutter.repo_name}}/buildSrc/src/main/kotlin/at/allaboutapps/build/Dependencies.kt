@@ -5,7 +5,7 @@
 object Versions {
     const val Dagger = "2.27"
     const val Glide = "4.11.0"
-    const val Kotlin = "1.3.61"
+    const val Kotlin = "1.3.72"
     const val Moshi = "1.9.2"
     const val OkHttp = "3.12.6"
     const val Retrofit = "2.8.1"
@@ -39,8 +39,8 @@ object Dependencies {
 
     // Firebase
     const val FirebaseMessaging = "com.google.firebase:firebase-messaging:20.1.7"
-    const val FirebaseAnalytics = "com.google.firebase:firebase-analytics:17.4.1"
-    const val Crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.1"
+    const val FirebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:17.4.1"
+    const val FirebaseCrashlytics = "com.google.firebase:firebase-analytics-ktx:17.4.1"
 
     // Play Services
     const val PlayServicesMaps = "com.google.android.gms:play-services-location:17.0.0"

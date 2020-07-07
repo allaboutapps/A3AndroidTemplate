@@ -11,7 +11,7 @@ import javax.inject.Inject
 /**
  * Adds `User-Agent` and `Accept-Language` headers to every request.
  */
-class UserAgentInterceptor @Inject constructor(val context: Context) : Interceptor {
+class UserAgentInterceptor @Inject constructor(private val context: Context) : Interceptor {
 
     private val userAgent: String
 

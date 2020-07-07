@@ -11,10 +11,9 @@ import javax.inject.Inject
 /**
  * Adds `User-Agent` and `Accept-Language` headers to every request.
  */
-class UserAgentInterceptor @Inject constructor(context: Context) : Interceptor {
+class UserAgentInterceptor @Inject constructor(private val context: Context) : Interceptor {
 
     private val userAgent: String
-    private val acceptedLanguages: String
 
     init {
         val packageName = BuildConfig.APPLICATION_ID
@@ -24,16 +23,15 @@ class UserAgentInterceptor @Inject constructor(context: Context) : Interceptor {
         val versionName = BuildConfig.VERSION_NAME
 
         userAgent = "$packageName/$versionCode ($PLATFORM; $platformVersion; $sdkInt) Version/$versionName"
-        acceptedLanguages = readUserLanguages(context)
 
-        Timber.i("Initialized user agent as `$userAgent` and accepted languages as `$acceptedLanguages`")
+        Timber.i("Initialized user agent as `$userAgent`")
     }
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
                 .newBuilder()
                 .addHeader(HEADER_USER_AGENT, userAgent)
-                .addHeader(HEADER_ACCEPT_LANGUAGE, acceptedLanguages)
+                .addHeader(HEADER_ACCEPT_LANGUAGE, readUserLanguages(context))
                 .build()
 
         return chain.proceed(request)

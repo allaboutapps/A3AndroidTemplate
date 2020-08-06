@@ -1,5 +1,6 @@
 package {{ cookiecutter.package_name }}.base
 
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,7 +11,7 @@ import javax.inject.Inject
 /**
  * Base class to use for this application
  */
-abstract class BaseFragment : Fragment(), Injectable {
+abstract class BaseFragment(@LayoutRes contentLayoutId: Int = 0) : Fragment(contentLayoutId), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory

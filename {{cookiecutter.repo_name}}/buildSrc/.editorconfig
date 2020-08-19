@@ -1,0 +1,3 @@
+# http://editorconfig.org
+[*.{kt,kts}]
+max_line_length=off

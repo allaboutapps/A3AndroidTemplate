@@ -1,6 +1,10 @@
 package at.allaboutapps.build
 
-import com.android.build.gradle.*
+import com.android.build.gradle.AppExtension
+import com.android.build.gradle.AppPlugin
+import com.android.build.gradle.LibraryExtension
+import com.android.build.gradle.LibraryPlugin
+import com.android.build.gradle.TestedExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.JavaVersion.VERSION_1_8
 import org.gradle.api.Plugin
@@ -8,11 +12,13 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.plugins.JavaPluginConvention
+import org.gradle.api.tasks.Copy
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.getPlugin
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 import org.jetbrains.kotlin.gradle.plugin.KotlinBasePluginWrapper
+import java.io.File
 
 class BuildPlugin : Plugin<Project> {
 
@@ -39,6 +45,7 @@ class BuildPlugin : Plugin<Project> {
                 }
             }
             is AppPlugin -> {
+                registerKtLintCheck(project)
                 project.extensions.getByType<AppExtension>().apply {
                     configureAndroidCommonOptions(project)
                     configureAndroidApplicationOptions(project)
@@ -52,6 +59,20 @@ class BuildPlugin : Plugin<Project> {
                 }
             }
         }
+    }
+
+    /**
+     * Register the pre-commit hook for ktlint to enforce code style on commit.
+     */
+    private fun registerKtLintCheck(project: Project) {
+        project.tasks.register("installKtlintGitHook", Copy::class.java) {
+            from(File(project.rootProject.rootDir, "hooks/ktlint-git-pre-commit-hook-android.sh"))
+            into(File(project.rootProject.rootDir, ".git/hooks"))
+            rename { "pre-commit" }
+            fileMode = 493 // 493 == 0755 (octal)
+        }
+
+        project.tasks.findByName("preBuild")?.dependsOn("installKtlintGitHook")
     }
 
     private fun TestedExtension.configureAndroidCommonOptions(project: Project) {

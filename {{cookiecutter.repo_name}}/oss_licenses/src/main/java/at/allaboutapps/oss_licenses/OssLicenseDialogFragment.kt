@@ -5,10 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import android.R
-import android.webkit.WebView
 import androidx.appcompat.app.AlertDialog
 import at.allaboutapps.web.webview.A3WebView
-
 
 class OssLicenseDialogFragment : DialogFragment() {
 
@@ -35,9 +33,9 @@ class OssLicenseDialogFragment : DialogFragment() {
         webView.loadWithSettings(GlobalWebviewSettings.prepareWebviewSettings())
 
         return AlertDialog.Builder(requireActivity())
-                .setTitle(settings.title)
-                .setView(webView)
-                .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
-                .create()
+            .setTitle(settings.title)
+            .setView(webView)
+            .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
+            .create()
     }
 }

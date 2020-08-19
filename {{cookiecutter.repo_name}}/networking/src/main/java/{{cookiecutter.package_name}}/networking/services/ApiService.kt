@@ -10,5 +10,4 @@ interface ApiService {
 
     @POST("/$API_VERSION/login")
     fun login(): Single<AuthToken>
-
 }

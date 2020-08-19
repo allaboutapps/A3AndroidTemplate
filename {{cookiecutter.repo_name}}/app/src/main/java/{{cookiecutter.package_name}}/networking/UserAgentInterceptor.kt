@@ -29,10 +29,10 @@ class UserAgentInterceptor @Inject constructor(private val context: Context) : I
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-                .newBuilder()
-                .addHeader(HEADER_USER_AGENT, userAgent)
-                .addHeader(HEADER_ACCEPT_LANGUAGE, readUserLanguages(context))
-                .build()
+            .newBuilder()
+            .addHeader(HEADER_USER_AGENT, userAgent)
+            .addHeader(HEADER_ACCEPT_LANGUAGE, readUserLanguages(context))
+            .build()
 
         return chain.proceed(request)
     }
@@ -42,7 +42,6 @@ class UserAgentInterceptor @Inject constructor(private val context: Context) : I
         private const val HEADER_USER_AGENT = "User-Agent"
 
         private const val PLATFORM = "Android"
-
 
         private fun readUserLanguages(context: Context): String {
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

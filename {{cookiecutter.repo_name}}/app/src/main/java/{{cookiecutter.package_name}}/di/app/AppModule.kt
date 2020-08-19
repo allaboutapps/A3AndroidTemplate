@@ -5,16 +5,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import at.allaboutapps.retrofit.converter.unwrap.UnwrapConverterFactory
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelModule
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
-{% if cookiecutter.firebase_messaging == "yes" %}
-import {{ cookiecutter.package_name }}.features.fcm.FirebaseTokenService
-import {{ cookiecutter.package_name }}.features.fcm.FirebaseTokenHandler
-{% endif %}
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -24,14 +20,14 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.*
+import java.util.Date
 import javax.inject.Singleton
 
 @Module(
-        includes = [
-            ViewModelModule::class,
-            AppModule.Bindings::class
-        ]
+    includes = [
+        ViewModelModule::class,
+        AppModule.Bindings::class
+    ]
 )
 class AppModule {
 
@@ -45,15 +41,15 @@ class AppModule {
     @Provides
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
-                .add(Date::class.java, Rfc3339DateJsonAdapter())
-                .build()
+            .add(Date::class.java, Rfc3339DateJsonAdapter())
+            .build()
     }
 
     @Singleton
     @Provides
     fun provideOkHttp(agentInterceptor: UserAgentInterceptor): OkHttpClient {
         val builder = OkHttpClient.Builder()
-                .addInterceptor(agentInterceptor)
+            .addInterceptor(agentInterceptor)
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -65,17 +61,17 @@ class AppModule {
     @Singleton
     @Provides
     fun provideApiService(
-            okHttp: OkHttpClient,
-            moshi: Moshi
+        okHttp: OkHttpClient,
+        moshi: Moshi
     ): ApiService {
         return Retrofit.Builder()
-                .baseUrl(BuildConfig.SERVER_API_URL)
-                .client(okHttp)
-                .addConverterFactory(UnwrapConverterFactory())
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
-                .build()
-                .create(ApiService::class.java)
+            .baseUrl(BuildConfig.SERVER_API_URL)
+            .client(okHttp)
+            .addConverterFactory(UnwrapConverterFactory())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
+            .build()
+            .create(ApiService::class.java)
     }
 
     @Reusable

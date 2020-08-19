@@ -12,7 +12,7 @@ import androidx.core.app.NotificationManagerCompat
 import kotlin.random.Random
 import androidx.annotation.DrawableRes
 
-//TODO: set ID of notification channel
+// TODO: set ID of notification channel
 const val CHANNEL_ID_DEFAULT_NOTIFICATION = "default_notification"
 
 /**
@@ -27,7 +27,7 @@ object NotificationsUtils {
      */
     fun createAllNotificationChannels(context: Context) {
 
-        //TODO: set values of new notification channel
+        // TODO: set values of new notification channel
         createNotificationChannel(
             context,
             CHANNEL_ID_DEFAULT_NOTIFICATION,
@@ -35,7 +35,6 @@ object NotificationsUtils {
             "description",
             NotificationManagerCompat.IMPORTANCE_DEFAULT
         )
-
     }
 
     /**
@@ -64,7 +63,6 @@ object NotificationsUtils {
         }
     }
 
-
     /**
      * Wraps the given intent in a pending intent and sends a notification using the given notification channel and the app's icon
      *
@@ -90,7 +88,7 @@ object NotificationsUtils {
 
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder =
-            NotificationCompat.Builder(context, channelId) //channelId ignored by older versions
+            NotificationCompat.Builder(context, channelId) // channelId ignored by older versions
                 .setSmallIcon(smallIcon)
                 .setContentTitle(title)
                 .setContentText(text)

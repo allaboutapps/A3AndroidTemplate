@@ -1,84 +1,69 @@
 
-# APT - Android Project Template
+# Android Project Template
 
+_Use this template project to improve your project setup experience._
 
 ![all about apps](https://kcdn.at/company/51740/3214808/aaa3000.png "all about apps")
 
----
-
-Use this template project to improve the project setup experience.
-
-Template contains:
+*Template contents:*
 
 * recommended package structure
-* latest libraries
-    * androidx
-    * glide
-    * retrofit
-    * moshi
-    * architecture components
-    * navigation + safe args
-    * a3 libraries
-    * timber
-    * LeakCanary
-
-
-* flavor for `dev`, `staging`, `live`
-* retrofit setup
-* firebase analytics and messaging setup
+* latest libraries (Androidx, Glide, Retrofit, Moshi, A3 libraries, Timber, LeakCanary)
+* flavor dimension for development environments (`dev`, `staging`, `live`)
+* Retrofit setup
+* Firebase Analytics and Messaging setup
 * SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
-* Code to show [Open Source Licenses](#open-source-licenses) as standalone activity or dialog
+* Code to show [Open Source Licenses](#open-source-licenses) as a stand-alone activity or dialog
 * (optional) Texterify: texterify.json setup
 
----
 
-## Setup
-### Install cookiecutter
-http://cookiecutter.readthedocs.io/en/latest/installation.html
+## Project Setup (using this template)
 
-### Setup a new project
-
+Install [cookiecutter](http://cookiecutter.readthedocs.io/en/latest/installation.html) and run the following command to fetch and use this template:
+```
 cookiecutter gh:allaboutapps/A3AndroidTemplate
+```
 
-Fill in the following values:
-1) repo_name        - name of cloned directory  (eg   mycards-android)
-2) app_name         - app name
-3) package_name     - "com.example.app",
-4) string_tool      - Choose your selected string tool for this project (none, googlesheet or texterify)
-5) texterify_project_id - project id of your texterify project - default: empty
-6) texterify_export_config - export configuration id of your texterify project - default: empty
-7) firebase_analytics - Setup firebase analytics
-8) firebase_messaging - Basic setup for FCM
-9) strings_sheet_id - Sheet ID for strings (eg 1234565432345) (AAA internal tool for translations - just leave it empty if you don't know what this is) default: empty 
+Supply the following values when prompted:
+
+1) `repo_name`        - name of cloned directory  (eg   myproject-android)
+2) `app_name`         - app name
+3) `package_name`     - "com.example.app",
+4) `string_tool`      - Choose a string-export tool for this project (none, googlesheet or texterify)
+5) `texterify_project_id` - project id of your Texterify project - default: empty
+6) `texterify_export_config` - export configuration id of your Texterify project - default: empty
+7) `firebase_analytics` - Setup firebase analytics
+8) `firebase_messaging` - Basic setup for FCM
+9) `strings_sheet_id` - Sheet ID for strings (eg 1234565432345) (AAA internal tool for localization - just leave it blank if you don't know what this is)
 
 
 ### Texterify
-To use [Texterify](https://github.com/chrztoph/texterify) just run the gradle task updateStrings. The file texterify.json is located in /app directory.
 
----
-## Open Source Licenses
+To fetch the latest strings from [Texterify](https://github.com/chrztoph/texterify) run the gradle task `updateStrings`. The config file `texterify.json` is located in `/app`.
 
-The oss_licenses module is setup to generate a html file containing licenses of all dependencies. Just run the gradle task checkLicense to generate everything (Bitrise Step preferred)
+### Open Source Licenses
 
-The file allowed_licenses.json contains license descriptions that are allowed to be used in our apps. If you find a valid license that is not supported feel free to start a pull request.
+The `oss_licenses` module is set up to generate an HTML file that contains the licenses for all dependencies. Run the gradle task `checkLicense` to generate it. (Bitrise Step preferred)
 
-Shoing an open source dialog or activity is easy as that:
+The file `allowed_licenses.json` contains license descriptions that are allowed to be used in our apps. If you find a valid license that is not supported feel free to start a pull request.
+
+To show the open source dialog or activity do either of the following:
 
 ```kotlin
-    val licenseScreenSettings = LicenseScreenSettings(title = "License Screen", showUpArrow = true)
-        
-    // open an activity    
-    OssLicenseActivity.showLicenses(this, licenseScreenSettings)
-    
-    // or open a DialogFragment
-    OssLicenseDialogFragment.showLicenseDialog(supportFragmentManager, licenseScreenSettings)
+val licenseScreenSettings = LicenseScreenSettings(title = "License Screen", showUpArrow = true)
+
+// open an activity
+OssLicenseActivity.showLicenses(this, licenseScreenSettings)
+
+// or open a DialogFragment
+OssLicenseDialogFragment.showLicenseDialog(supportFragmentManager, licenseScreenSettings)
 ```
 
 ---
 
 Du suchst einen spannenden Job im Mobile Bereich?
-Looking for a job mobile developer?
+Looking for a job?
 
-https://www.allaboutapps.at/jobs/
+[We're hiring @all about apps](https://www.allaboutapps.at/jobs/)
 
 

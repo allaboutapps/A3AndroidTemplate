@@ -41,6 +41,12 @@ Supply the following values when prompted:
 
 To fetch the latest strings from [Texterify](https://github.com/chrztoph/texterify) run the gradle task `updateStrings`. The config file `texterify.json` is located in `/app`.
 
+### ktlint
+
+The BuildPlugin will register a pre-commit hook to enforce the usage of ktlint and formatted code. (To disable this behavior delete the task in the local BuildPlugin)
+
+Download [ktlint](https://github.com/pinterest/ktlint) and make sure that it can be found on you PATH.
+
 ### Open Source Licenses
 
 The `oss_licenses` module is set up to generate an HTML file that contains the licenses for all dependencies. Run the gradle task `checkLicense` to generate it. (Bitrise Step preferred)

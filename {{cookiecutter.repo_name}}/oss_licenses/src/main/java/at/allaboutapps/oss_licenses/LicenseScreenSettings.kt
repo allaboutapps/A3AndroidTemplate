@@ -4,5 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class LicenseScreenSettings(val title: String,
-                                 val showUpArrow: Boolean = true) : Parcelable
+data class LicenseScreenSettings(
+    val title: String,
+    val showUpArrow: Boolean = true
+) : Parcelable

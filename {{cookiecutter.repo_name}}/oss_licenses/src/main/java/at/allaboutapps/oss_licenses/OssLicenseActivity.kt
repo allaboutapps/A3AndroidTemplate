@@ -7,7 +7,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_oss.*
 
-
 class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
 
     companion object {
@@ -29,7 +28,6 @@ class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
         supportActionBar?.setDisplayHomeAsUpEnabled(settings.showUpArrow)
 
         web.loadWithSettings(GlobalWebviewSettings.prepareWebviewSettings())
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -40,4 +38,3 @@ class OssLicenseActivity : AppCompatActivity(R.layout.activity_oss) {
         return super.onOptionsItemSelected(item)
     }
 }
-

@@ -1,6 +1,5 @@
 package {{ cookiecutter.package_name }}.features.fcm
 
-
 import android.annotation.SuppressLint
 import android.os.AsyncTask
 import com.google.android.gms.tasks.OnCompleteListener
@@ -12,34 +11,36 @@ import javax.inject.Singleton
 @Singleton
 class FirebaseTokenHandler @Inject constructor(private val firebaseTokenService: FirebaseTokenService) {
 
-  fun sendFirebaseTokenToServer() {
-    FirebaseInstanceId.getInstance().instanceId
-        .addOnCompleteListener(AsyncTask.THREAD_POOL_EXECUTOR, OnCompleteListener { task ->
-          if (task.isSuccessful) {
-            task.result?.token?.let {
-              Timber.d("Token: $it")
-              registerTokenWithServer(it, { onError() }, { onSuccess() }, { })
-            }
-          } else {
-            Timber.e(task.exception, "Cannot retrieve token from Firebase instance")
-          }
-        })
-  }
+    fun sendFirebaseTokenToServer() {
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(
+                AsyncTask.THREAD_POOL_EXECUTOR,
+                OnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        task.result?.token?.let {
+                            Timber.d("Token: $it")
+                            registerTokenWithServer(it, { onError() }, { onSuccess() }, { })
+                        }
+                    } else {
+                        Timber.e(task.exception, "Cannot retrieve token from Firebase instance")
+                    }
+                }
+            )
+    }
 
-  @SuppressLint("CheckResult")
-  fun registerTokenWithServer(token: String, onError: () -> Unit, onSuccess: () -> Unit, onComplete: () -> Unit) {
-    firebaseTokenService.registerFirebaseToken(token)
-        .doFinally(onComplete)
-        .subscribe({ onSuccess.invoke() }, { onError.invoke() })
-  }
+    @SuppressLint("CheckResult")
+    fun registerTokenWithServer(token: String, onError: () -> Unit, onSuccess: () -> Unit, onComplete: () -> Unit) {
+        firebaseTokenService.registerFirebaseToken(token)
+            .doFinally(onComplete)
+            .subscribe({ onSuccess.invoke() }, { onError.invoke() })
+    }
 
-  private fun onError() {
-    Timber.d("Error transmitting token, probably didn't change ...")
-    //todo try again later?
-  }
+    private fun onError() {
+        Timber.d("Error transmitting token, probably didn't change ...")
+        // todo try again later?
+    }
 
-  private fun onSuccess() {
-    Timber.d("Token transmitted")
-  }
-
+    private fun onSuccess() {
+        Timber.d("Token transmitted")
+    }
 }

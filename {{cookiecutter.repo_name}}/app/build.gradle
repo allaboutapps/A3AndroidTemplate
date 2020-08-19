@@ -23,6 +23,12 @@ android {
         resConfigs "de" // todo specify default locale(s)
     }
 
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        // https://developer.android.com/studio/write/java8-support
+        coreLibraryDesugaringEnabled true
+    }
+
     buildTypes {
         debug {
             aaptOptions {
@@ -100,6 +106,8 @@ licenseReport {
 }
 
 dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
+
     implementation project(':networking')
     implementation project(':unwrapretrofit')
     implementation project(':oss_licenses')

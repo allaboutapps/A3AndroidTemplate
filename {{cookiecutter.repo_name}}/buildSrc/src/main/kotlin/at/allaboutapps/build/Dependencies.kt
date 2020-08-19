@@ -93,6 +93,5 @@ object Dependencies {
     const val RxRelay = "com.jakewharton.rxrelay2:rxrelay:2.1.1"
 
     // Misc
-    const val ThreeTenABP = "com.jakewharton.threetenabp:threetenabp:1.2.4"
     const val Timber = "com.jakewharton.timber:timber:4.7.1"
 }

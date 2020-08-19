@@ -1,5 +1,5 @@
-build
-captures
+/build
+/captures
 .DS_Store
 .externalNativeBuild
 .gradle

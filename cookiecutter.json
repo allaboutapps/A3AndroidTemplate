@@ -2,6 +2,7 @@
   "repo_name": "project-android",
   "app_name": "Project Name",
   "package_name": "com.example.app",
+  "package_name_dir": "{{ cookiecutter.package_name.replace('.', '/') }}",
   "string_tool" : ["none", "googlesheet", "texterify"],
   "texterify_project_id": "",
   "texterify_export_config": "",

@@ -9,9 +9,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.android.tools.build:gradle:4.2.0-alpha10'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Versions.Kotlin"
-        classpath 'at.allaboutapps.gradle:plugin:3.0.9'
+        classpath 'at.allaboutapps.gradle:plugin:3.0.11'
         classpath 'com.github.jk1:gradle-license-report:1.13'
         classpath Dependencies.AndroidXNavigationSafeArgs
         {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_analytics == "yes" %}classpath 'com.google.gms:google-services:4.3.3'{% endif %}

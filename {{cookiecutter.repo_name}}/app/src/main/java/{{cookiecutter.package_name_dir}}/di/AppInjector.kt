@@ -18,21 +18,23 @@ import dagger.android.support.AndroidSupportInjection
 object AppInjector {
 
     fun init(app: App) {
-        app.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
-            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                handleActivity(activity)
+        app.registerActivityLifecycleCallbacks(
+            object : Application.ActivityLifecycleCallbacks {
+                override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+                    handleActivity(activity)
+                }
+
+                // region Unused lifecycles
+
+                override fun onActivityStarted(a: Activity) = Unit
+                override fun onActivityResumed(a: Activity) = Unit
+                override fun onActivityPaused(a: Activity) = Unit
+                override fun onActivityStopped(a: Activity) = Unit
+                override fun onActivitySaveInstanceState(a: Activity, outState: Bundle?) = Unit
+                override fun onActivityDestroyed(a: Activity) = Unit
+                // endregion
             }
-
-            // region Unused lifecycles
-
-            override fun onActivityStarted(a: Activity) = Unit
-            override fun onActivityResumed(a: Activity) = Unit
-            override fun onActivityPaused(a: Activity) = Unit
-            override fun onActivityStopped(a: Activity) = Unit
-            override fun onActivitySaveInstanceState(a: Activity, outState: Bundle?) = Unit
-            override fun onActivityDestroyed(a: Activity) = Unit
-            // endregion
-        })
+        )
     }
 
     private fun handleActivity(activity: Activity) {

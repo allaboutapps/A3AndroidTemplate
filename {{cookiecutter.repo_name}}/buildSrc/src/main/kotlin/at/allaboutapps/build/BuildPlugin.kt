@@ -89,7 +89,7 @@ class BuildPlugin : Plugin<Project> {
         defaultConfig.minSdkVersion(DEFAULT_MIN_SDK_VERSION)
 
         project.afterEvaluate {
-            val minSdkVersion = defaultConfig.minSdkVersion.apiLevel
+            val minSdkVersion = defaultConfig.minSdkVersion!!.apiLevel
             check(minSdkVersion >= DEFAULT_MIN_SDK_VERSION) {
                 "minSdkVersion $minSdkVersion bigger than the default of $DEFAULT_MIN_SDK_VERSION"
             }

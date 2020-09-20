@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import android.R
 import androidx.appcompat.app.AlertDialog
 import at.allaboutapps.web.webview.A3WebView
 
@@ -26,7 +25,7 @@ class OssLicenseDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val settings = arguments!!.getParcelable<LicenseScreenSettings>(ARG_SETTINGS)!!
+        val settings = requireArguments().getParcelable<LicenseScreenSettings>(ARG_SETTINGS)!!
 
         val webView = A3WebView(requireActivity())
 
@@ -35,7 +34,7 @@ class OssLicenseDialogFragment : DialogFragment() {
         return AlertDialog.Builder(requireActivity())
             .setTitle(settings.title)
             .setView(webView)
-            .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
+            .setPositiveButton(android.R.string.ok) { dialog, _ -> dialog.dismiss() }
             .create()
     }
 }

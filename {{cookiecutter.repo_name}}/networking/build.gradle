@@ -16,7 +16,8 @@ dependencies {
 
     implementation Dependencies.RxJava
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation Dependencies.KotlinStdLib
+    implementation Dependencies.KotlinReflect
 }
 
 idea {

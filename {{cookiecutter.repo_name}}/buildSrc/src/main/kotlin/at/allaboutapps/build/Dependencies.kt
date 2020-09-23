@@ -62,7 +62,6 @@ object Dependencies {
     const val Epoxy = "com.airbnb.android:epoxy:4.0.0"
 
     const val KotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}"
-    const val KotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.Kotlin}"
 
     const val MaterialComponents = "com.google.android.material:material:1.3.0-alpha02"
 

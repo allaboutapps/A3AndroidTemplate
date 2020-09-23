@@ -144,11 +144,11 @@ dependencies {
     // logging
     implementation Dependencies.Timber
 
-    implementation Dependencies.RxJava
-    implementation Dependencies.RxKotlin
+    implementation Dependencies.RxJava3
+    implementation Dependencies.RxKotlin3
 
     // networking
-    implementation Dependencies.RetrofitAdapterRxJava
+    implementation Dependencies.RetrofitAdapterRxJava3
     implementation Dependencies.RetrofitConverterMoshi
 
     implementation Dependencies.OkHttpLoggingInterceptor

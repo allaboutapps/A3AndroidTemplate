@@ -10,7 +10,7 @@ object Versions {
     const val OkHttp = "4.8.1"
     const val Retrofit = "2.9.0"
     const val Room = "2.3.0-alpha02"
-    const val RxJava = "3.0.6"
+    const val RxJava3 = "3.0.6"
     const val LifecycleVersion = "2.3.0-alpha07"
     const val NavVersion = "2.3.0"
 }
@@ -77,18 +77,18 @@ object Dependencies {
     // Retrofit
     const val Retrofit = "com.squareup.retrofit2:retrofit:${Versions.Retrofit}"
     const val RetrofitConverterMoshi = "com.squareup.retrofit2:converter-moshi:${Versions.Retrofit}"
-    const val RetrofitAdapterRxJava = "com.squareup.retrofit2:adapter-rxjava3:${Versions.Retrofit}"
+    const val RetrofitAdapterRxJava3 = "com.squareup.retrofit2:adapter-rxjava3:${Versions.Retrofit}"
     const val RetrofitMock = "com.squareup.retrofit2:retrofit-mock:${Versions.Retrofit}"
 
     // Room
     const val RoomRuntime = "androidx.room:room-runtime:${Versions.Room}"
-    const val RoomRxJava = "androidx.room:room-rxjava3:${Versions.Room}"
+    const val RoomRxJava3 = "androidx.room:room-rxjava3:${Versions.Room}"
     const val RoomCompiler = "androidx.room:room-compiler:${Versions.Room}"
 
     // Reactive
-    const val RxJava = "io.reactivex.rxjava3:rxjava:${Versions.RxJava}"
-    const val RxJavaAndroid = "io.reactivex.rxjava3:rxandroid:3.0.0"
-    const val RxKotlin = "io.reactivex.rxjava3:rxkotlin:3.0.0"
+    const val RxJava3 = "io.reactivex.rxjava3:rxjava:${Versions.RxJava3}"
+    const val RxJavaAndroid3 = "io.reactivex.rxjava3:rxandroid:3.0.0"
+    const val RxKotlin3 = "io.reactivex.rxjava3:rxkotlin:3.0.0"
     const val RxBinding = "com.jakewharton.rxbinding4:rxbinding:4.0.0"
     const val RxRelay = "com.jakewharton.rxrelay3:rxrelay:3.0.0"
 

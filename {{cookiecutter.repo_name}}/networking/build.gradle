@@ -14,7 +14,7 @@ dependencies {
     implementation Dependencies.Moshi
     kapt Dependencies.MoshiCodegen
 
-    implementation Dependencies.RxJava
+    implementation Dependencies.RxJava3
 
     implementation Dependencies.KotlinStdLib
 }

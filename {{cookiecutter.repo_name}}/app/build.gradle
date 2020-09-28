@@ -150,7 +150,7 @@ dependencies {
     implementation Dependencies.RxKotlin
 
     // networking
-    implementation Dependencies.RetrofitAdapterRxJava2
+    implementation Dependencies.RetrofitAdapterRxJava3
     implementation Dependencies.RetrofitConverterMoshi
 
     implementation Dependencies.OkHttpLoggingInterceptor

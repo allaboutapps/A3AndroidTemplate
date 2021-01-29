@@ -5,7 +5,6 @@ apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: 'kotlin-android-extensions'
 {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_analytics == "yes" %}apply plugin: 'com.google.gms.google-services' {% endif %}
 {% if cookiecutter.firebase_crashlytics == "yes" %}apply plugin: 'com.google.firebase.crashlytics'{% endif %}
 
@@ -77,10 +76,6 @@ android {
     dexOptions {
         javaMaxHeapSize "4g"
         preDexLibraries true
-    }
-
-    androidExtensions {
-        experimental = true
     }
 
     sourceSets {

@@ -14,9 +14,9 @@ dependencies {
     implementation Dependencies.Moshi
     kapt Dependencies.MoshiCodegen
 
-    implementation Dependencies.RxJava
+    implementation Dependencies.RxJava3
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation Dependencies.KotlinStdLib
 }
 
 idea {

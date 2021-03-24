@@ -26,8 +26,6 @@ android {
         // Flag to enable support for the new language APIs
         // https://developer.android.com/studio/write/java8-support
         coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -141,11 +139,11 @@ dependencies {
     // logging
     implementation Dependencies.Timber
 
-    implementation Dependencies.RxJava
-    implementation Dependencies.RxKotlin
+    implementation Dependencies.RxJava3
+    implementation Dependencies.RxKotlin3
 
     // networking
-    implementation Dependencies.RetrofitAdapterRxJava2
+    implementation Dependencies.RetrofitAdapterRxJava3
     implementation Dependencies.RetrofitConverterMoshi
 
     implementation Dependencies.OkHttpLoggingInterceptor

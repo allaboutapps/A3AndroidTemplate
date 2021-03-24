@@ -47,7 +47,7 @@ then
         rm google-services.json
     fi
 
-    cd src/main/java/{{ cookiecutter.package_name }}/features
+    cd src/main/java/{{ cookiecutter.package_name_dir }}/features
     rm -rf fcm
 
     cd $ROOT_DIRECTORY #back to project root

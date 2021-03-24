@@ -5,6 +5,7 @@ apply plugin: 'at.allaboutapps.gradle-plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "kotlin-android-extensions" //parcelable
 {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_analytics == "yes" %}apply plugin: 'com.google.gms.google-services' {% endif %}
 {% if cookiecutter.firebase_crashlytics == "yes" %}apply plugin: 'com.google.firebase.crashlytics'{% endif %}
 
@@ -20,6 +21,10 @@ android {
         manifestPlaceholders = [apiKey: "secret"] // use with ${apiKey} in manifest
 
         resConfigs "de" // todo specify default locale(s)
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     compileOptions {
@@ -116,6 +121,9 @@ dependencies {
     {% if cookiecutter.firebase_messaging == "yes" %}implementation Dependencies.FirebaseMessaging{% endif %}
 
     {% if cookiecutter.firebase_analytics == "yes" %}implementation Dependencies.FirebaseAnalytics {% endif %}
+
+    // ViewBinding helper
+    implementation Dependencies.ViewBindingDelegate
 
     // aaa libs
     implementation Dependencies.A3Utilities

@@ -94,4 +94,5 @@ object Dependencies {
 
     // Misc
     const val Timber = "com.jakewharton.timber:timber:4.7.1"
+    const val ViewBindingDelegate = "com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.0"
 }

@@ -6,16 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import {{ cookiecutter.package_name }}.R
 import {{ cookiecutter.package_name }}.base.BaseFragment
+import com.example.app.databinding.FragmentMainBinding
+import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment(R.layout.fragment_main) {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
-    }
+    private val binding by viewBinding(FragmentMainBinding::bind)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Do something
+        binding.tvMainText.text = "Hello Text with view binding"
+        // Do something else
     }
 }

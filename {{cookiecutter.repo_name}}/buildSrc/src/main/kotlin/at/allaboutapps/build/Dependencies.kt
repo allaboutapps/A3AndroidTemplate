@@ -3,11 +3,11 @@
 // no package so that we don't need an import
 
 object Versions {
-    const val Dagger = "2.29"
-    const val Glide = "4.11.0"
+    const val Dagger = "2.33"
+    const val Glide = "4.12.0"
     const val Kotlin = "1.4.0"
-    const val Moshi = "1.10.0"
-    const val OkHttp = "4.8.1"
+    const val Moshi = "1.11.0"
+    const val OkHttp = "4.9.0"
     const val Retrofit = "2.9.0"
     const val Room = "2.3.0-alpha02"
     const val RxJava3 = "3.0.6"
@@ -94,4 +94,5 @@ object Dependencies {
 
     // Misc
     const val Timber = "com.jakewharton.timber:timber:4.7.1"
+    const val ViewBindingDelegate = "com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.0"
 }

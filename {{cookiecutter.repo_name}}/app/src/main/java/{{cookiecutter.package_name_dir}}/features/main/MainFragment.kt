@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import {{ cookiecutter.package_name }}.R
 import {{ cookiecutter.package_name }}.base.BaseFragment
-import com.example.app.databinding.FragmentMainBinding
+import {{ cookiecutter.package_name }}.databinding.FragmentMainBinding
 import com.zhuinden.fragmentviewbindingdelegatekt.viewBinding
 
 class MainFragment : BaseFragment(R.layout.fragment_main) {

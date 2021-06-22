@@ -1,7 +1,7 @@
 package {{ cookiecutter.package_name }}.features.fcm
 
-import io.reactivex.Single
-import com.test.networking.services.ApiService
+import io.reactivex.rxjava3.core.Single
+import {{ cookiecutter.package_name }}.networking.services.ApiService
 import javax.inject.Inject
 import javax.inject.Singleton
 

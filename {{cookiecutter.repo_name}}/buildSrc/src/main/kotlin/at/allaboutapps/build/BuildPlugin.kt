@@ -66,8 +66,19 @@ class BuildPlugin : Plugin<Project> {
      */
     private fun registerKtLintCheck(project: Project) {
         project.tasks.register("installKtlintGitHook", Copy::class.java) {
+            val gitDirName = System.getenv("GIT_DIR")
+                ?.takeIf(String::isNotEmpty)
+                ?: ".git"
+
+            var gitDir = File(project.rootProject.rootDir, gitDirName)
+
+            if (gitDir.isFile) {
+                // is a worktree
+                gitDir = File(gitDir.readText().removePrefix("gitdir: ").trim(), "../..").normalize()
+            }
+
             from(File(project.rootProject.rootDir, "hooks/ktlint-git-pre-commit-hook-android.sh"))
-            into(File(project.rootProject.rootDir, ".git/hooks"))
+            into(File(gitDir, "hooks"))
             rename { "pre-commit" }
             fileMode = 493 // 493 == 0755 (octal)
         }

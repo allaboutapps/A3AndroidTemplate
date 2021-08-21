@@ -30,7 +30,7 @@ object AppInjector {
                 override fun onActivityResumed(a: Activity) = Unit
                 override fun onActivityPaused(a: Activity) = Unit
                 override fun onActivityStopped(a: Activity) = Unit
-                override fun onActivitySaveInstanceState(a: Activity, outState: Bundle?) = Unit
+                override fun onActivitySaveInstanceState(a: Activity, outState: Bundle) = Unit
                 override fun onActivityDestroyed(a: Activity) = Unit
                 // endregion
             }

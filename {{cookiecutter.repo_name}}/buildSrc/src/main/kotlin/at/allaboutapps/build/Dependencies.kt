@@ -3,20 +3,20 @@
 // no package so that we don't need an import
 
 object Versions {
-    const val Dagger = "2.33"
+    const val Dagger = "2.38.1"
     const val Glide = "4.12.0"
-    const val Kotlin = "1.4.0"
-    const val Moshi = "1.11.0"
-    const val OkHttp = "4.9.0"
+    const val Kotlin = "1.5.31"
+    const val Moshi = "1.12.0"
+    const val OkHttp = "4.9.1"
     const val Retrofit = "2.9.0"
     const val Room = "2.3.0-alpha02"
-    const val RxJava3 = "3.0.6"
+    const val RxJava3 = "3.1.0"
     const val LifecycleVersion = "2.3.0-alpha07"
     const val NavVersion = "2.3.0"
 }
 
 object Dependencies {
-    const val AndroidXAnnotations = "androidx.annotation:annotation:1.2.0-alpha01"
+    const val AndroidXAnnotations = "androidx.annotation:annotation:1.3.0-alpha01"
     const val AndroidXAppCompat = "androidx.appcompat:appcompat:1.3.0-alpha02"
     const val AndroidXBiometric = "androidx.biometric:biometric:1.1.0-alpha02"
     const val AndroidXCoreKtx = "androidx.core:core-ktx:1.5.0-alpha02"
@@ -57,13 +57,13 @@ object Dependencies {
     const val DaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.Dagger}"
     const val DaggerCompilerAndroid = "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
 
-    const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:2.4"
+    const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:2.7"
 
     const val Epoxy = "com.airbnb.android:epoxy:4.0.0"
 
     const val KotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}"
 
-    const val MaterialComponents = "com.google.android.material:material:1.3.0-alpha02"
+    const val MaterialComponents = "com.google.android.material:material:1.5.0-alpha01"
 
     const val Moshi = "com.squareup.moshi:moshi-kotlin:${Versions.Moshi}"
     const val MoshiAdapters = "com.squareup.moshi:moshi-adapters:${Versions.Moshi}"

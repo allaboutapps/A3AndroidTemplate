@@ -46,9 +46,9 @@ object Dependencies {
     const val PlayServicesMaps = "com.google.android.gms:play-services-location:17.0.0"
 
     // A3
-    const val A3Utilities = "at.allaboutapps.a3utilities:a3utilities:1.0.3"
+    const val A3Utilities = "com.github.allaboutapps:A3Utilities:V1.0.4"
     const val A3WebView = "at.allaboutapps.web:a3webview:0.1.1"
-    const val A3RecyclerViewDecorations = "at.allaboutapps.recyclerview:a3recyclerview-decorations:1.0.1"
+    const val A3RecyclerViewDecorations = "com.github.allaboutapps:A3RecyclerViewDecorations:V1.0.2"
 
     // Dagger
     const val Dagger = "com.google.dagger:dagger:${Versions.Dagger}"

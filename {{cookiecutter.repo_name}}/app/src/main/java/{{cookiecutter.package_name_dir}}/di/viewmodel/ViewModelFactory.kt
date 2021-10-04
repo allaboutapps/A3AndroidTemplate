@@ -1,26 +1,45 @@
 package {{ cookiecutter.package_name }}.di.viewmodel
 
+import android.os.Bundle
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import dagger.Reusable
-import javax.inject.Inject
-import javax.inject.Provider
+import androidx.savedstate.SavedStateRegistryOwner
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 
-@Reusable
-class ViewModelFactory @Inject constructor(
-    private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
-) : ViewModelProvider.Factory {
+class ViewModelFactory @AssistedInject constructor(
+    @Assisted owner: SavedStateRegistryOwner,
+    @Assisted defaultArgs: Bundle?,
+    private val viewModelComponentFactory: ViewModelComponent.Factory
+) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val creator = creators[modelClass] ?: creators.entries.firstOrNull {
-            modelClass.isAssignableFrom(it.key)
-        }?.value ?: throw IllegalArgumentException("unknown model class $modelClass")
+    @AssistedFactory
+    interface Factory {
+        fun create(
+            owner: SavedStateRegistryOwner,
+            defaultArgs: Bundle?
+        ): ViewModelFactory
+    }
 
-        try {
-            @Suppress("UNCHECKED_CAST")
-            return creator.get() as T
-        } catch (e: Exception) {
-            throw IllegalStateException("Dagger Component could not be cast", e)
+    override fun <T : ViewModel> create(key: String, modelClass: Class<T>, handle: SavedStateHandle): T {
+        val viewModelComponent = viewModelComponentFactory.create(handle)
+        val viewModelProviders = viewModelComponent.viewModelProviders()
+
+        val viewModelProvider = viewModelProviders[modelClass]
+            ?: viewModelProviders.entries.firstOrNull { (viewModelKey) ->
+                modelClass.isAssignableFrom(viewModelKey)
+            }?.value
+        requireNotNull(viewModelProvider) { "No ViewModel provider found for requested ViewModel type ($modelClass)" }
+
+        val viewModel = viewModelProvider.get()
+        check(modelClass.isInstance(viewModel)) {
+            /* ktlint-disable max-line-length */
+            "Provided ViewModel instance (${viewModel.javaClass}) can not be cast to requested ViewModel type ($modelClass)"
         }
+
+        @Suppress("UNCHECKED_CAST")
+        return viewModel as T
     }
 }

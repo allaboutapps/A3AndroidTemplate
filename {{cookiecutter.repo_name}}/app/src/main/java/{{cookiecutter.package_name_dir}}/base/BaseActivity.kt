@@ -16,7 +16,7 @@ import javax.inject.Inject
 abstract class BaseActivity : AppCompatActivity(), Injectable, HasAndroidInjector {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    lateinit var viewModelFactoryFactory: ViewModelFactory.Factory
 
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
@@ -24,8 +24,11 @@ abstract class BaseActivity : AppCompatActivity(), Injectable, HasAndroidInjecto
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
     /**
-     * Request a ViewModel from the factory
+     * Request a ViewModel, scoped to this Activity, from the injected factory.
      * @see ViewModelFactory
      */
-    inline fun <reified T : ViewModel> viewModel() = ViewModelProvider(this, viewModelFactory).get(T::class.java)
+    inline fun <reified T : ViewModel> viewModel() = ViewModelProvider(
+        this,
+        viewModelFactoryFactory.create(this, intent.extras)
+    ).get(T::class.java)
 }

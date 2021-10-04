@@ -5,12 +5,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import at.allaboutapps.retrofit.converter.unwrap.UnwrapConverterFactory
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelModule
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

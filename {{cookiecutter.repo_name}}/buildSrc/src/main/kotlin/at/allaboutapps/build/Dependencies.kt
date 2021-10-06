@@ -47,7 +47,7 @@ object Dependencies {
 
     // A3
     const val A3Utilities = "com.github.allaboutapps:A3Utilities:V1.0.4"
-    const val A3WebView = "at.allaboutapps.web:a3webview:0.1.1"
+    const val A3WebView = "com.github.allaboutapps:A3WebView:v0.1.1"
     const val A3RecyclerViewDecorations = "com.github.allaboutapps:A3RecyclerViewDecorations:V1.0.2"
 
     // Dagger

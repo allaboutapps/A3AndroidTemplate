@@ -22,8 +22,6 @@ import javax.inject.Singleton
 )
 interface AppComponent : AndroidInjector<App> {
 
-    fun apiService(): ApiService
-
     @Component.Builder
     abstract class Builder : AndroidInjector.Factory<App> {
 

@@ -94,7 +94,7 @@ licenseReport {
     projects = [project] + project.subprojects
     configurations = ['liveReleaseRuntimeClasspath']
     allowedLicensesFile = new File("$projectDir/../oss_licenses/src/main/assets/allowed_licenses.json")
-    excludeGroups = ['at.allaboutapps.*']
+    excludeGroups = ['at.allaboutapps.*', 'com.github.allaboutapps']
     excludes = [
 
     ]

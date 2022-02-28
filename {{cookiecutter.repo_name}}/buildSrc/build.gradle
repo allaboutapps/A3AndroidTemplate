@@ -1,9 +1,9 @@
 buildscript {
-    ext.kotlin_version = "1.5.31"
+    ext.kotlin_version = "1.6.10"
 }
 
 plugins {
-    id "org.gradle.kotlin.kotlin-dsl" version "1.4.9"
+    id "org.gradle.kotlin.kotlin-dsl" version "2.1.6"
 }
 
 repositories {
@@ -16,7 +16,7 @@ sourceSets {
 }
 
 dependencies {
-    implementation "com.android.tools.build:gradle:4.1.1"
+    implementation "com.android.tools.build:gradle:7.1.2"
 
     implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:$kotlin_version"

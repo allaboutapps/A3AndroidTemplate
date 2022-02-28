@@ -18,7 +18,9 @@
             android:name="apiKey"
             android:value="${apiKey}" />
 
-        <activity android:name=".features.start.MainActivity">
+        <activity
+            android:name=".features.start.MainActivity"
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

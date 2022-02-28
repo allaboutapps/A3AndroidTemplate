@@ -55,6 +55,9 @@ class BuildPlugin : Plugin<Project> {
                 project.tasks.withType<KotlinJvmCompile> {
                     kotlinOptions {
                         jvmTarget = VERSION_1_8.toString()
+                        val newArgs = freeCompilerArgs.toMutableList()
+                        newArgs.add("-Xjvm-default=all")
+                        freeCompilerArgs = newArgs
                     }
                 }
             }

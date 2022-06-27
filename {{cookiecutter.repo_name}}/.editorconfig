@@ -3,7 +3,9 @@ root = true
 
 [*.{kt,kts}]
 # Comma-separated list of rules to disable (Since 0.34.0)
-# Note that rules in any ruleset other than the standard ruleset will need to be prefixed 
+# Note that rules in any ruleset other than the standard ruleset will need to be prefixed
 # by the ruleset identifier.
-disabled_rules=import-ordering
-max_line_length=120
+disabled_rules = import-ordering
+max_line_length = 120
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true

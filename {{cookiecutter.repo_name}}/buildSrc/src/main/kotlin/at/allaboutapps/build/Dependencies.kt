@@ -3,28 +3,28 @@
 // no package so that we don't need an import
 
 object Versions {
-    const val Dagger = "2.38.1"
+    const val Dagger = "2.43.2"
     const val Glide = "4.12.0"
-    const val Kotlin = "1.5.31"
-    const val Moshi = "1.12.0"
-    const val OkHttp = "4.9.1"
+    const val Kotlin = "1.7.10"
+    const val Moshi = "1.13.0"
+    const val OkHttp = "4.10.0"
     const val Retrofit = "2.9.0"
-    const val Room = "2.3.0-alpha02"
-    const val RxJava3 = "3.1.0"
-    const val LifecycleVersion = "2.3.0-alpha07"
-    const val NavVersion = "2.3.0"
+    const val Room = "2.5.0-alpha02"
+    const val RxJava3 = "3.1.5"
+    const val LifecycleVersion = "2.6.0-alpha01"
+    const val NavVersion = "2.5.1"
 }
 
 object Dependencies {
-    const val AndroidXAnnotations = "androidx.annotation:annotation:1.3.0-alpha01"
-    const val AndroidXAppCompat = "androidx.appcompat:appcompat:1.3.0-alpha02"
-    const val AndroidXBiometric = "androidx.biometric:biometric:1.1.0-alpha02"
-    const val AndroidXCoreKtx = "androidx.core:core-ktx:1.5.0-alpha02"
+    const val AndroidXAnnotations = "androidx.annotation:annotation:1.5.0-alpha02"
+    const val AndroidXAppCompat = "androidx.appcompat:appcompat:1.6.0-beta01"
+    const val AndroidXBiometric = "androidx.biometric:biometric:1.2.0-alpha04"
+    const val AndroidXCoreKtx = "androidx.core:core-ktx:1.9.0-alpha05"
     const val AndroidXMultiDex = "androidx.multidex:multidex:2.0.1"
-    const val AndroidXRecyclerView = "androidx.recyclerview:recyclerview:1.2.0-alpha05"
+    const val AndroidXRecyclerView = "androidx.recyclerview:recyclerview:1.3.0-beta01"
     const val AndroidXCardView = "androidx.cardview:cardview:1.0.0"
-    const val AndroidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.0.1"
-    const val AndroidXPreferenceManager = "androidx.preference:preference-ktx:1.1.1"
+    const val AndroidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.2.0-alpha01"
+    const val AndroidXPreferenceManager = "androidx.preference:preference-ktx:1.2.0"
 
     // Lifecycle
     const val AndroidXLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LifecycleVersion}"
@@ -43,7 +43,7 @@ object Dependencies {
     const val FirebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.2.1"
 
     // Play Services
-    const val PlayServicesMaps = "com.google.android.gms:play-services-location:17.0.0"
+    const val PlayServicesMaps = "com.google.android.gms:play-services-location:20.0.0"
 
     // A3
     const val A3Utilities = "com.github.allaboutapps:A3Utilities:V1.0.4"
@@ -57,13 +57,13 @@ object Dependencies {
     const val DaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.Dagger}"
     const val DaggerCompilerAndroid = "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
 
-    const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:2.7"
+    const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:2.9.1"
 
-    const val Epoxy = "com.airbnb.android:epoxy:4.0.0"
+    const val Epoxy = "com.airbnb.android:epoxy:4.6.3"
 
     const val KotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}"
 
-    const val MaterialComponents = "com.google.android.material:material:1.5.0-alpha01"
+    const val MaterialComponents = "com.google.android.material:material:1.7.0-alpha03"
 
     const val Moshi = "com.squareup.moshi:moshi-kotlin:${Versions.Moshi}"
     const val MoshiAdapters = "com.squareup.moshi:moshi-adapters:${Versions.Moshi}"
@@ -88,11 +88,11 @@ object Dependencies {
     // Reactive
     const val RxJava3 = "io.reactivex.rxjava3:rxjava:${Versions.RxJava3}"
     const val RxJavaAndroid3 = "io.reactivex.rxjava3:rxandroid:3.0.0"
-    const val RxKotlin3 = "io.reactivex.rxjava3:rxkotlin:3.0.0"
+    const val RxKotlin3 = "io.reactivex.rxjava3:rxkotlin:3.0.1"
     const val RxBinding = "com.jakewharton.rxbinding4:rxbinding:4.0.0"
-    const val RxRelay = "com.jakewharton.rxrelay3:rxrelay:3.0.0"
+    const val RxRelay = "com.jakewharton.rxrelay3:rxrelay:3.0.1"
 
     // Misc
-    const val Timber = "com.jakewharton.timber:timber:4.7.1"
+    const val Timber = "com.jakewharton.timber:timber:5.0.1"
     const val ViewBindingDelegate = "com.github.Zhuinden:fragmentviewbindingdelegate-kt:1.0.0"
 }

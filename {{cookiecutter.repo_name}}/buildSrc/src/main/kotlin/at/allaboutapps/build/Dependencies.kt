@@ -45,6 +45,9 @@ object Dependencies {
     // Play Services
     const val PlayServicesMaps = "com.google.android.gms:play-services-location:20.0.0"
 
+    // License
+    const val PlayServicesLicenses = "com.google.android.gms:play-services-oss-licenses:17.0.0"
+
     // A3
     const val A3Utilities = "com.github.allaboutapps:A3Utilities:V1.0.4"
     const val A3WebView = "com.github.allaboutapps:A3WebView:v0.1.1"

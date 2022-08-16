@@ -50,19 +50,19 @@ android {
 
     productFlavors {
         create("development") {
-            dimension("environment")
+            dimension = "environment"
             ext["neverBuildRelease"] = true
 
             buildConfigField("String", "SERVER_API_URL", "\"https://debug.example.com/\"")
         }
         create("staging") {
-            dimension("environment")
+            dimension = "environment"
             ext["neverBuildRelease"] = true
 
             buildConfigField("String", "SERVER_API_URL", "\"https://staging.example.com/\"")
         }
         create("live") {
-            dimension("environment")
+            dimension = "environment"
 
             buildConfigField("String", "SERVER_API_URL", "\"https://www.example.com/\"")
         }

@@ -1,6 +1,7 @@
 plugins {
     BuildPlugin
     com.android.application
+    id("com.google.android.gms.oss-licenses-plugin")
     id("at.allaboutapps.gradle-plugin")
     `kotlin-android`
     `kotlin-kapt`
@@ -116,6 +117,9 @@ dependencies {
 
     // optional - ReactiveStreams support for LiveData
     implementation(Dependencies.AndroidXLifecycleReactiveStreams)
+
+    // Play Services Licenses Lib
+    implementation(Dependencies.PlayServicesLicenses)
 
     // logging
     implementation(Dependencies.Timber)

@@ -10,7 +10,6 @@ buildscript {
         classpath("com.android.tools.build:gradle:7.2.2")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Kotlin}")
         classpath("at.allaboutapps.gradle:plugin:3.0.11")
-        classpath("com.github.jk1:gradle-license-report:1.13")
         classpath(Dependencies.AndroidXNavigationSafeArgs)
         {% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_analytics == "yes" %}classpath("com.google.gms:google-services:4.3.3"){% endif %}
         {% if cookiecutter.firebase_crashlytics == "yes" %}classpath("com.google.firebase:firebase-crashlytics-gradle:2.2.1"){% endif %}

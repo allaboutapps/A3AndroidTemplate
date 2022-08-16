@@ -1,9 +1,6 @@
-import com.github.jk1.license.importer.XmlReportImporter
-
 plugins {
     BuildPlugin
     com.android.application
-    id("com.github.jk1.dependency-license-report")
     id("at.allaboutapps.gradle-plugin")
     `kotlin-android`
     `kotlin-kapt`
@@ -82,27 +79,6 @@ android {
         javaMaxHeapSize = "4g"
         preDexLibraries = true
     }
-
-    sourceSets {
-        // generate oss license html to build folder
-        getByName("main").assets.srcDir("${project.buildDir}/a3generated")
-    }
-}
-
-licenseReport {
-    outputDir = "${project.buildDir}/a3generated/licenses"
-    projects = arrayOf(project) + project.subprojects
-    configurations = arrayOf("liveReleaseRuntimeClasspath")
-    allowedLicensesFile = file("$projectDir/../oss_licenses/src/main/assets/allowed_licenses.json")
-    excludeGroups = arrayOf("at.allaboutapps.*", "com.github.allaboutapps")
-    excludes = arrayOf()
-    importers = arrayOf(
-        // Add excluded licenses back
-        XmlReportImporter(
-            "More",
-            file("$projectDir/../oss_licenses/src/main/assets/more_licenses.xml")
-        )
-    )
 }
 
 dependencies {
@@ -110,7 +86,6 @@ dependencies {
 
     implementation(project(":networking"))
     implementation(project(":unwrapretrofit"))
-    implementation(project(":oss_licenses"))
     implementation(project(":glide"))
 
     implementation(Dependencies.KotlinStdLib)

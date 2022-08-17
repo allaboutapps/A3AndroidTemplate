@@ -13,7 +13,7 @@ _Use this template project to improve your project setup experience._
 * Retrofit setup
 * Firebase Analytics and Messaging setup
 * SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
-* Code to show [Open Source Licenses](#open-source-licenses) as a stand-alone activity or dialog
+* Code to show [Open Source Licenses](#open-source-licenses) as a stand-alone activity
 * (optional) Texterify: texterify.json setup
 
 
@@ -50,21 +50,13 @@ Download [ktlint](https://github.com/pinterest/ktlint) and make sure that it can
 
 ### Open Source Licenses
 
-The `oss_licenses` module is set up to generate an HTML file that contains the licenses for all dependencies. Run the gradle task `checkLicense` to generate it. (Bitrise Step preferred)
-
-The file `allowed_licenses.json` contains license descriptions that are allowed to be used in our apps. If you find a valid license that is not supported feel free to start a pull request.
-
-To show the open source dialog or activity do either of the following:
+To show the open source activity do the following:
 
 ```kotlin
-val licenseScreenSettings = LicenseScreenSettings(title = "License Screen", showUpArrow = true)
-
-// open an activity
-OssLicenseActivity.showLicenses(this, licenseScreenSettings)
-
-// or open a DialogFragment
-OssLicenseDialogFragment.showLicenseDialog(supportFragmentManager, licenseScreenSettings)
+startActivity(Intent(this, OssLicensesMenuActivity::class.java))
 ```
+
+For more details click [here](https://developers.google.com/android/guides/opensource).
 
 ---
 

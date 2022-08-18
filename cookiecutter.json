@@ -3,11 +3,10 @@
   "app_name": "Project Name",
   "package_name": "com.example.app",
   "package_name_dir": "{{ cookiecutter.package_name.replace('.', '/') }}",
-  "string_tool" : ["none", "googlesheet", "texterify"],
+  "string_tool" : ["none", "texterify"],
   "texterify_project_id": "",
   "texterify_export_config": "",
   "firebase_crashlytics": ["no", "yes"],
   "firebase_analytics": ["no", "yes"],
-  "firebase_messaging": ["no", "yes"],
-  "strings_sheet_id": ""
+  "firebase_messaging": ["no", "yes"]
 }

@@ -150,7 +150,7 @@ dependencies {
     implementation(Dependencies.AndroidXNavigationUI)
 }{% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
 
-plugins.apply("com.google.gms.google-services"){% endif %}{% if cookiecutter.string_tool == "texterify" or cookiecutter.string_tool == "googlesheet" %}
+plugins.apply("com.google.gms.google-services"){% endif %}{% if cookiecutter.string_tool == "texterify" %}
 
 fun osIsWindows(): Boolean {
     return System.getProperty("os.name").contains("windows", ignoreCase = true)
@@ -167,24 +167,4 @@ tasks.register("updateStrings", Exec::class) {
         }
 
     commandLine = (executableName + "download")
-}{% endif %}{% if cookiecutter.string_tool == "googlesheet" %}
-
-tasks.register("updateStrings", Exec::class) {
-    group = "localization"
-
-    val executableName =
-        if (osIsWindows()) {
-            listOf("cmd", "/c", "google-docs-i18n-strings")
-        } else {
-            listOf("google-docs-i18n-strings")
-        }
-
-    val args =
-        listOf(
-            "-a", "src/main/res",
-            "-p", "android",
-            "-s", "{{cookiecutter.strings_sheet_id}}"
-        )
-
-    commandLine = (executableName + args)
 }{% endif %}

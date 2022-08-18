@@ -25,6 +25,7 @@ object Dependencies {
     const val AndroidXCardView = "androidx.cardview:cardview:1.0.0"
     const val AndroidXConstraintLayout = "androidx.constraintlayout:constraintlayout:2.2.0-alpha01"
     const val AndroidXPreferenceManager = "androidx.preference:preference-ktx:1.2.0"
+    const val AndroidXSplashScreen = "androidx.core:core-splashscreen:1.0.0-beta02"
 
     // Lifecycle
     const val AndroidXLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LifecycleVersion}"

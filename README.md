@@ -12,7 +12,7 @@ _Use this template project to improve your project setup experience._
 * flavor dimension for development environments (`dev`, `staging`, `live`)
 * Retrofit setup
 * Firebase Analytics and Messaging setup
-* SplashScreen helper -> https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html
+* SplashScreen-Setup -> https://developer.android.com/guide/topics/ui/splash-screen
 * Code to show [Open Source Licenses](#open-source-licenses) as a stand-alone activity
 * (optional) Texterify: texterify.json setup
 

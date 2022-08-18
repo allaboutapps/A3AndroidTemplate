@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- https://blog.davidmedenjak.com/android/2017/09/02/splash-screens.html -->
-    <!-- use this as default theme for all activities -->
-    <!-- just change splash screen drawable -->
-    <style name="Theme.App.Splash">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+    <style name="Theme.App.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/colorPrimary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.App</item>
     </style>
 
     <!-- Base application theme. -->
@@ -16,5 +15,4 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
 </resources>

@@ -104,6 +104,9 @@ dependencies {
     implementation(Dependencies.A3Utilities)
     implementation(Dependencies.A3RecyclerViewDecorations)
 
+    // Splashscreen
+    implementation(Dependencies.AndroidXSplashScreen)
+
     // Android Kotlin Extensions by Google
     // https://developer.android.com/kotlin/ktx
     implementation(Dependencies.AndroidXCoreKtx)

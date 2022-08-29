@@ -1,0 +1,6 @@
+# <https://github.com/DavidAnson/markdownlint>
+# <https://github.com/DavidAnson/vscode-markdownlint>
+# <https://github.com/DavidAnson/markdownlint-cli2>
+
+line-length:
+  line_length: 120

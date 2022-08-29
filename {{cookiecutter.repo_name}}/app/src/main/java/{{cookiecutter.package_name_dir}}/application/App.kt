@@ -17,7 +17,6 @@ class App : DaggerApplication() {
 
         initLogging()
 
-        SplashScreenHelper.register(this)
         AppInjector.init(this)
     }
 

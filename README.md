@@ -1,61 +1,78 @@
-
 # Android Project Template
 
 _Use this template project to improve your project setup experience._
 
 ![all about apps](https://kcdn.at/company/51740/3214808/aaa3000.png "all about apps")
 
-*Template contents:*
+## Contents
 
 * recommended package structure
-* latest libraries (Androidx, Glide, Retrofit, Moshi, A3 libraries, Timber, LeakCanary)
+* latest libraries ([AndroidX], [Glide], [Retrofit], [Moshi], A3 libraries, [Timber], [LeakCanary])
 * flavor dimension for development environments (`dev`, `staging`, `live`)
-* Retrofit setup
+* Retrofit + Moshi setup
 * Firebase Analytics and Messaging setup
-* SplashScreen-Setup -> https://developer.android.com/guide/topics/ui/splash-screen
-* Code to show [Open Source Licenses](#open-source-licenses) as a stand-alone activity
-* (optional) Texterify: texterify.json setup
+* Splash screen setup: <https://developer.android.com/guide/topics/ui/splash-screen>
+* Google Play services' [Open Source Notices](#open-source-notices) activity
+* (optional) [Texterify](#texterify) setup
+* [ktlint](#ktlint) integration
 
+[AndroidX]: <https://developer.android.com/jetpack/androidx> "AndroidX Overview &nbsp;|&nbsp; Android Developers"
+[Glide]: <https://github.com/bumptech/glide> "bumptech/glide: An image loading and caching library for Android focused on smooth scrolling"
+[Retrofit]: <https://github.com/square/retrofit> "square/retrofit: A type-safe HTTP client for Android and the JVM"
+[Moshi]: <https://github.com/square/moshi> "square/moshi: A modern JSON library for Kotlin and Java."
+[Timber]: <https://github.com/JakeWharton/timber> "JakeWharton/timber: A logger with a small, extensible API which provides utility on top of Android's normal Log class."
+[LeakCanary]: <https://github.com/square/leakcanary> "square/leakcanary: A memory leak detection library for Android."
 
 ## Project Setup (using this template)
 
-Install [cookiecutter](http://cookiecutter.readthedocs.io/en/latest/installation.html) and run the following command to fetch and use this template:
-```
+Install [Cookiecutter](http://cookiecutter.readthedocs.io/en/latest/installation.html) and run the following command to
+fetch and use this template:
+
+```sh
 cookiecutter gh:allaboutapps/A3AndroidTemplate
 ```
 
 Supply the following values when prompted:
 
-1) `repo_name`        - name of cloned directory  (eg   myproject-android)
-2) `app_name`         - app name
-3) `package_name`     - "com.example.app",
-4) `package_name_dir` - Leave blank to use the previous input for `package_name` (used to generate the correct folder structure)
-5) `string_tool`      - Choose a string-export tool for this project (none or texterify)
-6) `texterify_project_id` - project id of your Texterify project - default: empty
-7) `texterify_export_config` - export configuration id of your Texterify project - default: empty
-8) `firebase_analytics` - Setup firebase analytics
-9) `firebase_messaging` - Basic setup for FCM
-
+1) `repo_name`               - Directory name where to create the new project (e.g.: `myproject-android`)
+2) `app_name`                - App name (pretty/display name)
+3) `package_name`            - App package name (e.g.: `com.example.app`)
+4) `package_name_dir`        - Directory of the app package, relative to the `app/src/main/java` directory.
+                               (used to generate the correct directory structure)  
+                               Default value is the same as `package_name`, with dots/periods replaced with slashes.
+5) `string_tool`             - The string-export tool for this project (`none` or `texterify`)
+6) `texterify_project_id`    - ID of your Texterify project (default is empty)
+7) `texterify_export_config` - Export Configuration ID of your Texterify project (default is empty)
+8) `firebase_analytics`      - Whether or not to setup Firebase Analytics (default: `no`)
+9) `firebase_messaging`      - Whether or not to add basic setup for FCM (default: `no`)
 
 ### Texterify
 
-To fetch the latest strings from [Texterify](https://github.com/chrztoph/texterify) run the gradle task `updateStrings`. The config file `texterify.json` is located in `/app`.
+To fetch the latest strings from the configured [Texterify] project, run the gradle task `updateStrings`.
+The config file `texterify.json` is located in the `app` directory.
+
+[Texterify]: <https://github.com/chrztoph/texterify> "texterify/texterify: The translation and localization management system."
 
 ### ktlint
 
-The BuildPlugin will register a pre-commit hook to enforce the usage of ktlint and formatted code. (To disable this behavior delete the task in the local BuildPlugin)
+The BuildPlugin will register a Git pre-commit hook to enforce the usage of ktlint and formatted code. (To disable this
+behavior, delete the task in the local BuildPlugin)
 
-Download [ktlint](https://github.com/pinterest/ktlint) and make sure that it can be found on you PATH.
+Download [ktlint] and make sure that it can be found on your `PATH`.
 
-### Open Source Licenses
+[ktlint]: <https://github.com/pinterest/ktlint> "pinterest/ktlint: An anti-bikeshedding Kotlin linter with built-in formatter"
 
-To show the open source activity do the following:
+### Open Source Notices
+
+To show the Google Play services' Open Source Notices activity just add the following code:
 
 ```kotlin
 startActivity(Intent(this, OssLicensesMenuActivity::class.java))
 ```
 
-For more details click [here](https://developers.google.com/android/guides/opensource).
+More details can be found in the [Google Play services documentation].
+
+[Google Play services documentation]: <https://developers.google.com/android/guides/opensource> "Include open source notices &nbsp;|&nbsp; Google Play services &nbsp;|&nbsp; Google Developers"
 
 ---
 
@@ -63,5 +80,3 @@ Du suchst einen spannenden Job im Mobile Bereich?
 Looking for a job?
 
 [We're hiring @all about apps](https://www.allaboutapps.at/jobs/)
-
-

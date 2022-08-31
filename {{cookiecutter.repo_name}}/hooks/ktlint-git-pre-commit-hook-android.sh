@@ -8,6 +8,5 @@ if [ "$(uname -s)" != "Darwin" ]; then
     no_run_if_empty='--no-run-if-empty'
 fi
 
-git --no-pager diff --name-only --cached --relative |
-    grep -E '\.ks?"?$' |
+git --no-pager diff --name-only --cached --relative -- '*.kt' '*.kts' |
     xargs $no_run_if_empty ktlint --android --relative

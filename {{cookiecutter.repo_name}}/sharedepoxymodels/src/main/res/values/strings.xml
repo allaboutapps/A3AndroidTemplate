@@ -2,4 +2,6 @@
 <resources>
     <string name="general_empty_title">No data</string>
     <string name="general_empty_subtitle">No data available</string>
+    <string name="general_error_title">Error</string>
+    <string name="general_error_subtitle">An error occurred</string>
 </resources>

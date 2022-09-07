@@ -1,14 +1,13 @@
 package com.example.app.features.main
 
-import at.allaboutapps.sharedepoxymodels.empty
+import at.allaboutapps.sharedepoxymodels.error
 import com.airbnb.epoxy.EpoxyController
 import com.example.app.R
 
 class MainEpoxyController : EpoxyController() {
     override fun buildModels() {
-        empty {
+        error {
             id(hashCode())
-            icon(R.drawable.ic_launcher_foreground)
         }
     }
 }

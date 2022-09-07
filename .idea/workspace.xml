@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f12dbc57-0eb1-4bfb-b233-3c14cb52bee7" name="Changes" comment="Add loading epoxy model">
+      <change beforePath="$PROJECT_DIR$/{{cookiecutter.repo_name}}/app/src/main/java/{{cookiecutter.package_name_dir}}/features/main/MainEpoxyController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/{{cookiecutter.repo_name}}/app/src/main/java/{{cookiecutter.package_name_dir}}/features/main/MainEpoxyController.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2DRCHDHyAABWsfgx4w0esgdaymo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f12dbc57-0eb1-4bfb-b233-3c14cb52bee7" name="Changes" comment="" />
+      <created>1660652419850</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660652419850</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Remove oss license lib">
+      <created>1660652858307</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1660652858307</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add play services lib">
+      <created>1660653175112</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1660653175112</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Increase minSdk">
+      <created>1660654767064</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1660654767064</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Replace old splashscreen with androidx splashscreen">
+      <created>1660810783854</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1660810783854</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Replace old splashscreen with androidx splashscreen">
+      <created>1660810883073</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1660810883073</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Remove google sheets string tool implementation">
+      <created>1660820340671</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1660820340671</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Remove google sheets string tool implementation">
+      <created>1660823235818</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1660823235818</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add calling installSplashScreen in MainActivity">
+      <created>1660823851867</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1660823851867</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Remove SplashScreenHelper">
+      <created>1661753728331</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1661753728331</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add header epoxy model">
+      <created>1662542041586</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662542041586</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add loading epoxy model">
+      <created>1662542145953</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1662542145953</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Remove oss license lib" />
+    <MESSAGE value="Add play services lib" />
+    <MESSAGE value="Increase minSdk" />
+    <MESSAGE value="Update readme" />
+    <MESSAGE value="Replace old splashscreen with androidx splashscreen" />
+    <MESSAGE value="Remove google sheets string tool implementation" />
+    <MESSAGE value="Add calling installSplashScreen in MainActivity" />
+    <MESSAGE value="Remove SplashScreenHelper" />
+    <MESSAGE value="Add header epoxy model" />
+    <MESSAGE value="Add loading epoxy model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add loading epoxy model" />
+  </component>
+</project>

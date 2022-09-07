@@ -7,7 +7,7 @@ buildscript {
         maven("https://plugins.gradle.org/m2/")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.2.2")
+        classpath("com.android.tools.build:gradle:7.3.0-rc01")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Kotlin}")
         classpath("at.allaboutapps.gradle:plugin:3.0.11")
         classpath("com.google.android.gms:oss-licenses-plugin:0.10.5")

@@ -88,6 +88,7 @@ dependencies {
     implementation(project(":networking"))
     implementation(project(":unwrapretrofit"))
     implementation(project(":glide"))
+    implementation(project(":sharedepoxymodels"))
 
     implementation(Dependencies.KotlinStdLib)
     implementation(Dependencies.MaterialComponents)
@@ -120,6 +121,9 @@ dependencies {
 
     // optional - ReactiveStreams support for LiveData
     implementation(Dependencies.AndroidXLifecycleReactiveStreams)
+
+    // Epoxy
+    implementation(Dependencies.Epoxy)
 
     // Play Services Licenses Lib
     implementation(Dependencies.PlayServicesLicenses)

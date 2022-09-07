@@ -14,7 +14,7 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvMainText.text = "Hello Text with view binding"
-        // Do something else
+        val controller = MainEpoxyController()
+        binding.recyclerView.setControllerAndBuildModels(controller)
     }
 }

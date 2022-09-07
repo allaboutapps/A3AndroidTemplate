@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.AppCompat.Header" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Body" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">?colorPrimary</item>
+    </style>
+</resources>

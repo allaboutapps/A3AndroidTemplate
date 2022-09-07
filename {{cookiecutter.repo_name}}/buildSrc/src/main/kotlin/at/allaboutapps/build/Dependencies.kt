@@ -64,6 +64,7 @@ object Dependencies {
     const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:2.9.1"
 
     const val Epoxy = "com.airbnb.android:epoxy:4.6.3"
+    const val EpoxyKapt = "com.airbnb.android:epoxy-processor:4.6.3"
 
     const val KotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}"
 

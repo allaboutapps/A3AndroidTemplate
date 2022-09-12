@@ -7,10 +7,10 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
+import androidx.annotation.DrawableRes
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlin.random.Random
-import androidx.annotation.DrawableRes
 
 // TODO: set ID of notification channel
 const val CHANNEL_ID_DEFAULT_NOTIFICATION = "default_notification"
@@ -26,14 +26,13 @@ object NotificationsUtils {
      * @param context
      */
     fun createAllNotificationChannels(context: Context) {
-
         // TODO: set values of new notification channel
         createNotificationChannel(
             context,
             CHANNEL_ID_DEFAULT_NOTIFICATION,
             "title",
             "description",
-            NotificationManagerCompat.IMPORTANCE_DEFAULT
+            NotificationManagerCompat.IMPORTANCE_DEFAULT,
         )
     }
 
@@ -51,7 +50,7 @@ object NotificationsUtils {
         channelId: String,
         name: String,
         description: String,
-        importance: Int
+        importance: Int,
     ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId, name, importance).apply {
@@ -79,7 +78,7 @@ object NotificationsUtils {
         title: String,
         text: String,
         intent: Intent,
-        @DrawableRes smallIcon: Int
+        @DrawableRes smallIcon: Int,
     ) {
         val notificationId = Random.nextInt() // notifications should not override each other
 

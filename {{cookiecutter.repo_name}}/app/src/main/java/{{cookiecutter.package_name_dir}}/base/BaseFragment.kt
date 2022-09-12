@@ -31,7 +31,7 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int = 0) :
      */
     inline fun <reified T : ViewModel> fragmentViewModel() = ViewModelProvider(
         this,
-        viewModelFactoryFactory.create(this, arguments)
+        viewModelFactoryFactory.create(this, arguments),
     ).get(T::class.java)
 
     /**
@@ -40,7 +40,7 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int = 0) :
      */
     inline fun <reified T : ViewModel> activityViewModel() = ViewModelProvider(
         requireActivity(),
-        viewModelFactoryFactory.create(this, arguments)
+        viewModelFactoryFactory.create(this, arguments),
     ).get(T::class.java)
 
     /**
@@ -49,6 +49,6 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int = 0) :
      */
     inline fun <reified T : ViewModel> parentFragmentViewModel() = ViewModelProvider(
         requireParentFragment(),
-        viewModelFactoryFactory.create(this, arguments)
+        viewModelFactoryFactory.create(this, arguments),
     ).get(T::class.java)
 }

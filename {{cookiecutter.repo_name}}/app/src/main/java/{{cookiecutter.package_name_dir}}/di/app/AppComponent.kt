@@ -3,6 +3,9 @@ package {{ cookiecutter.package_name }}.di.app
 import android.app.Application
 import {{ cookiecutter.package_name }}.application.App
 import {{ cookiecutter.package_name }}.di.ActivityModule
+{% if cookiecutter.firebase_messaging == "yes" %}
+import {{ cookiecutter.package_name }}.di.FirebaseModule
+{% endif %}
 import {{ cookiecutter.package_name }}.di.FragmentModule
 import {{ cookiecutter.package_name }}.networking.services.ApiService
 import dagger.BindsInstance
@@ -17,7 +20,10 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AppModule::class,
         ActivityModule::class,
-        FragmentModule::class
+        FragmentModule::class,
+        {% if cookiecutter.firebase_messaging == "yes" %}
+        FirebaseModule::class,
+        {% endif %}
     ]
 )
 interface AppComponent : AndroidInjector<App> {

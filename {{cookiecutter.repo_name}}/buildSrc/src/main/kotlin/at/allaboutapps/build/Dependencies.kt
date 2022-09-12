@@ -54,9 +54,11 @@ object Dependencies {
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NavVersion}"
 
     // Firebase
-    const val FirebaseMessaging = "com.google.firebase:firebase-messaging:20.2.4"
-    const val FirebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:17.5.0"
-    const val FirebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.2.1"
+    const val FirebaseBom = "com.google.firebase:firebase-bom:31.2.0"
+    const val FirebaseAnalytics = "com.google.firebase:firebase-analytics-ktx"
+    const val FirebaseMessaging = "com.google.firebase:firebase-messaging-ktx"
+    const val FirebaseCrashlytics = "com.google.firebase:firebase-crashlytics-ktx"
+    const val FirebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.9.2"
 
     // Play Services
     const val PlayServicesMaps = "com.google.android.gms:play-services-location:20.0.0"

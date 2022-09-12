@@ -1,31 +1,32 @@
 package {{ cookiecutter.package_name }}.features.fcm
 
 import android.annotation.SuppressLint
-import android.os.AsyncTask
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FirebaseTokenHandler @Inject constructor(private val firebaseTokenService: FirebaseTokenService) {
-
+class FirebaseTokenHandler @Inject constructor(
+    private val firebaseMessaging: FirebaseMessaging,
+    private val firebaseTokenService: FirebaseTokenService,
+) {
     fun sendFirebaseTokenToServer() {
-        FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(
-                AsyncTask.THREAD_POOL_EXECUTOR,
-                OnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        task.result?.token?.let {
-                            Timber.d("Token: $it")
-                            registerTokenWithServer(it, { onError() }, { onSuccess() }, { })
-                        }
-                    } else {
-                        Timber.e(task.exception, "Cannot retrieve token from Firebase instance")
-                    }
+        firebaseMessaging.token
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val token = task.result
+                    Timber.d("Token: $token")
+                    registerTokenWithServer(token, { onError() }, { onSuccess() }, { })
+                } else {
+                    Timber.e(task.exception, "Cannot retrieve token from Firebase instance")
                 }
-            )
+            }
+    }
+
+    fun sendFirebaseTokenToServer(token: String) {
+        Timber.d("Token: $token")
+        registerTokenWithServer(token, { onError() }, { onSuccess() }, { })
     }
 
     @SuppressLint("CheckResult")

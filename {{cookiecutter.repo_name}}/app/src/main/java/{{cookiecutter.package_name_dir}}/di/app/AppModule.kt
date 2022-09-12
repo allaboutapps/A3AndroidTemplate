@@ -9,6 +9,9 @@ import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelModule
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
+{% if cookiecutter.firebase_messaging == "yes" %}
+import com.google.firebase.messaging.FirebaseMessaging
+{% endif %}
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import dagger.Binds
@@ -26,8 +29,8 @@ import javax.inject.Singleton
 @Module(
     includes = [
         ViewModelModule::class,
-        AppModule.Bindings::class
-    ]
+        AppModule.Bindings::class,
+    ],
 )
 class AppModule {
 
@@ -62,7 +65,7 @@ class AppModule {
     @Provides
     fun provideApiService(
         okHttp: OkHttpClient,
-        moshi: Moshi
+        moshi: Moshi,
     ): ApiService {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.SERVER_API_URL)
@@ -73,6 +76,12 @@ class AppModule {
             .build()
             .create(ApiService::class.java)
     }
+
+    {% if cookiecutter.firebase_messaging == "yes" %}
+    @Singleton
+    @Provides
+    fun provideFcmInstance(): FirebaseMessaging = FirebaseMessaging.getInstance()
+    {% endif %}
 
     @Reusable
     @Provides

@@ -47,8 +47,8 @@ then
         rm google-services.json
     fi
 
-    cd src/main/java/{{ cookiecutter.package_name_dir }}/features
-    rm -rf fcm
+    rm -rf src/main/java/{{cookiecutter.package_name_dir}}/features/fcm \
+           src/main/java/{{cookiecutter.package_name_dir}}/di/FirebaseModule.kt
 
     cd $ROOT_DIRECTORY #back to project root
 fi

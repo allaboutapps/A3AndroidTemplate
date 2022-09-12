@@ -33,7 +33,7 @@ object AppInjector {
                 override fun onActivitySaveInstanceState(a: Activity, outState: Bundle) = Unit
                 override fun onActivityDestroyed(a: Activity) = Unit
                 // endregion
-            }
+            },
         )
     }
 
@@ -47,14 +47,14 @@ object AppInjector {
                     override fun onFragmentPreCreated(
                         fm: FragmentManager,
                         f: Fragment,
-                        savedInstanceState: Bundle?
+                        savedInstanceState: Bundle?,
                     ) {
                         if (f is Injectable) {
                             AndroidSupportInjection.inject(f)
                         }
                     }
                 },
-                true
+                true,
             )
         }
     }

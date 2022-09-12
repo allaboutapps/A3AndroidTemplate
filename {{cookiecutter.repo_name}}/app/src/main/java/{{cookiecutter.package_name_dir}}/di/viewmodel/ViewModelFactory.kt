@@ -12,14 +12,14 @@ import dagger.assisted.AssistedInject
 class ViewModelFactory @AssistedInject constructor(
     @Assisted owner: SavedStateRegistryOwner,
     @Assisted defaultArgs: Bundle?,
-    private val viewModelComponentFactory: ViewModelComponent.Factory
+    private val viewModelComponentFactory: ViewModelComponent.Factory,
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
     @AssistedFactory
     interface Factory {
         fun create(
             owner: SavedStateRegistryOwner,
-            defaultArgs: Bundle?
+            defaultArgs: Bundle?,
         ): ViewModelFactory
     }
 

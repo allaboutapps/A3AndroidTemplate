@@ -29,6 +29,6 @@ abstract class BaseActivity : AppCompatActivity(), Injectable, HasAndroidInjecto
      */
     inline fun <reified T : ViewModel> viewModel() = ViewModelProvider(
         this,
-        viewModelFactoryFactory.create(this, intent.extras)
+        viewModelFactoryFactory.create(this, intent.extras),
     ).get(T::class.java)
 }

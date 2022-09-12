@@ -92,6 +92,7 @@ dependencies {
     implementation(Dependencies.KotlinStdLib)
     implementation(Dependencies.MaterialComponents)
 {% if cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes" %}
+    implementation(platform(Dependencies.FirebaseBom))
     // Firebase Libs{% if cookiecutter.firebase_crashlytics == "yes" %}
     implementation(Dependencies.FirebaseCrashlytics){% endif %}{% if cookiecutter.firebase_messaging == "yes" %}
     implementation(Dependencies.FirebaseMessaging){% endif %}{% if cookiecutter.firebase_analytics == "yes" %}

@@ -13,9 +13,23 @@ object Versions {
     const val RxJava3 = "3.1.5"
     const val LifecycleVersion = "2.6.0-alpha01"
     const val NavVersion = "2.5.1"
+    const val Epoxy = "4.6.3"
 }
 
 object Dependencies {
+    object Kapt {
+        const val AndroidXLifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.LifecycleVersion}"
+
+        const val DaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.Dagger}"
+        const val DaggerCompilerAndroid = "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
+
+        const val EpoxyProcessor = "com.airbnb.android:epoxy-processor:${Versions.Epoxy}"
+
+        const val MoshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Moshi}"
+
+        const val RoomCompiler = "androidx.room:room-compiler:${Versions.Room}"
+    }
+
     const val AndroidXAnnotations = "androidx.annotation:annotation:1.5.0-alpha02"
     const val AndroidXAppCompat = "androidx.appcompat:appcompat:1.6.0-beta01"
     const val AndroidXBiometric = "androidx.biometric:biometric:1.2.0-alpha04"
@@ -30,13 +44,14 @@ object Dependencies {
     // Lifecycle
     const val AndroidXLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LifecycleVersion}"
     const val AndroidXLifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LifecycleVersion}"
-    const val AndroidXLifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.LifecycleVersion}"
-    const val AndroidXLifecycleReactiveStreams = "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.LifecycleVersion}"
+    const val AndroidXLifecycleReactiveStreams =
+        "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.LifecycleVersion}"
 
     // Navigation
     const val AndroidXNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.NavVersion}"
     const val AndroidXNavigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.NavVersion}"
-    const val AndroidXNavigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NavVersion}"
+    const val AndroidXNavigationSafeArgs =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NavVersion}"
 
     // Firebase
     const val FirebaseMessaging = "com.google.firebase:firebase-messaging:20.2.4"
@@ -58,12 +73,10 @@ object Dependencies {
     const val Dagger = "com.google.dagger:dagger:${Versions.Dagger}"
     const val DaggerAndroid = "com.google.dagger:dagger-android:${Versions.Dagger}"
     const val DaggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.Dagger}"
-    const val DaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.Dagger}"
-    const val DaggerCompilerAndroid = "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
 
     const val LeakCanary = "com.squareup.leakcanary:leakcanary-android:2.9.1"
 
-    const val Epoxy = "com.airbnb.android:epoxy:4.6.3"
+    const val Epoxy = "com.airbnb.android:epoxy:${Versions.Epoxy}"
 
     const val KotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.Kotlin}"
 
@@ -71,7 +84,6 @@ object Dependencies {
 
     const val Moshi = "com.squareup.moshi:moshi-kotlin:${Versions.Moshi}"
     const val MoshiAdapters = "com.squareup.moshi:moshi-adapters:${Versions.Moshi}"
-    const val MoshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.Moshi}"
 
     // OkHttp
     const val OkHttp = "com.squareup.okhttp3:okhttp:${Versions.OkHttp}"
@@ -87,7 +99,6 @@ object Dependencies {
     // Room
     const val RoomRuntime = "androidx.room:room-runtime:${Versions.Room}"
     const val RoomRxJava3 = "androidx.room:room-rxjava3:${Versions.Room}"
-    const val RoomCompiler = "androidx.room:room-compiler:${Versions.Room}"
 
     // Reactive
     const val RxJava3 = "io.reactivex.rxjava3:rxjava:${Versions.RxJava3}"

@@ -17,7 +17,7 @@ dependencies {
     implementation(Dependencies.OkHttp)
 
     implementation(Dependencies.Moshi)
-    kapt(Dependencies.MoshiCodegen)
+    kapt(Dependencies.Kapt.MoshiCodegen)
 
     implementation(Dependencies.RxJava3)
 

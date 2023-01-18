@@ -116,7 +116,7 @@ dependencies {
     implementation(Dependencies.AndroidXLifecycleViewModel)
     implementation(Dependencies.AndroidXLifecycleLiveData)
 
-    kapt(Dependencies.AndroidXLifecycleCompiler)
+    kapt(Dependencies.Kapt.AndroidXLifecycleCompiler)
 
     // optional - ReactiveStreams support for LiveData
     implementation(Dependencies.AndroidXLifecycleReactiveStreams)
@@ -142,8 +142,8 @@ dependencies {
     implementation(Dependencies.Dagger)
     implementation(Dependencies.DaggerAndroid)
     implementation(Dependencies.DaggerAndroidSupport)
-    kapt(Dependencies.DaggerCompiler)
-    kapt(Dependencies.DaggerCompilerAndroid)
+    kapt(Dependencies.Kapt.DaggerCompiler)
+    kapt(Dependencies.Kapt.DaggerCompilerAndroid)
 
     // Leak Canary
     // debugImplementation because LeakCanary should only run in debug builds.

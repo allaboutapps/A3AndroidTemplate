@@ -7,7 +7,6 @@ import {{ cookiecutter.package_name }}.di.ActivityModule
 import {{ cookiecutter.package_name }}.di.FirebaseModule
 {% endif %}
 import {{ cookiecutter.package_name }}.di.FragmentModule
-import {{ cookiecutter.package_name }}.networking.services.ApiService
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

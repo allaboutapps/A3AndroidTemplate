@@ -1,33 +1,32 @@
 import re
+import shutil
 import sys
 
-# Check the app name
 
-APP_NAME_REGEX = r'[^A-Za-z0-9 ]'
+VALID_APP_NAME_REGEX: str = r'^[A-Za-z0-9 -]+$'
 
-app_name = '{{ cookiecutter.app_name }}'
+app_name: str = '{{ cookiecutter.app_name }}'
 
-if re.search(APP_NAME_REGEX, app_name):
-    print('ERROR: please avoid using any special characters in your app name!')
-    print('Include only alphanumeric characters and spaces.')
+if re.fullmatch(VALID_APP_NAME_REGEX, app_name) is None:
+    print(f'\nInvalid app name "{app_name}"')
+    print('Only alphanumeric characters, spaces and dashes are allowed\n')
 
-    # Exits with status 1 to indicate failure
-    sys.exit(1)
-
-# Check the package name
-
-PACKAGE_REGEX = r'[^A-Za-z0-9.]'
-
-package_name = '{{ cookiecutter.package_name }}'
-
-if re.search(PACKAGE_REGEX, package_name):
-    print('ERROR: %s is not a valid Android package name!' % package_name)
-    print('Avoid using any special characters. Only alphanumeric characters are allowed.')
-
-    # Exits with status 1 to indicate failure
     sys.exit(1)
 
 
-print ('\n\n###############################')
-print ('Setup for "{}" started.'.format(app_name))
-print ('Please wait a few seconds...........\n')
+VALID_PACKAGE_NAME_REGEX: str = r'^[a-z][a-z0-9]*(\.[a-z][a-z0-9]*)*$'
+
+package_name: str = '{{ cookiecutter.package_name }}'
+
+if re.fullmatch(VALID_PACKAGE_NAME_REGEX, package_name) is None:
+    print(f'\nInvalid package name "{package_name}"')
+    print('Only lowercase letters and digits are allowed (separated by single periods)\n')
+
+    sys.exit(1)
+
+
+msg: str = '\n'
+msg += ('#' * shutil.get_terminal_size().columns) + '\n\n'
+msg += f'Setting up new project "{app_name}"...\n'
+msg += '\nCopying files...'
+print(msg, end='')

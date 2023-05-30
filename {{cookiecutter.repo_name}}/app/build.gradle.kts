@@ -6,9 +6,13 @@ plugins {
     `kotlin-android`
     `kotlin-kapt`
     id("androidx.navigation.safeargs.kotlin")
-    `kotlin-parcelize`{% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_analytics == "yes" %}
-    id("com.google.gms.google-services"){% endif %}{% if cookiecutter.firebase_crashlytics == "yes" %}
-    id("com.google.firebase.crashlytics"){% endif %}
+    `kotlin-parcelize`
+    {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" %}
+    id("com.google.gms.google-services")
+    {%- endif %}
+    {%- if cookiecutter.firebase_crashlytics == "yes" %}
+    id("com.google.firebase.crashlytics")
+    {%- endif %}
 }
 
 android {
@@ -91,13 +95,21 @@ dependencies {
 
     implementation(Dependencies.KotlinStdLib)
     implementation(Dependencies.MaterialComponents)
-{% if cookiecutter.firebase_crashlytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes" %}
+    {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" %}
+
+    // Firebase Libs
     implementation(platform(Dependencies.FirebaseBom))
-    // Firebase Libs{% if cookiecutter.firebase_crashlytics == "yes" %}
-    implementation(Dependencies.FirebaseCrashlytics){% endif %}{% if cookiecutter.firebase_messaging == "yes" %}
-    implementation(Dependencies.FirebaseMessaging){% endif %}{% if cookiecutter.firebase_analytics == "yes" %}
-    implementation(Dependencies.FirebaseAnalytics){% endif %}
-{% endif %}
+    {%- if cookiecutter.firebase_analytics == "yes" %}
+    implementation(Dependencies.FirebaseAnalytics)
+    {%- endif %}
+    {%- if cookiecutter.firebase_messaging == "yes" %}
+    implementation(Dependencies.FirebaseMessaging)
+    {%- endif %}
+    {%- if cookiecutter.firebase_crashlytics == "yes" %}
+    implementation(Dependencies.FirebaseCrashlytics)
+    {%- endif %}
+    {%- endif %}
+
     // ViewBinding helper
     implementation(Dependencies.ViewBindingDelegate)
 
@@ -152,13 +164,16 @@ dependencies {
 
     implementation(Dependencies.AndroidXNavigationFragment)
     implementation(Dependencies.AndroidXNavigationUI)
-}{% if cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_analytics == "yes"  %}
+}
+{%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" %}
 
-plugins.apply("com.google.gms.google-services"){% endif %}{% if cookiecutter.string_tool == "texterify" %}
+plugins.apply("com.google.gms.google-services")
+{%- endif %}
+{%- if cookiecutter.string_tool == "texterify" %}
 
 fun osIsWindows(): Boolean {
     return System.getProperty("os.name").contains("windows", ignoreCase = true)
-}{% endif %}{% if cookiecutter.string_tool == "texterify" %}
+}
 
 tasks.register("updateStrings", Exec::class) {
     group = "localization"
@@ -171,4 +186,5 @@ tasks.register("updateStrings", Exec::class) {
         }
 
     commandLine = (executableName + "download")
-}{% endif %}
+}
+{%- endif %}

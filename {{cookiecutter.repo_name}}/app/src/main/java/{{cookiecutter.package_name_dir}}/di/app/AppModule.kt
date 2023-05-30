@@ -9,9 +9,9 @@ import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelModule
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
-{% if cookiecutter.firebase_messaging == "yes" %}
+{%- if cookiecutter.firebase_messaging == "yes" %}
 import com.google.firebase.messaging.FirebaseMessaging
-{% endif %}
+{%- endif %}
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import dagger.Binds
@@ -76,12 +76,12 @@ class AppModule {
             .build()
             .create(ApiService::class.java)
     }
+    {%- if cookiecutter.firebase_messaging == "yes" %}
 
-    {% if cookiecutter.firebase_messaging == "yes" %}
     @Singleton
     @Provides
     fun provideFcmInstance(): FirebaseMessaging = FirebaseMessaging.getInstance()
-    {% endif %}
+    {%- endif %}
 
     @Reusable
     @Provides

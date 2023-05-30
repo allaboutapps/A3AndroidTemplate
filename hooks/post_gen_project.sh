@@ -1,66 +1,80 @@
-#!/bin/bash
+#!/bin/sh
 
-APP_NAME="{{ cookiecutter.app_name }}"
-USE_ANALYTICS="{{ cookiecutter.firebase_analytics }}"
-USE_FB_MESSAGING="{{ cookiecutter.firebase_messaging }}"
-USE_FB_CRASHLYTICS="{{ cookiecutter.firebase_crashlytics }}"
-STRING_TOOL="{{ cookiecutter.string_tool }}"
-PACKAGE_NAME="{{ cookiecutter.package_name }}"
-REPO_NAME="{{ cookiecutter.repo_name }}"
-ROOT_DIRECTORY="${PWD%/*}/$REPO_NAME"
+set -o errexit
+set -o nounset
 
-echo "*) Project ($APP_NAME) created"
+# enabling POSIX-compliant behavior for GNU programs
+export POSIXLY_CORRECT=yes POSIX_ME_HARDER=yes
 
-git init > /dev/null
-git add .
+package_name_dir="{{ cookiecutter.package_name_dir }}"
+string_tool="{{ cookiecutter.string_tool }}"
+use_fb_crashlytics="{{ cookiecutter.firebase_crashlytics }}"
+use_fb_analytics="{{ cookiecutter.firebase_analytics }}"
+use_fb_messaging="{{ cookiecutter.firebase_messaging }}"
 
-cd ..
+printf ' Done.\n\n'
 
-echo "*) GIT setup completed"
-
-if [[ $USE_ANALYTICS == "yes" || $USE_FB_MESSAGING == "yes" || $USE_FB_CRASHLYTICS == "yes" ]]
-then
-    if [[ $USE_ANALYTICS == "yes"  ]]
-    then
-        echo "*) Firebase Analytics setup successful"
-    fi
-    if [[ $USE_FB_MESSAGING == "yes"  ]]
-    then
-        echo "*) Firebase Messaging setup successful"
-    fi
-    if [[ $USE_FB_CRASHLYTICS == "yes"  ]]
-    then
-        echo "*) Firebase Crashlytics setup successful"
+if [ "$use_fb_analytics" = 'yes' ] || [ "$use_fb_messaging" = 'yes' ] || [ "$use_fb_crashlytics" = 'yes' ]; then
+    if [ "$use_fb_analytics" = 'yes' ]; then
+        printf '(*) Using [Firebase Analytics]\n'
     fi
 
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    echo "Please do not forget to modify google-services.json file!!!!"
-    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    if [ "$use_fb_messaging" = 'yes' ]; then
+        printf '(*) Using [Firebase Messaging]\n'
+    fi
+
+    if [ "$use_fb_crashlytics" = 'yes' ]; then
+        printf '(*) Using [Firebase Crashlytics]\n'
+    fi
+else
+    printf '(*) Using no Firebase services\n'
 fi
 
-if [[ $USE_FB_MESSAGING != "yes" ]]
-then
-    echo "*) Unused FCM folders and files removed"
-    cd {{ cookiecutter.repo_name }}/app
-    if [[ $USE_ANALYTICS != "yes" && $USE_FB_CRASHLYTICS != "yes" ]]
-    then
-        rm google-services.json
+if [ "$use_fb_messaging" != 'yes' ]; then
+    if [ "$use_fb_analytics" != 'yes' ] && [ "$use_fb_crashlytics" != 'yes' ]; then
+        rm -- 'app/google-services.json'
     fi
 
-    rm -rf src/main/java/{{cookiecutter.package_name_dir}}/features/fcm \
-           src/main/java/{{cookiecutter.package_name_dir}}/di/FirebaseModule.kt
-
-    cd $ROOT_DIRECTORY #back to project root
+    rm -r -- "app/src/main/java/$package_name_dir/features/fcm" \
+             "app/src/main/java/$package_name_dir/di/FirebaseModule.kt"
 fi
 
-if [[ $STRING_TOOL != "texterify" ]]
-then
-    cd $ROOT_DIRECTORY
-    cd app
-    rm texterify.json
-    cd $ROOT_DIRECTORY #back to project root
+case "$string_tool" in
+    ('none')
+        rm -- 'app/texterify.json'
+        printf '(*) Using no string tool\n'
+        ;;
+    ('texterify')
+        printf '(*) Using [Texterify] as string tool\n'
+        ;;
+    (*)
+        printf 'Unknown string tool: %s\n' "$string_tool" >&2
+        exit 1
+        ;;
+esac
+
+if [ "$use_fb_analytics" = 'yes' ] || [ "$use_fb_messaging" = 'yes' ] || [ "$use_fb_crashlytics" = 'yes' ]; then
+    clr_red=''
+    clr_reset=''
+
+    if [ -t 1 ] &&
+       [ -z "${NO_COLOR-}" ] && # <https://no-color.org>
+       command -v tput > '/dev/null' &&
+       tput setaf 3 > '/dev/null' 2> '/dev/null' &&
+       tput sgr0 > '/dev/null' 2> '/dev/null'; then
+
+        clr_red="$(tput setaf 3 || true)"
+        clr_reset="$(tput sgr0 || true)"
+    fi
+
+    printf '\n%s' "$clr_red"
+    printf '    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n'
+    printf "    !!! Do not forget to modify the file 'app/google-services.json' !!!\\n"
+    printf '    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    printf '%s\n' "$clr_reset"
 fi
 
-echo -e "\nProject setup completed -> Happy coding\n\n"
+git init --quiet --initial-branch='master'
+git add --all
 
-
+printf '\nProject setup completed. Happy coding! :)\n'

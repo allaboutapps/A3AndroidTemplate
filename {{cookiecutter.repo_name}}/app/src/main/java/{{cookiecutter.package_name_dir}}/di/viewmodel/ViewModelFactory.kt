@@ -35,8 +35,8 @@ class ViewModelFactory @AssistedInject constructor(
 
         val viewModel = viewModelProvider.get()
         check(modelClass.isInstance(viewModel)) {
-            /* ktlint-disable max-line-length */
-            "Provided ViewModel instance (${viewModel.javaClass}) can not be cast to requested ViewModel type ($modelClass)"
+            "Provided ViewModel instance (${viewModel.javaClass})" +
+                " cannot be cast to requested ViewModel type ($modelClass)"
         }
 
         @Suppress("UNCHECKED_CAST")

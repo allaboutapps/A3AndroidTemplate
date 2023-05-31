@@ -14,7 +14,7 @@ _Use this template project to improve your project setup experience._
 * Splash screen setup: <https://developer.android.com/guide/topics/ui/splash-screen>
 * Google Play services' [Open Source Notices](#open-source-notices) activity
 * (optional) [Texterify](#texterify) setup
-* [ktlint](#ktlint) integration
+* [ktlint] integration via [ktlint-gradle-plugin]
 
 [AndroidX]: <https://developer.android.com/jetpack/androidx> "AndroidX Overview &nbsp;|&nbsp; Android Developers"
 [Glide]: <https://github.com/bumptech/glide> "bumptech/glide: An image loading and caching library for Android focused on smooth scrolling"
@@ -22,6 +22,8 @@ _Use this template project to improve your project setup experience._
 [Moshi]: <https://github.com/square/moshi> "square/moshi: A modern JSON library for Kotlin and Java."
 [Timber]: <https://github.com/JakeWharton/timber> "JakeWharton/timber: A logger with a small, extensible API which provides utility on top of Android's normal Log class."
 [LeakCanary]: <https://github.com/square/leakcanary> "square/leakcanary: A memory leak detection library for Android."
+[ktlint]: <https://github.com/pinterest/ktlint> "pinterest/ktlint: An anti-bikeshedding Kotlin linter with built-in formatter"
+[ktlint-gradle-plugin]: <https://github.com/mfederczuk/ktlint-gradle-plugin> "mfederczuk/ktlint-gradle-plugin: ktlint Gradle Plugin"
 
 ## Project Setup (using this template)
 
@@ -52,15 +54,6 @@ To fetch the latest strings from the configured [Texterify] project, run the gra
 The config file `texterify.json` is located in the `app` directory.
 
 [Texterify]: <https://github.com/chrztoph/texterify> "texterify/texterify: The translation and localization management system."
-
-### ktlint
-
-The BuildPlugin will register a Git pre-commit hook to enforce the usage of ktlint and formatted code. (To disable this
-behavior, delete the task in the local BuildPlugin)
-
-Download [ktlint] and make sure that it can be found on your `PATH`.
-
-[ktlint]: <https://github.com/pinterest/ktlint> "pinterest/ktlint: An anti-bikeshedding Kotlin linter with built-in formatter"
 
 ### Open Source Notices
 

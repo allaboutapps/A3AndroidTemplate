@@ -16,7 +16,6 @@ import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.api.plugins.PluginContainer
-import org.gradle.api.tasks.Copy
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.hasPlugin
 import org.gradle.kotlin.dsl.withType
@@ -27,11 +26,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import java.io.File
 
 class BuildPlugin : Plugin<Project> {
-
-    private companion object {
-        const val GIT_WORKTREE_PREFIX = "gitdir: "
-        const val INSTALL_KTLINT_GIT_PRE_COMMIT_HOOK_TASK_NAME = "installKtlintGitHook"
-    }
 
     override fun apply(project: Project) {
         project.plugins.all {
@@ -96,8 +90,9 @@ class BuildPlugin : Plugin<Project> {
         }
 
         if (project.plugins.hasPlugin<AppPlugin>() || project.plugins.hasPlugin<LibraryPlugin>()) {
-            val kotlinOptions: KotlinJvmOptions = (project.extensions.getByType<TestedExtension>() as ExtensionAware)
-                .extensions.getByType()
+            val kotlinOptions: KotlinJvmOptions =
+                (project.extensions.getByType<TestedExtension>() as ExtensionAware)
+                    .extensions.getByType()
 
             // the `KotlinJvmOptions`/"kotlinOptions" extension is only available after the Kotlin plugin is applied,
             // which is why we're setting it in this function rather than in `setupAndroidPlugin`
@@ -127,10 +122,6 @@ class BuildPlugin : Plugin<Project> {
     }
 
     private fun setupAndroidPlugin(project: Project, plugin: Plugin<*>) {
-        if (plugin is AppPlugin) {
-            registerKtlintGitPreCommitHookInstallTask(project)
-        }
-
         with(project.extensions.getByType<TestedExtension>() as CommonExtension<*, *, *, *>) {
             compileSdk = AndroidConfig.COMPILE_SDK
 
@@ -247,69 +238,6 @@ class BuildPlugin : Plugin<Project> {
                     "Remove `jvmTarget = ${jvmTarget.quoted()}` from your Gradle build file"
             }
         }
-    }
-
-    /**
-     * Registers a task that runs on app pre-build that installs the ktlint Git pre-commit hook to enforce code style on
-     * commit.
-     */
-    private fun registerKtlintGitPreCommitHookInstallTask(project: Project) {
-        project.tasks.register(INSTALL_KTLINT_GIT_PRE_COMMIT_HOOK_TASK_NAME, Copy::class.java) {
-            val rootProjectDir: File = this@register.project.rootProject.rootDir
-
-            val gitDir: File = getGitDir(rootProjectDir)
-
-            from(rootProjectDir.resolve("hooks/ktlint-git-pre-commit-hook-android.sh"))
-            into(gitDir.resolve("hooks"))
-            rename { "pre-commit" }
-            fileMode = 493 // 493 == 0755 (octal)
-        }
-
-        project.tasks.getByName("preBuild")
-            .dependsOn(INSTALL_KTLINT_GIT_PRE_COMMIT_HOOK_TASK_NAME)
-    }
-
-    /**
-     * Returns the proper Git directory from [dir], respecting the `GIT_DIR` environment variable and checking for
-     * worktrees.
-     */
-    private fun getGitDir(dir: File): File {
-        val gitDirName: String = System.getenv("GIT_DIR")
-            ?.takeIf(String::isNotEmpty)
-            ?: ".git"
-
-        val gitDir = File(dir, gitDirName)
-
-        if (gitDir.isDirectory) {
-            return gitDir
-        }
-
-        check(gitDir.isFile) {
-            "Git directory is invalid file type (neither directory nor regular file)"
-        }
-
-        // if the git "directory" is actually a regular file, then it is a worktree (see man page git-worktree(1))
-
-        val worktreeGitFileContents: String = gitDir.readText()
-
-        check(worktreeGitFileContents.startsWith(GIT_WORKTREE_PREFIX)) {
-            "When the Git \"directory\" is a regular file, the contents of it must start with \"$GIT_WORKTREE_PREFIX\""
-        }
-
-        val worktreePrivateSubdirectory: File = worktreeGitFileContents
-            .removePrefix(GIT_WORKTREE_PREFIX)
-            .removeTrailingNewline()
-            .toFile()
-
-        val commonDir: File = worktreePrivateSubdirectory
-            .resolve("commondir")
-            .readText()
-            .removeTrailingNewline()
-            .toFile()
-
-        return worktreePrivateSubdirectory
-            .resolve(commonDir)
-            .normalize()
     }
 }
 

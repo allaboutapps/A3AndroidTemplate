@@ -13,6 +13,12 @@ plugins {
     {%- if cookiecutter.firebase_crashlytics == "yes" %}
     id("com.google.firebase.crashlytics")
     {%- endif %}
+    id("io.github.mfederczuk.ktlint")
+}
+
+ktlint {
+    version.set(Versions.Ktlint)
+    installGitPreCommitHookBeforeBuild.set(true)
 }
 
 android {

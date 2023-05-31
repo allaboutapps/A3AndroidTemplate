@@ -3,6 +3,7 @@
 // no package so that we don't need an import
 
 object Versions {
+    const val Ktlint = "0.50.0"
     const val Dagger = "2.43.2"
     const val Glide = "4.12.0"
     const val Kotlin = "1.7.10"

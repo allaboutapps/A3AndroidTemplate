@@ -23,7 +23,7 @@ import javax.inject.Singleton
         {%- if cookiecutter.firebase_messaging == "yes" %}
         FirebaseModule::class,
         {%- endif %}
-    ]
+    ],
 )
 interface AppComponent : AndroidInjector<App> {
 

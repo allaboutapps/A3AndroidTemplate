@@ -13,6 +13,7 @@ sourceSets.main.get().java.srcDirs += (sourceSets.main.get() as org.gradle.api.i
 
 dependencies {
     implementation(project(":unwrapretrofit"))
+    implementation(project(":envelope"))
     implementation(Dependencies.Retrofit)
     implementation(Dependencies.OkHttp)
 

@@ -9,6 +9,8 @@ import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelModule
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
+import {{ cookiecutter.package_name }}.config.data.ConfigRepo
+import at.allaboutapps.moshi.converter.envelope.EnvelopeAdapterFactory
 {%- if cookiecutter.firebase_messaging == "yes" %}
 import com.google.firebase.messaging.FirebaseMessaging
 {%- endif %}
@@ -24,6 +26,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.Date
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module(
@@ -45,6 +48,7 @@ class AppModule {
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
             .add(Date::class.java, Rfc3339DateJsonAdapter())
+            .add(EnvelopeAdapterFactory())
             .build()
     }
 
@@ -60,6 +64,10 @@ class AppModule {
 
         return builder.build()
     }
+
+    @Provides
+    @Named(ConfigRepo.NAME_URL_CONFIG)
+    fun provideConfigUrl() = "${BuildConfig.URL_CONFIG}"
 
     @Singleton
     @Provides

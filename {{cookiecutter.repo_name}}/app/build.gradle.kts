@@ -33,6 +33,12 @@ android {
         addManifestPlaceholders(mapOf("apiKey" to "secret")) // use with ${apiKey} in manifest
 
         resConfigs("de") // todo specify default locale(s)
+
+        buildConfigField(
+            "String",
+            "URL_CONFIG",
+            "\"https://public.allaboutapps.at/config/{{ cookiecutter.repo_name }}/version.json\"",
+        )
     }
 
     buildFeatures {
@@ -97,7 +103,9 @@ dependencies {
 
     implementation(project(":networking"))
     implementation(project(":unwrapretrofit"))
+    implementation(project(":envelope"))
     implementation(project(":glide"))
+    implementation(project(":config"))
 
     implementation(Dependencies.KotlinStdLib)
     implementation(Dependencies.MaterialComponents)

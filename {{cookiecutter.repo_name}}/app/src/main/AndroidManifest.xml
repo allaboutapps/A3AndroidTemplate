@@ -27,8 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        {%- if cookiecutter.firebase_messaging == "yes" %}
 
+        <activity
+            android:name=".features.forceupdate.ForceUpdateActivity"
+            android:exported="false" />
+
+        {%- if cookiecutter.firebase_messaging == "yes" %}
         <!-- region FCM Service -->
 
         <meta-data

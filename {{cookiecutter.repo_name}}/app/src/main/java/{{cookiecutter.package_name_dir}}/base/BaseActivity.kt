@@ -1,6 +1,8 @@
 package {{ cookiecutter.package_name }}.base
 
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import {{ cookiecutter.package_name }}.di.Injectable
@@ -22,6 +24,11 @@ abstract class BaseActivity : AppCompatActivity(), Injectable, HasAndroidInjecto
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+        super.onCreate(savedInstanceState)
+    }
 
     /**
      * Request a ViewModel, scoped to this Activity, from the injected factory.

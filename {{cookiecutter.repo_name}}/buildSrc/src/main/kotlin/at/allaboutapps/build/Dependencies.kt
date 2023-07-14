@@ -15,14 +15,17 @@ object Versions {
     const val LifecycleVersion = "2.6.0-alpha01"
     const val NavVersion = "2.5.1"
     const val Epoxy = "4.6.3"
+    const val PlayAppUpdate = "2.1.0"
 }
 
 object Dependencies {
     object Kapt {
-        const val AndroidXLifecycleCompiler = "androidx.lifecycle:lifecycle-compiler:${Versions.LifecycleVersion}"
+        const val AndroidXLifecycleCompiler =
+            "androidx.lifecycle:lifecycle-compiler:${Versions.LifecycleVersion}"
 
         const val DaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.Dagger}"
-        const val DaggerCompilerAndroid = "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
+        const val DaggerCompilerAndroid =
+            "com.google.dagger:dagger-android-processor:${Versions.Dagger}"
 
         const val EpoxyProcessor = "com.airbnb.android:epoxy-processor:${Versions.Epoxy}"
 
@@ -43,13 +46,16 @@ object Dependencies {
     const val AndroidXSplashScreen = "androidx.core:core-splashscreen:1.0.0-beta02"
 
     // Lifecycle
-    const val AndroidXLifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LifecycleVersion}"
-    const val AndroidXLifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LifecycleVersion}"
+    const val AndroidXLifecycleViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LifecycleVersion}"
+    const val AndroidXLifecycleLiveData =
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.LifecycleVersion}"
     const val AndroidXLifecycleReactiveStreams =
         "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.LifecycleVersion}"
 
     // Navigation
-    const val AndroidXNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.NavVersion}"
+    const val AndroidXNavigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.NavVersion}"
     const val AndroidXNavigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.NavVersion}"
     const val AndroidXNavigationSafeArgs =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.NavVersion}"
@@ -66,6 +72,10 @@ object Dependencies {
 
     // License
     const val PlayServicesLicenses = "com.google.android.gms:play-services-oss-licenses:17.0.0"
+
+    // Play app update
+    const val PlayAppUpdate = "com.google.android.play:app-update:${Versions.PlayAppUpdate}"
+    const val PlayAppUpdateKtx = "com.google.android.play:app-update-ktx:${Versions.PlayAppUpdate}"
 
     // A3
     const val A3Utilities = "com.github.allaboutapps:A3Utilities:V1.0.4"
@@ -91,7 +101,8 @@ object Dependencies {
     // OkHttp
     const val OkHttp = "com.squareup.okhttp3:okhttp:${Versions.OkHttp}"
     const val OkHttpUrlConnection = "com.squareup.okhttp3:okhttp-urlconnection:${Versions.OkHttp}"
-    const val OkHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.OkHttp}"
+    const val OkHttpLoggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.OkHttp}"
 
     // Retrofit
     const val Retrofit = "com.squareup.retrofit2:retrofit:${Versions.Retrofit}"

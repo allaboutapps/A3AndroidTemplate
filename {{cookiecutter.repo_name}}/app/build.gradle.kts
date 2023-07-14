@@ -151,10 +151,15 @@ dependencies {
     // Play Services Licenses Lib
     implementation(Dependencies.PlayServicesLicenses)
 
+    // Play app update
+    implementation(Dependencies.PlayAppUpdate)
+    implementation(Dependencies.PlayAppUpdateKtx)
+
     // logging
     implementation(Dependencies.Timber)
 
     implementation(Dependencies.RxJava3)
+    implementation(Dependencies.RxJavaAndroid3)
     implementation(Dependencies.RxKotlin3)
 
     // networking

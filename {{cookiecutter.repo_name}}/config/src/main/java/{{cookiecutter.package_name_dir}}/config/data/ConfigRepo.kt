@@ -43,11 +43,11 @@ class ConfigRepo @Inject constructor(
 
     private fun fetchAndStoreConfig(): Maybe<Config> = apiService
         .fetchConfig(configUrl)
-        .map {
-            it.toModel()
+        .map { configDto ->
+            configDto.toModel()
         }
-        .doOnSuccess {
-            storeConfig(it)
+        .doOnSuccess { config ->
+            storeConfig(config)
         }
         .onErrorComplete()
         .subscribeOn(Schedulers.io())

@@ -61,18 +61,16 @@ class ConfigRepo @Inject constructor(
             .apply()
     }
 
+    private fun loadStoredConfig() = Config(
+        preferences.getInt(
+            PREF_KEY_MINIMUM_VERSION_CODE,
+            VALUE_DEFAULT_MINIMUM_VERSION_CODE,
+        ),
+    )
+
     private fun storedConfig(): Observable<Config> = Observable
-        .create { emitter ->
-            val minSupportedVersionCode = loadStoredConfig()
-
-            emitter.onNext(Config(minSupportedVersionCode))
-
-            emitter.onComplete()
+        .fromCallable {
+            loadStoredConfig()
         }
         .subscribeOn(Schedulers.io())
-
-    private fun loadStoredConfig() = preferences.getInt(
-        PREF_KEY_MINIMUM_VERSION_CODE,
-        VALUE_DEFAULT_MINIMUM_VERSION_CODE,
-    )
 }

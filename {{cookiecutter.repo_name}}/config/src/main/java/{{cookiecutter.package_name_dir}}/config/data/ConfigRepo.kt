@@ -20,8 +20,8 @@ class ConfigRepo @Inject constructor(
 
     companion object {
         const val NAME_URL_CONFIG = "NAME_URL_CONFIG"
+        const val VALUE_DEFAULT_MINIMUM_VERSION_CODE = -1
         private const val PREF_KEY_MINIMUM_VERSION_CODE = "PREF_KEY_MINIMUM_VERSION_CODE"
-        private const val PREF_VALUE_DEFAULT_MINIMUM_VERSION_CODE = -1
     }
 
     private val refreshRelay = PublishRelay.create<Unit>()
@@ -74,6 +74,6 @@ class ConfigRepo @Inject constructor(
 
     private fun loadStoredConfig() = preferences.getInt(
         PREF_KEY_MINIMUM_VERSION_CODE,
-        PREF_VALUE_DEFAULT_MINIMUM_VERSION_CODE,
+        VALUE_DEFAULT_MINIMUM_VERSION_CODE,
     )
 }

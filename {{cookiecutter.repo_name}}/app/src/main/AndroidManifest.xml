@@ -30,6 +30,7 @@
 
         <activity
             android:name=".features.forceupdate.ForceUpdateActivity"
+            android:launchMode="singleTop"
             android:exported="false" />
 
         {%- if cookiecutter.firebase_messaging == "yes" %}

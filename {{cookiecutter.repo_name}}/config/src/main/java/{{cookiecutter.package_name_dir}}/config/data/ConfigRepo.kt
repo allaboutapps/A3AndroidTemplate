@@ -31,7 +31,6 @@ class ConfigRepo @Inject constructor(
             storedConfig(),
             refreshRelay.startWithItem(Unit).switchMapMaybe { fetchAndStoreConfig() },
         )
-        .subscribeOn(Schedulers.io())
         .distinctUntilChanged()
         .replay(1)
         .autoConnect()

@@ -21,7 +21,7 @@ class ConfigRepo @Inject constructor(
     companion object {
         const val NAME_URL_CONFIG = "NAME_URL_CONFIG"
         private const val PREF_KEY_MINIMUM_VERSION_CODE = "PREF_KEY_MINIMUM_VERSION_CODE"
-        private const val PREF_VALUE_DEFAULT_MINIMUM_VERSION_CODE = -1L
+        private const val PREF_VALUE_DEFAULT_MINIMUM_VERSION_CODE = -1
     }
 
     private val refreshRelay = PublishRelay.create<Unit>()
@@ -58,7 +58,7 @@ class ConfigRepo @Inject constructor(
     private fun storeConfig(config: Config) {
         preferences
             .edit()
-            .putLong(PREF_KEY_MINIMUM_VERSION_CODE, config.minSupportedVersionCode)
+            .putInt(PREF_KEY_MINIMUM_VERSION_CODE, config.minSupportedVersionCode)
             .apply()
     }
 
@@ -72,7 +72,7 @@ class ConfigRepo @Inject constructor(
         }
         .subscribeOn(Schedulers.io())
 
-    private fun loadStoredConfig() = preferences.getLong(
+    private fun loadStoredConfig() = preferences.getInt(
         PREF_KEY_MINIMUM_VERSION_CODE,
         PREF_VALUE_DEFAULT_MINIMUM_VERSION_CODE,
     )

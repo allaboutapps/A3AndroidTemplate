@@ -14,10 +14,3 @@ dependencies {
     implementation(Dependencies.RxJava3)
     implementation(Dependencies.RxRelay)
 }
-
-idea {
-    module {
-        sourceDirs.addAll(files("build/generated/source/kapt/main", "build/generated/source/kaptKotlin/main"))
-        generatedSourceDirs.addAll(files("build/generated/source/kapt/main", "build/generated/source/kaptKotlin/main"))
-    }
-}

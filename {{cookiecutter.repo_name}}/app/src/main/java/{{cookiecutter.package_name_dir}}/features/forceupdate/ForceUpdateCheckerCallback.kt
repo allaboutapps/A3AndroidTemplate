@@ -3,24 +3,24 @@ package {{ cookiecutter.package_name }}.features.forceupdate
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import {{ cookiecutter.package_name }}.BuildConfig
-import {{ cookiecutter.package_name }}.config.data.ConfigRepo
+import {{ cookiecutter.package_name }}.config.usecase.ForceUpdateCheckerUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class ForceUpdateCheckerCallback @Inject constructor(
-    private val configRepo: ConfigRepo,
+    private val forceUpdateCheckerUseCase: ForceUpdateCheckerUseCase,
 ) : Application.ActivityLifecycleCallbacks {
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) = Unit
     override fun onActivityStarted(activity: Activity) {
         if (activity is ForceUpdateActivity) return
 
-        val disposable = configRepo.config()
+        val disposable = forceUpdateCheckerUseCase
+            .isUpdateRequired()
             .take(1)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { config ->
-                if (BuildConfig.VERSION_CODE < config.minSupportedVersionCode) {
+            .subscribe { isUpdateRequired ->
+                if (isUpdateRequired) {
                     activity.startActivity(ForceUpdateActivity.newIntent(activity))
                     activity.finishAffinity()
                 }

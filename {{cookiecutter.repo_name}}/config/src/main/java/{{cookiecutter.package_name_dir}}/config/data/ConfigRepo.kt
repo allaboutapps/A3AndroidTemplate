@@ -20,7 +20,7 @@ class ConfigRepo @Inject constructor(
 
     companion object {
         const val NAME_URL_CONFIG = "NAME_URL_CONFIG"
-        const val VALUE_DEFAULT_MINIMUM_VERSION_CODE = -1
+        const val VALUE_DEFAULT_MINIMUM_VERSION_CODE = -1L
         private const val PREF_KEY_MINIMUM_VERSION_CODE = "PREF_KEY_MINIMUM_VERSION_CODE"
     }
 
@@ -57,12 +57,12 @@ class ConfigRepo @Inject constructor(
     private fun storeConfig(config: Config) {
         preferences
             .edit()
-            .putInt(PREF_KEY_MINIMUM_VERSION_CODE, config.minSupportedVersionCode)
+            .putLong(PREF_KEY_MINIMUM_VERSION_CODE, config.minSupportedVersionCode)
             .apply()
     }
 
     private fun loadStoredConfig() = Config(
-        preferences.getInt(
+        preferences.getLong(
             PREF_KEY_MINIMUM_VERSION_CODE,
             VALUE_DEFAULT_MINIMUM_VERSION_CODE,
         ),

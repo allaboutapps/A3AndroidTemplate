@@ -5,5 +5,5 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class ConfigDto(
-    @Json(name = "minSupportedVersionCode") val minSupportedVersionCode: Int,
+    @Json(name = "minSupportedVersionCode") val minSupportedVersionCode: Long,
 )

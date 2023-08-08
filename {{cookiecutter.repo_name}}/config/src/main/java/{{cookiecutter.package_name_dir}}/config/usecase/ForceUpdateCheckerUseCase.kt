@@ -12,13 +12,17 @@ class ForceUpdateCheckerUseCase @Inject constructor(
     private val configRepo: ConfigRepo,
 ) {
 
-    private val currentVersionCode: Int = try {
+    private val currentVersionCode: Long = try {
         val packageInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             context.packageManager.getPackageInfo(context.packageName, PackageManager.PackageInfoFlags.of(0))
         } else {
             context.packageManager.getPackageInfo(context.packageName, 0)
         }
-        packageInfo.versionCode
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            packageInfo.longVersionCode
+        } else {
+            packageInfo.versionCode.toLong()
+        }
     } catch (e: PackageManager.NameNotFoundException) {
         ConfigRepo.VALUE_DEFAULT_MINIMUM_VERSION_CODE
     }

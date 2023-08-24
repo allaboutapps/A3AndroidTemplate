@@ -4,5 +4,5 @@ plugins {
 }
 
 dependencies {
-    implementation(Dependencies.Retrofit)
+    implementation(libs.retrofit)
 }

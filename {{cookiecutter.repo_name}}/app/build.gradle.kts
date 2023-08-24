@@ -93,11 +93,6 @@ android {
         exclude("META-INF/LICENSE")
         exclude("META-INF/NOTICE")
     }
-
-    dexOptions {
-        javaMaxHeapSize = "4g"
-        preDexLibraries = true
-    }
 }
 
 dependencies {

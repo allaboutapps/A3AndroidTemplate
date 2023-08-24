@@ -1,42 +1,28 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://plugins.gradle.org/m2/")
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Kotlin}")
-        classpath("at.allaboutapps.gradle:plugin:3.0.11")
-        classpath("com.google.android.gms:oss-licenses-plugin:0.10.5")
-        classpath(Dependencies.AndroidXNavigationSafeArgs)
-        {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" %}
-        classpath("com.google.gms:google-services:4.3.3")
-        {%- endif %}
-        {%- if cookiecutter.firebase_crashlytics == "yes" %}
-        classpath(Dependencies.FirebaseCrashlyticsGradle)
-        {%- endif %}
-        classpath("io.github.mfederczuk:ktlint-gradle-plugin:0.1.0-indev04")
+plugins {
+    // removed versions because of buildSrc, see https://github.com/gradle/gradle/issues/20084
+    id(libs.plugins.android.application.get().pluginId).apply(false)
+    id(libs.plugins.android.library.get().pluginId).apply(false)
+    id(libs.plugins.kotlin.android.get().pluginId).apply(false)
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+    alias(libs.plugins.a3).apply(false)
+    alias(libs.plugins.google.ossLicenses).apply(false)
+    alias(libs.plugins.androidx.navigation).apply(false)
+    alias(libs.plugins.ktlint).apply(false)
+
+    {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" %}
+    alias(libs.plugins.google.services).apply(false)
+    {%- endif %}
+    {%- if cookiecutter.firebase_crashlytics == "yes" %}
+    alias(libs.plugins.firebase.crashlytics).apply(false)
+    {%- endif %}
 }
 
 if (!project.hasProperty("devBuild")) {
     // flag used for some build performance improvements
     // add `devBuild=true` to your global gradle.properties to use
     project.ext["devBuild"] = false
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://jitpack.io")
-    }
 }
 
 tasks.register("clean", Delete::class) {

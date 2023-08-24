@@ -4,5 +4,5 @@ plugins {
 }
 
 dependencies {
-    implementation(Dependencies.Moshi)
+    implementation(libs.moshi)
 }

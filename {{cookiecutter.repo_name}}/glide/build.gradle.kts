@@ -7,11 +7,10 @@ plugins {
 
 dependencies {
     // expose Glide as api since we may need to use transformers etc
-    api("com.github.bumptech.glide:glide:${Versions.Glide}")
-    kapt("com.github.bumptech.glide:compiler:${Versions.Glide}")
+    api(libs.glide)
+    kapt(libs.glide.compiler)
 
-    kapt(Dependencies.AndroidXAnnotations)
+    kapt(libs.androidx.annotations)
 
-    implementation(Dependencies.AndroidXAppCompat)
-    implementation(Dependencies.KotlinStdLib)
+    implementation(libs.androidx.appCompat)
 }

@@ -1,27 +1,29 @@
 plugins {
     BuildPlugin
     com.android.application
-    id("com.google.android.gms.oss-licenses-plugin")
-    id("at.allaboutapps.gradle-plugin")
     `kotlin-android`
     `kotlin-kapt`
-    id("androidx.navigation.safeargs.kotlin")
     `kotlin-parcelize`
-    {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" %}
-    id("com.google.gms.google-services")
+    id(libs.plugins.a3.get().pluginId)
+    id(libs.plugins.ktlint.get().pluginId)
+    id(libs.plugins.google.ossLicenses.get().pluginId)
+    id(libs.plugins.androidx.navigation.get().pluginId)
+    {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" %}
+    id(libs.plugins.google.services.get().pluginId)
     {%- endif %}
     {%- if cookiecutter.firebase_crashlytics == "yes" %}
-    id("com.google.firebase.crashlytics")
+    id(libs.plugins.firebase.crashlytics.get().pluginId)
     {%- endif %}
-    id("io.github.mfederczuk.ktlint")
 }
 
 ktlint {
-    version.set(Versions.Ktlint)
+    version.set("0.50.0")
     installGitPreCommitHookBeforeBuild.set(true)
 }
 
 android {
+    namespace = "{{cookiecutter.package_name}}"
+
     defaultConfig {
         applicationId = "{{cookiecutter.package_name}}"
 
@@ -32,17 +34,18 @@ android {
 
         addManifestPlaceholders(mapOf("apiKey" to "secret")) // use with ${apiKey} in manifest
 
-        resConfigs("de") // todo specify default locale(s)
-
         buildConfigField(
             "String",
             "URL_CONFIG",
             "\"https://public.allaboutapps.at/config/{{ cookiecutter.repo_name }}/version.json\"",
         )
+
+        resConfigs("de") // todo specify default locale(s)
     }
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -60,24 +63,23 @@ android {
         }
     }
 
-    flavorDimensions("environment")
+    flavorDimensions.add("environment")
 
     productFlavors {
         create("development") {
             dimension = "environment"
             ext["neverBuildRelease"] = true
-
+            applicationIdSuffix = ".development"
             buildConfigField("String", "SERVER_API_URL", "\"https://debug.example.com/\"")
         }
         create("staging") {
             dimension = "environment"
             ext["neverBuildRelease"] = true
-
+            applicationIdSuffix = ".staging"
             buildConfigField("String", "SERVER_API_URL", "\"https://staging.example.com/\"")
         }
         create("live") {
             dimension = "environment"
-
             buildConfigField("String", "SERVER_API_URL", "\"https://www.example.com/\"")
         }
     }
@@ -99,7 +101,7 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+    coreLibraryDesugaring(libs.android.coreLibDesugaring)
 
     implementation(project(":networking"))
     implementation(project(":unwrapretrofit"))
@@ -107,89 +109,64 @@ dependencies {
     implementation(project(":glide"))
     implementation(project(":config"))
 
-    implementation(Dependencies.KotlinStdLib)
-    implementation(Dependencies.MaterialComponents)
-    {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" %}
+    implementation(libs.androidx.core.coreKtx)
+    implementation(libs.androidx.core.splash)
+    implementation(libs.androidx.preferenceKtx)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.android.material)
 
-    // Firebase Libs
-    implementation(platform(Dependencies.FirebaseBom))
-    {%- if cookiecutter.firebase_analytics == "yes" %}
-    implementation(Dependencies.FirebaseAnalytics)
-    {%- endif %}
-    {%- if cookiecutter.firebase_messaging == "yes" %}
-    implementation(Dependencies.FirebaseMessaging)
-    {%- endif %}
-    {%- if cookiecutter.firebase_crashlytics == "yes" %}
-    implementation(Dependencies.FirebaseCrashlytics)
-    {%- endif %}
-    {%- endif %}
+    // Lifecycle
+    implementation(libs.androidx.lifecycle.viewmodelKtx)
+    implementation(libs.androidx.lifecycle.livedataKtx)
+    implementation(libs.androidx.lifecycle.reactivestreamsKtx)
+    kapt(libs.androidx.lifecycle.compiler)
 
-    // ViewBinding helper
-    implementation(Dependencies.ViewBindingDelegate)
+    // Dagger
+    implementation(libs.dagger)
+    implementation(libs.dagger.android)
+    implementation(libs.dagger.android.support)
+    kapt(libs.dagger.compiler)
+    kapt(libs.dagger.compiler.android)
 
-    // aaa libs
-    implementation(Dependencies.A3Utilities)
-    implementation(Dependencies.A3RecyclerViewDecorations)
+    // Firebase
+    implementation(platform(libs.firebase.platform))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
 
-    // Splashscreen
-    implementation(Dependencies.AndroidXSplashScreen)
+    // Rx
+    implementation(libs.rx.java3)
+    implementation(libs.rx.kotlin3)
+    implementation(libs.rx.android3)
 
-    // Android Kotlin Extensions by Google
-    // https://developer.android.com/kotlin/ktx
-    implementation(Dependencies.AndroidXCoreKtx)
-    implementation(Dependencies.AndroidXPreferenceManager)
+    // A3
+    implementation(libs.a3.utilities)
+    implementation(libs.a3.recyclerViewDecorations)
 
-    // Support library depends on this lightweight import
-    implementation(Dependencies.AndroidXLifecycleViewModel)
-    implementation(Dependencies.AndroidXLifecycleLiveData)
+    // ViewBinding Delegate
+    implementation(libs.fragmentViewBindingDelegate)
 
-    kapt(Dependencies.Kapt.AndroidXLifecycleCompiler)
+    // Play Services Licenses
+    implementation(libs.android.playServicesOssLicenses)
 
-    // optional - ReactiveStreams support for LiveData
-    implementation(Dependencies.AndroidXLifecycleReactiveStreams)
+    // Play App Update
+    implementation(libs.android.playAppUpdateKtx)
 
-    // Play Services Licenses Lib
-    implementation(Dependencies.PlayServicesLicenses)
+    // Logging
+    implementation(libs.timber)
 
-    // Play app update
-    implementation(Dependencies.PlayAppUpdate)
-    implementation(Dependencies.PlayAppUpdateKtx)
+    // Networking
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.adapter.rx3)
+    implementation(libs.retrofit.converter.moshi)
+    implementation(libs.okhttp.interceptor.logging)
+    implementation(libs.moshi)
+    implementation(libs.moshi.adapters)
 
-    // logging
-    implementation(Dependencies.Timber)
-
-    implementation(Dependencies.RxJava3)
-    implementation(Dependencies.RxJavaAndroid3)
-    implementation(Dependencies.RxKotlin3)
-
-    // networking
-    implementation(Dependencies.RetrofitAdapterRxJava3)
-    implementation(Dependencies.RetrofitConverterMoshi)
-
-    implementation(Dependencies.OkHttpLoggingInterceptor)
-    implementation(Dependencies.Moshi)
-    implementation(Dependencies.MoshiAdapters)
-
-    // dependency injection
-    implementation(Dependencies.Dagger)
-    implementation(Dependencies.DaggerAndroid)
-    implementation(Dependencies.DaggerAndroidSupport)
-    kapt(Dependencies.Kapt.DaggerCompiler)
-    kapt(Dependencies.Kapt.DaggerCompilerAndroid)
-
-    // Leak Canary
-    // debugImplementation because LeakCanary should only run in debug builds.
-    debugImplementation(Dependencies.LeakCanary)
-
-    implementation(Dependencies.AndroidXNavigationFragment)
-    implementation(Dependencies.AndroidXNavigationUI)
+    debugImplementation(libs.leakCanary)
 }
-{%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" %}
 
-plugins.apply("com.google.gms.google-services")
-{%- endif %}
 {%- if cookiecutter.string_tool == "texterify" %}
-
 fun osIsWindows(): Boolean {
     return System.getProperty("os.name").contains("windows", ignoreCase = true)
 }

@@ -3,14 +3,14 @@ plugins {
     com.android.library
     `kotlin-android`
     `kotlin-kapt`
-    idea
 }
 
 dependencies {
     implementation(project(":networking"))
 
-    implementation(Dependencies.Dagger)
+    // Dagger
+    implementation(libs.dagger)
 
-    implementation(Dependencies.RxJava3)
-    implementation(Dependencies.RxRelay)
+    implementation(libs.rx.java3)
+    implementation(libs.rx.relay3)
 }

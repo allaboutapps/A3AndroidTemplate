@@ -121,8 +121,8 @@ class BuildPlugin : Plugin<Project> {
     }
 
     companion object {
-        const val COMPILE_SDK_VERSION = 33
-        const val TARGET_SDK_VERSION = 33
+        const val COMPILE_SDK_VERSION = 34
+        const val TARGET_SDK_VERSION = 34
         const val DEFAULT_MIN_SDK_VERSION = 26
     }
 }

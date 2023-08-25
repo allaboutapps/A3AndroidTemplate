@@ -23,6 +23,9 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int = 0) :
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
+    override val defaultViewModelProviderFactory: ViewModelProvider.Factory
+        get() = viewModelFactoryFactory.create(this, arguments)
+
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
     /**

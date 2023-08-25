@@ -9,7 +9,7 @@
 
     <!-- Base application theme. -->
     <!-- This theme will be set for all activities after initializing -->
-    <style name="Theme.App" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

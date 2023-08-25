@@ -8,5 +8,7 @@ class MainViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
+    val greeting: String = "Welcome!"
+
     // TODO: Implement the ViewModel
 }

@@ -5,6 +5,10 @@ plugins {
     `kotlin-kapt`
 }
 
+android {
+    namespace = "at.aaa.one.config"
+}
+
 dependencies {
     implementation(project(":networking"))
 

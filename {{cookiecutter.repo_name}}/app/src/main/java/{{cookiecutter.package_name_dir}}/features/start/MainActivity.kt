@@ -1,18 +1,48 @@
 package {{ cookiecutter.package_name }}.features.start
 
 import android.os.Bundle
-import {{ cookiecutter.package_name }}.R
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import {{ cookiecutter.package_name }}.base.BaseActivity
-import timber.log.Timber
+import {{ cookiecutter.package_name }}.theme.AppTheme
+import androidx.lifecycle.viewmodel.compose.viewModel as composeViewModel
 
 class MainActivity : BaseActivity() {
-
-    private lateinit var viewModel: MainViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        viewModel = viewModel()
-        Timber.d("hallo log")
+        setContent {
+            AppTheme {
+                Content()
+            }
+        }
+    }
+}
+
+@Composable
+private fun Content(viewModel: MainViewModel = composeViewModel()) {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background,
+    ) {
+        GreetingView(viewModel.greeting)
+    }
+}
+
+@Composable
+fun GreetingView(text: String) {
+    Text(text = text)
+}
+
+@Preview
+@Composable
+fun DefaultPreview() {
+    AppTheme {
+        GreetingView("Hello, Android!")
     }
 }

@@ -23,6 +23,9 @@ abstract class BaseActivity : AppCompatActivity(), Injectable, HasAndroidInjecto
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
+    override val defaultViewModelProviderFactory: ViewModelProvider.Factory
+        get() = viewModelFactoryFactory.create(this, intent.extras)
+
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
     override fun onCreate(savedInstanceState: Bundle?) {

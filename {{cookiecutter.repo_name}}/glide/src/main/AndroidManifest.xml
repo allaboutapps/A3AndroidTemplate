@@ -1,1 +1,1 @@
-<manifest package="{{ cookiecutter.package_name }}.glide" />
+<manifest />

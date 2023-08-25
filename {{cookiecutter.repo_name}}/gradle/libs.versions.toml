@@ -1,10 +1,26 @@
 [versions]
-kotlin = "1.8.22"
+
+### GRADLE ###
+agp = "8.0.2"
 google-services = "4.3.15"
 google-ossLicenses = "0.10.6"
 firebase-crashlytics = "2.9.8"
 ktlint = "0.1.0-indev05"
-agp = "7.4.2"
+a3-gradle = "3.0.11"
+
+### KOTLIN ###
+kotlin = "1.8.22"
+ksp = "1.8.22-1.0.11" # sync with kotlin version
+kotlinx-datetime = "0.4.0"
+kotlinx-coroutines = "1.7.3"
+kotlinx-serialization = "1.6.0-RC"
+ktor = "2.3.3"
+ktorfit-plugin = "1.0.0"
+ktorfit = "1.5.0"
+koin = "3.4.3"
+koin-compose = "3.4.6"
+
+### ANDROID ###
 androidx-navigation = "2.5.2"
 androidx-lifecycle = "2.5.1"
 androidx-paging = "3.1.1"
@@ -26,16 +42,43 @@ mockk = "1.13.2"
 ### GRADLE ###
 gradleplugin-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradleplugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-gradleplugin-a3 = { module = "at.allaboutapps.gradle:plugin", version = "3.0.11" }
-gradleplugin-ktlint = { module = "io.github.mfederczuk:ktlint-gradle-plugin", version = "0.1.0-indev05" }
+gradleplugin-a3 = { module = "at.allaboutapps.gradle:plugin", version.ref = "a3-gradle" }
+gradleplugin-ktlint = { module = "io.github.mfederczuk:ktlint-gradle-plugin", version.ref = "ktlint" }
 gradleplugin-androidx-navigation = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx.navigation" }
 gradleplugin-google-services = { module = "com.google.gms:google-services", version.ref = "google-services" }
 gradleplugin-google-ossLicenses = { module = "com.google.android.gms:oss-licenses-plugin", version.ref = "google-ossLicenses" }
 gradleplugin-firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebase-crashlytics" }
 gradleplugin-dagger-hilt = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "dagger" }
+gradleplugin-ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
+gradleplugin-ktorfit = { module = "de.jensklingenberg.ktorfit:gradle-plugin", version.ref = "ktorfit-plugin" }
 
 ### KOTLIN ###
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-debug = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-debug", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-guava = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-guava", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+kotlinx-serialization-cbor = { module = "org.jetbrains.kotlinx:kotlinx-serialization-cbor", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-hocon = { module = "org.jetbrains.kotlinx:kotlinx-serialization-hocon", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-properties = { module = "org.jetbrains.kotlinx:kotlinx-serialization-properties", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf", version.ref = "kotlinx-serialization" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorfit = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-android-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-compose" }
+koin-android-compose-navigation = { module = "io.insert-koin:koin-androidx-compose-navigation", version.ref = "koin-compose" }
 
 ### ANDROID ###
 android-coreLibDesugaring = 'com.android.tools:desugar_jdk_libs:2.0.3'
@@ -62,7 +105,10 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-lifecycle-viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx.lifecycle" }
 androidx-lifecycle-livedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx.lifecycle" }
 androidx-lifecycle-reactivestreamsKtx = { module = "androidx.lifecycle:lifecycle-reactivestreams-ktx", version.ref = "androidx.lifecycle" }
+androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "androidx.lifecycle" }
 androidx-lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "androidx.lifecycle" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx.lifecycle" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx.lifecycle" }
 
 androidx-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "androidx.paging" }
 androidx-paging-rx3 = { module = "androidx.paging:paging-rxjava3", version.ref = "androidx.paging" }
@@ -74,6 +120,7 @@ androidx-preferenceKtx = "androidx.preference:preference-ktx:1.2.1"
 androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx.navigation" }
 androidx-navigation-UI = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx.navigation" }
 androidx-navigation-safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx.navigation" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx.navigation" }
 
 androidx-hilt-navigation = 'androidx.hilt:hilt-navigation-fragment:1.0.0'
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidx.hilt" }
@@ -88,6 +135,13 @@ androidx-camera-lifecycle = { module = "androidx.camera:camera-lifecycle", versi
 androidx-camera-video = { module = "androidx.camera:camera-video", version.ref = "androidx.camerax" }
 androidx-camera-view = { module = "androidx.camera:camera-view", version.ref = "androidx.camerax" }
 androidx-camera-extensions = { module = "androidx.camera:camera-extensions", version.ref = "androidx.camerax" }
+
+androidx-compose-platform = "androidx.compose:compose-bom:2023.08.00"
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-compose-material3-windowsizeclass = { module = "androidx.compose.material3:material3-window-size-class" }
+androidx-compose-material-icons = { module = "androidx.compose.material:material-icons-extended" }
 
 rx-java3 = "io.reactivex.rxjava3:rxjava:3.1.6"
 rx-android3 = "io.reactivex.rxjava3:rxandroid:3.0.2"
@@ -175,17 +229,20 @@ youtubeplayer = "com.pierfrancescosoffritti.androidyoutubeplayer:core:12.0.0"
 
 util-sort-alphanumeric = "se.sawano.java:alphanumeric-comparator:1.4.1"
 
+
 [bundles]
 
-[plugins]
 
+[plugins]
 
 ### KOTLIN ###
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit-plugin" }
 
 ### ANDROID ###
-a3 = { id = "at.allaboutapps.gradle-plugin", version = "3.0.11" }
+a3 = { id = "at.allaboutapps.gradle-plugin", version.ref = "a3-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }

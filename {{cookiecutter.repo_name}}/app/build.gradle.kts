@@ -44,8 +44,13 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        compose = true
         buildConfig = true
+    }
+
+    composeOptions {
+        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin#pre-release_kotlin_compatibility
+        kotlinCompilerExtensionVersion = "1.4.8"
     }
 
     compileOptions {
@@ -83,16 +88,6 @@ android {
             buildConfigField("String", "SERVER_API_URL", "\"https://www.example.com/\"")
         }
     }
-
-    packagingOptions {
-        exclude("LICENSE.txt")
-        exclude("META-INF/LICENSE.txt")
-        exclude("META-INF/NOTICE.txt")
-        exclude("META-INF/ASL2.0")
-        exclude("META-INF/DEPENDENCIES")
-        exclude("META-INF/LICENSE")
-        exclude("META-INF/NOTICE")
-    }
 }
 
 dependencies {
@@ -111,6 +106,19 @@ dependencies {
     implementation(libs.androidx.navigation.ui)
     implementation(libs.android.material)
 
+    implementation(platform(libs.androidx.compose.platform))
+    // Material Design 3
+    implementation(libs.androidx.compose.material3)
+    // Preview support
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    // Window size utils
+    implementation(libs.androidx.compose.material3.windowsizeclass)
+    // Integration with activities
+    implementation(libs.androidx.activity.compose)
+    // Integration with ViewModels
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
     // Lifecycle
     implementation(libs.androidx.lifecycle.viewmodelKtx)
     implementation(libs.androidx.lifecycle.livedataKtx)
@@ -128,6 +136,9 @@ dependencies {
     implementation(platform(libs.firebase.platform))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
+    {%- if cookiecutter.firebase_messaging == "yes" %}
+    implementation(libs.firebase.messaging)
+    {%- endif %}
 
     // Rx
     implementation(libs.rx.java3)

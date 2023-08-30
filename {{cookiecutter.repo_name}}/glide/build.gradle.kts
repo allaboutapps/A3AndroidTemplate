@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "at.aaa.one.glide"
+    namespace = "{{ cookiecutter.package_name }}.glide"
 }
 
 dependencies {

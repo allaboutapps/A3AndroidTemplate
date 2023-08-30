@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "at.aaa.one.config"
+    namespace = "{{ cookiecutter.package_name }}.config"
 }
 
 dependencies {

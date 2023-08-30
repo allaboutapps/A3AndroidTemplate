@@ -5,7 +5,7 @@ agp = "8.0.2"
 google-services = "4.3.15"
 google-ossLicenses = "0.10.6"
 firebase-crashlytics = "2.9.8"
-ktlint = "0.1.0-indev05"
+ktlint-gradle = "0.1.0-indev05"
 a3-gradle = "3.0.11"
 
 ### KOTLIN ###
@@ -19,8 +19,10 @@ ktorfit-plugin = "1.0.0"
 ktorfit = "1.5.0"
 koin = "3.4.3"
 koin-compose = "3.4.6"
+ktlint = "0.50.0"
 
 ### ANDROID ###
+compose-compiler = "1.4.8" # https://developer.android.com/jetpack/androidx/releases/compose-kotlin#pre-release_kotlin_compatibility
 androidx-navigation = "2.5.2"
 androidx-lifecycle = "2.5.1"
 androidx-paging = "3.1.1"
@@ -43,7 +45,7 @@ mockk = "1.13.2"
 gradleplugin-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradleplugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradleplugin-a3 = { module = "at.allaboutapps.gradle:plugin", version.ref = "a3-gradle" }
-gradleplugin-ktlint = { module = "io.github.mfederczuk:ktlint-gradle-plugin", version.ref = "ktlint" }
+gradleplugin-ktlint = { module = "io.github.mfederczuk:ktlint-gradle-plugin", version.ref = "ktlint-gradle" }
 gradleplugin-androidx-navigation = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx.navigation" }
 gradleplugin-google-services = { module = "com.google.gms:google-services", version.ref = "google-services" }
 gradleplugin-google-ossLicenses = { module = "com.google.android.gms:oss-licenses-plugin", version.ref = "google-ossLicenses" }
@@ -248,6 +250,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics" }
-ktlint = { id = "io.github.mfederczuk.ktlint", version.ref = "ktlint" }
+ktlint = { id = "io.github.mfederczuk.ktlint", version.ref = "ktlint-gradle" }
 google-ossLicenses = { id = "com.google.android.gms.oss-licenses-plugin", version.ref = "google-ossLicenses" }
 androidx-navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidx.navigation" }

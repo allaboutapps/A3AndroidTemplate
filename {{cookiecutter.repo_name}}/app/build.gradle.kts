@@ -17,7 +17,7 @@ plugins {
 }
 
 ktlint {
-    version.set("0.50.0")
+    version.set(libs.versions.ktlint.asProvider().get())
     installGitPreCommitHookBeforeBuild.set(true)
 }
 
@@ -49,8 +49,7 @@ android {
     }
 
     composeOptions {
-        // https://developer.android.com/jetpack/androidx/releases/compose-kotlin#pre-release_kotlin_compatibility
-        kotlinCompilerExtensionVersion = "1.4.8"
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 
     compileOptions {

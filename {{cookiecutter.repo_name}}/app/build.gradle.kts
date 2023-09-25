@@ -30,7 +30,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled = true
-        vectorDrawables.useSupportLibrary = false // only for < API 21
 
         addManifestPlaceholders(mapOf("apiKey" to "secret")) // use with ${apiKey} in manifest
 

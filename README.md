@@ -2,7 +2,7 @@
 
 _Use this template project to improve your project setup experience._
 
-![all about apps](https://kcdn.at/company/51740/3214808/aaa3000.png "all about apps")
+<img alt="all about apps" src="https://allaboutapps.at/wp-content/uploads/2023/04/aaa_logo_white.png" width="200" />
 
 ## Contents
 
@@ -40,8 +40,8 @@ Supply the following values when prompted:
 2) `app_name`                - App name (pretty/display name)
 3) `package_name`            - App package name (e.g.: `com.example.app`)
 4) `package_name_dir`        - Directory of the app package, relative to the `app/src/main/java` directory.
-                               (used to generate the correct directory structure)  
-                               Default value is the same as `package_name`, with dots/periods replaced with slashes.
+   (used to generate the correct directory structure)  
+   Default value is the same as `package_name`, with dots/periods replaced with slashes.
 5) `string_tool`             - The string-export tool for this project (`none` or `texterify`)
 6) `texterify_project_id`    - ID of your Texterify project (default is empty)
 7) `texterify_export_config` - Export Configuration ID of your Texterify project (default is empty)

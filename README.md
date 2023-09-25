@@ -2,7 +2,7 @@
 
 _Use this template project to improve your project setup experience._
 
-<img alt="all about apps" src="https://allaboutapps.at/wp-content/uploads/2023/04/aaa_logo_white.png" width="200" />
+![all about apps](.github/aaa_logo.png "The company log of all about apps")
 
 ## Contents
 

@@ -40,7 +40,7 @@ android {
             "\"https://public.allaboutapps.at/config/{{ cookiecutter.repo_name }}/version.json\"",
         )
 
-        resConfigs("de") // todo specify default locale(s)
+        resourceConfigurations.add("de") // todo specify default locale(s)
     }
 
     buildFeatures {

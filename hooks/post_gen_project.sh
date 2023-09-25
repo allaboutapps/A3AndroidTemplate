@@ -74,7 +74,7 @@ if [ "$use_fb_analytics" = 'yes' ] || [ "$use_fb_messaging" = 'yes' ] || [ "$use
     printf '%s\n' "$clr_reset"
 fi
 
-git init --quiet --initial-branch='master'
+git init --quiet --initial-branch='main'
 git add --all
 
 printf '\nProject setup completed. Happy coding! :)\n'

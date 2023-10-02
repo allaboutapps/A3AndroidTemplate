@@ -11,4 +11,5 @@ dependencies {
     implementation(gradleApi())
     implementation(libs.gradleplugin.android)
     implementation(libs.gradleplugin.kotlin)
+    implementation(libs.squareup.javapoet)
 }

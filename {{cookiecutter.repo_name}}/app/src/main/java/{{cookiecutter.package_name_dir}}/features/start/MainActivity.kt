@@ -9,11 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import {{ cookiecutter.package_name }}.base.BaseActivity
+import androidx.appcompat.app.AppCompatActivity
 import {{ cookiecutter.package_name }}.theme.AppTheme
 import androidx.lifecycle.viewmodel.compose.viewModel as composeViewModel
 
-class MainActivity : BaseActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

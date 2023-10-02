@@ -9,7 +9,7 @@ import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import {{ cookiecutter.package_name }}.R
-import {{ cookiecutter.package_name }}.base.BaseActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.Task
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.appupdate.AppUpdateOptions
@@ -19,7 +19,7 @@ import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.disposables.Disposable
 import timber.log.Timber
 
-class ForceUpdateActivity : BaseActivity() {
+class ForceUpdateActivity : AppCompatActivity() {
 
     companion object {
         fun newIntent(context: Context) = Intent(context, ForceUpdateActivity::class.java)

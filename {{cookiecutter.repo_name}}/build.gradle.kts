@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.google.ossLicenses).apply(false)
     alias(libs.plugins.androidx.navigation).apply(false)
     alias(libs.plugins.ktlint).apply(false)
+    alias(libs.plugins.hilt.android).apply(false)
 
     {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" or cookiecutter.firebase_crashlytics == "yes" %}
     alias(libs.plugins.google.services).apply(false)

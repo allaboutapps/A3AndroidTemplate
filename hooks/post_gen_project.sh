@@ -35,8 +35,7 @@ if [ "$use_fb_messaging" != 'yes' ]; then
         rm -- 'app/google-services.json'
     fi
 
-    rm -r -- "app/src/main/java/$package_name_dir/features/fcm" \
-             "app/src/main/java/$package_name_dir/di/FirebaseModule.kt"
+    rm -r -- "app/src/main/java/$package_name_dir/features/fcm"
 fi
 
 case "$string_tool" in

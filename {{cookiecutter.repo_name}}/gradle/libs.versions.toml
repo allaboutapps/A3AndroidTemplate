@@ -38,6 +38,7 @@ room = "2.5.2"
 work = "2.8.1"
 junit = "5.9.1"
 mockk = "1.13.2"
+squareup-javapoet = "1.13.0"
 
 [libraries]
 
@@ -218,7 +219,7 @@ test-junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref =
 test-junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
 test-junit-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
 
-javapoet = "com.squareup:javapoet:1.13.0"
+squareup-javapoet = { module = "com.squareup:javapoet", version.ref = "squareup-javapoet" }
 
 tagsoup = "org.ccil.cowan.tagsoup:tagsoup:1.2.1"
 
@@ -253,3 +254,4 @@ firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "
 ktlint = { id = "io.github.mfederczuk.ktlint", version.ref = "ktlint-gradle" }
 google-ossLicenses = { id = "com.google.android.gms.oss-licenses-plugin", version.ref = "google-ossLicenses" }
 androidx-navigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidx.navigation" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }

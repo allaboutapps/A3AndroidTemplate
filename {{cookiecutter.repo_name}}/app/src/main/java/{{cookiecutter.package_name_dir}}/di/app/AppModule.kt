@@ -4,22 +4,21 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import at.allaboutapps.moshi.converter.envelope.EnvelopeAdapterFactory
 import at.allaboutapps.retrofit.converter.unwrap.UnwrapConverterFactory
 import {{ cookiecutter.package_name }}.BuildConfig
-import {{ cookiecutter.package_name }}.di.viewmodel.ViewModelModule
+import {{ cookiecutter.package_name }}.config.data.ConfigRepo
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
-import {{ cookiecutter.package_name }}.config.data.ConfigRepo
-import at.allaboutapps.moshi.converter.envelope.EnvelopeAdapterFactory
-{%- if cookiecutter.firebase_messaging == "yes" %}
-import com.google.firebase.messaging.FirebaseMessaging
-{%- endif %}
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import dagger.hilt.migration.DisableInstallInCheck
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,15 +28,20 @@ import java.util.Date
 import javax.inject.Named
 import javax.inject.Singleton
 
+{%- if cookiecutter.firebase_messaging == "yes" %}
+import com.google.firebase.messaging.FirebaseMessaging
+{%- endif %}
+
+@InstallIn(SingletonComponent::class)
 @Module(
-    includes = [
-        ViewModelModule::class,
-        AppModule.Bindings::class,
-    ],
+        includes = [
+            AppModule.Bindings::class,
+        ],
 )
 class AppModule {
 
     @Module
+    @DisableInstallInCheck
     interface Bindings {
         @Binds
         fun context(app: Application): Context
@@ -47,16 +51,16 @@ class AppModule {
     @Provides
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
-            .add(Date::class.java, Rfc3339DateJsonAdapter())
-            .add(EnvelopeAdapterFactory())
-            .build()
+                .add(Date::class.java, Rfc3339DateJsonAdapter())
+                .add(EnvelopeAdapterFactory())
+                .build()
     }
 
     @Singleton
     @Provides
     fun provideOkHttp(agentInterceptor: UserAgentInterceptor): OkHttpClient {
         val builder = OkHttpClient.Builder()
-            .addInterceptor(agentInterceptor)
+                .addInterceptor(agentInterceptor)
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -72,24 +76,18 @@ class AppModule {
     @Singleton
     @Provides
     fun provideApiService(
-        okHttp: OkHttpClient,
-        moshi: Moshi,
+            okHttp: OkHttpClient,
+            moshi: Moshi,
     ): ApiService {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.SERVER_API_URL)
-            .client(okHttp)
-            .addConverterFactory(UnwrapConverterFactory())
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .build()
-            .create(ApiService::class.java)
+                .baseUrl(BuildConfig.SERVER_API_URL)
+                .client(okHttp)
+                .addConverterFactory(UnwrapConverterFactory())
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .build()
+                .create(ApiService::class.java)
     }
-    {%- if cookiecutter.firebase_messaging == "yes" %}
-
-    @Singleton
-    @Provides
-    fun provideFcmInstance(): FirebaseMessaging = FirebaseMessaging.getInstance()
-    {%- endif %}
 
     @Reusable
     @Provides

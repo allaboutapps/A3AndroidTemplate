@@ -7,6 +7,7 @@ plugins {
     id(libs.plugins.a3.get().pluginId)
     id(libs.plugins.ktlint.get().pluginId)
     id(libs.plugins.google.ossLicenses.get().pluginId)
+    id(libs.plugins.hilt.android.get().pluginId)
     id(libs.plugins.androidx.navigation.get().pluginId)
     {%- if cookiecutter.firebase_analytics == "yes" or cookiecutter.firebase_messaging == "yes" %}
     id(libs.plugins.google.services.get().pluginId)
@@ -125,10 +126,9 @@ dependencies {
 
     // Dagger
     implementation(libs.dagger)
-    implementation(libs.dagger.android)
-    implementation(libs.dagger.android.support)
+    implementation(libs.dagger.hilt)
     kapt(libs.dagger.compiler)
-    kapt(libs.dagger.compiler.android)
+    kapt(libs.dagger.compiler.hilt)
 
     // Firebase
     implementation(platform(libs.firebase.platform))

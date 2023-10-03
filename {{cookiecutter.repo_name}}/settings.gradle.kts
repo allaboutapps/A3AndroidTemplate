@@ -26,9 +26,19 @@ dependencyResolutionManagement {
     }
 }
 
+fun feature(path: String) = listOf(":features$path:impl", ":features$path:public")
+fun screen(path: String) = listOf(":screens$path:impl", ":screens$path:public")
+
 include(":app")
 include(":networking")
-include(":glide")
 include(":unwrapretrofit")
 include(":envelope")
 include(":config")
+
+include(":common:navigation")
+
+include(feature(":home"))
+include(feature(":navigation"))
+
+include(screen(":about"))
+include(screen(":homescreen"))

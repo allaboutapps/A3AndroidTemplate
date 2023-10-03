@@ -34,9 +34,9 @@ import com.google.firebase.messaging.FirebaseMessaging
 
 @InstallIn(SingletonComponent::class)
 @Module(
-        includes = [
-            AppModule.Bindings::class,
-        ],
+    includes = [
+        AppModule.Bindings::class,
+    ],
 )
 class AppModule {
 
@@ -51,16 +51,16 @@ class AppModule {
     @Provides
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
-                .add(Date::class.java, Rfc3339DateJsonAdapter())
-                .add(EnvelopeAdapterFactory())
-                .build()
+            .add(Date::class.java, Rfc3339DateJsonAdapter())
+            .add(EnvelopeAdapterFactory())
+            .build()
     }
 
     @Singleton
     @Provides
     fun provideOkHttp(agentInterceptor: UserAgentInterceptor): OkHttpClient {
         val builder = OkHttpClient.Builder()
-                .addInterceptor(agentInterceptor)
+            .addInterceptor(agentInterceptor)
 
         if (BuildConfig.DEBUG) {
             builder.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -76,17 +76,17 @@ class AppModule {
     @Singleton
     @Provides
     fun provideApiService(
-            okHttp: OkHttpClient,
-            moshi: Moshi,
+        okHttp: OkHttpClient,
+        moshi: Moshi,
     ): ApiService {
         return Retrofit.Builder()
-                .baseUrl(BuildConfig.SERVER_API_URL)
-                .client(okHttp)
-                .addConverterFactory(UnwrapConverterFactory())
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .build()
-                .create(ApiService::class.java)
+            .baseUrl(BuildConfig.SERVER_API_URL)
+            .client(okHttp)
+            .addConverterFactory(UnwrapConverterFactory())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .build()
+            .create(ApiService::class.java)
     }
 
     @Reusable

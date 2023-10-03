@@ -2,8 +2,8 @@ package {{ cookiecutter.package_name }}.screens.about.impl
 
 import android.os.Bundle
 import androidx.navigation.NavController
-import com.example.app.common.navigation.navigateWithArgs
-import com.example.app.features.about.pub.AboutNavigator
+import {{ cookiecutter.package_name }}.common.navigation.navigateWithArgs
+import {{ cookiecutter.package_name }}.screens.about.pub.AboutNavigator
 import javax.inject.Inject
 
 class AboutNavigatorImpl @Inject constructor() : AboutNavigator {

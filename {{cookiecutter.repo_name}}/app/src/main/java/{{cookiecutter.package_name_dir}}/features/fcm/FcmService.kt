@@ -2,19 +2,15 @@ package {{ cookiecutter.package_name }}.features.fcm
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import dagger.android.AndroidInjection
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FcmService : FirebaseMessagingService() {
     @Inject lateinit var fcmHandler: FcmHandler
 
     @Inject lateinit var tokenHandler: FirebaseTokenHandler
-
-    override fun onCreate() {
-        AndroidInjection.inject(this)
-        super.onCreate()
-    }
 
     /**
      * Called when message is received when the app is in the foreground.

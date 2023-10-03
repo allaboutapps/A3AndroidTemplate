@@ -36,6 +36,7 @@ include(":envelope")
 include(":config")
 
 include(":common:navigation")
+include(":common:theme")
 
 include(feature(":home"))
 include(feature(":navigation"))

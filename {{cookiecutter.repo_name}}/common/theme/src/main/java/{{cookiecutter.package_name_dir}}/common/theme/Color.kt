@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.theme
+package {{ cookiecutter.package_name }}.common.theme
 
 import androidx.compose.ui.graphics.Color
 

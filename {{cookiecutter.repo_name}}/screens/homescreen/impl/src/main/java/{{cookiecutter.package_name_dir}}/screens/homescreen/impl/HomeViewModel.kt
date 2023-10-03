@@ -1,7 +1,7 @@
 package {{ cookiecutter.package_name }}.screens.homescreen.impl
 
 import androidx.lifecycle.ViewModel
-import com.example.app.features.about.pub.AboutNavigator
+import {{ cookiecutter.package_name }}.screens.about.pub.AboutNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

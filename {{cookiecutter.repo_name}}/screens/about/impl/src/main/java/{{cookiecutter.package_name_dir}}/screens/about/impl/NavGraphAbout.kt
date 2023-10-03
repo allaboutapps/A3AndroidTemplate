@@ -3,8 +3,8 @@ package {{ cookiecutter.package_name }}.screens.about.impl
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.app.common.navigation.pub.NavDestinationDefinition
-import com.example.app.common.navigation.pub.NavGraphDefinition
+import {{ cookiecutter.package_name }}.features.navigation.pub.NavDestinationDefinition
+import {{ cookiecutter.package_name }}.features.navigation.pub.NavGraphDefinition
 
 object NavGraphAbout : NavGraphDefinition {
 

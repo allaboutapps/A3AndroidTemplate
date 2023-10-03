@@ -97,12 +97,23 @@ dependencies {
     implementation(project(":envelope"))
     implementation(project(":config"))
 
+    implementation(project(":common:theme"))
+
+    implementation(project(":features:navigation:public"))
+    implementation(project(":features:navigation:impl"))
+
+    implementation(project(":screens:homescreen:impl"))
+    implementation(project(":screens:about:impl"))
+
     implementation(libs.androidx.core.coreKtx)
     implementation(libs.androidx.core.splash)
     implementation(libs.androidx.preferenceKtx)
+    implementation(libs.android.material)
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
-    implementation(libs.android.material)
 
     implementation(platform(libs.androidx.compose.platform))
     // Material Design 3

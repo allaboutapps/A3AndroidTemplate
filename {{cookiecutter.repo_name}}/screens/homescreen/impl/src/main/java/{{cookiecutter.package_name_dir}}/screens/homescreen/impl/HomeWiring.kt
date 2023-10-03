@@ -1,7 +1,7 @@
 package {{ cookiecutter.package_name }}.screens.homescreen.impl
 
-import com.example.app.common.navigation.pub.NavGraphDefinition
-import com.example.app.screens.homescreen.pub.HomeNavigator
+import {{ cookiecutter.package_name }}.features.navigation.pub.NavGraphDefinition
+import {{ cookiecutter.package_name }}.screens.homescreen.pub.HomeNavigator
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

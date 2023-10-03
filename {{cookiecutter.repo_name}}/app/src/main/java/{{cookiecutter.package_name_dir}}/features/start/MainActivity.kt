@@ -1,48 +1,24 @@
 package {{ cookiecutter.package_name }}.features.start
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.appcompat.app.AppCompatActivity
-import {{ cookiecutter.package_name }}.theme.AppTheme
-import androidx.lifecycle.viewmodel.compose.viewModel as composeViewModel
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import {{ cookiecutter.package_name }}.common.theme.AppTheme
+import {{ cookiecutter.package_name }}.features.navigation.NavHostMain
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContent {
             AppTheme {
-                Content()
+                val navController = rememberNavController()
+                NavHostMain(navController)
             }
         }
-    }
-}
-
-@Composable
-private fun Content(viewModel: MainViewModel = composeViewModel()) {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background,
-    ) {
-        GreetingView(viewModel.greeting)
-    }
-}
-
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    AppTheme {
-        GreetingView("Hello, Android!")
     }
 }

@@ -95,7 +95,6 @@ dependencies {
     implementation(project(":networking"))
     implementation(project(":unwrapretrofit"))
     implementation(project(":envelope"))
-    implementation(project(":glide"))
     implementation(project(":config"))
 
     implementation(libs.androidx.core.coreKtx)

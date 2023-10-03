@@ -20,6 +20,7 @@ ktorfit = "1.5.0"
 koin = "3.4.3"
 koin-compose = "3.4.6"
 ktlint = "0.50.0"
+core-ktx = "1.12.0"
 
 ### ANDROID ###
 compose-compiler = "1.5.3" # https://developer.android.com/jetpack/androidx/releases/compose-kotlin#pre-release_kotlin_compatibility
@@ -92,6 +93,8 @@ android-playServicesMaps = { module = "com.google.android.gms:play-services-maps
 android-mapsUtils = "com.google.maps.android:android-maps-utils:2.4.0"
 android-playAppUpdateKtx = "com.google.android.play:app-update-ktx:2.1.0"
 
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+
 androidx-core-coreKtx = "androidx.core:core-ktx:1.12.0"
 androidx-core-splash = "androidx.core:core-splashscreen:1.0.1"
 
@@ -104,6 +107,8 @@ androidx-browser = "androidx.browser:browser:1.6.0"
 androidx-fragment = "androidx.fragment:fragment:1.6.1"
 androidx-activity = "androidx.activity:activity-ktx:1.7.2"
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.7.2" }
+
+lint-slack-compose = "com.slack.lint.compose:compose-lint-checks:1.2.0"
 
 androidx-lifecycle-viewmodelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx.lifecycle" }
 androidx-lifecycle-livedataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx.lifecycle" }
@@ -124,6 +129,8 @@ androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragme
 androidx-navigation-UI = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx.navigation" }
 androidx-navigation-safeArgs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "androidx.navigation" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx.navigation" }
+androidx-hilt-navgraph-viewmodel = { module = "androidx.hilt:hilt-navigation-fragment", version.ref = "androidx.hilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx.hilt" }
 
 androidx-hilt-navigation = 'androidx.hilt:hilt-navigation-fragment:1.0.0'
 androidx-hilt-work = { module = "androidx.hilt:hilt-work", version.ref = "androidx.hilt" }
@@ -234,7 +241,20 @@ util-sort-alphanumeric = "se.sawano.java:alphanumeric-comparator:1.4.1"
 
 
 [bundles]
-
+screen-compose-impl = [
+    "androidx.navigation.compose",
+    "androidx.compose.material3",
+    "androidx.compose.ui.tooling-preview",
+    "androidx.hilt.navgraph.viewmodel",
+    "androidx.hilt.navigation.compose",
+    "dagger",
+    "dagger.android",
+    "dagger.hilt"
+]
+screen-compose-impl-kapt = [
+    "dagger.compiler",
+    "dagger.compiler.hilt"
+]
 
 [plugins]
 

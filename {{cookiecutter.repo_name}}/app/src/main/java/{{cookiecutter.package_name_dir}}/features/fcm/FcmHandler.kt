@@ -16,7 +16,7 @@ class FcmHandler @Inject constructor(private val context: Context) {
         }
 
         val payload = remoteMessage.data
-        if (payload.isNullOrEmpty()) {
+        if (payload.isEmpty()) {
             Timber.e("Missing payload")
             return
         }

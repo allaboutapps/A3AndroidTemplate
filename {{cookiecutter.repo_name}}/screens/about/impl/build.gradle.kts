@@ -16,5 +16,5 @@ dependencies {
     implementation(project(":common:navigation"))
     implementation(project(":features:navigation:public"))
 
-    implementation(project(":screens:homescreen:public"))
+    implementation(project(":screens:home:public"))
 }

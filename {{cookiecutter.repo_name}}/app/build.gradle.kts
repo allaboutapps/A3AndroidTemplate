@@ -102,7 +102,7 @@ dependencies {
     implementation(project(":features:navigation:public"))
     implementation(project(":features:navigation:impl"))
 
-    implementation(project(":screens:homescreen:impl"))
+    implementation(project(":screens:home:impl"))
     implementation(project(":screens:about:impl"))
 
     implementation(libs.androidx.core.coreKtx)

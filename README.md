@@ -7,17 +7,17 @@ _Use this template project to improve your project setup experience._
 ## Contents
 
 * recommended package structure
-* latest libraries ([AndroidX], [Glide], [Retrofit], [Moshi], A3 libraries, [Timber], [LeakCanary])
+* multi module
+* latest libraries ([AndroidX], [Retrofit], [Moshi], A3 libraries, [Timber], [LeakCanary])
 * flavor dimension for development environments (`dev`, `staging`, `live`)
 * Retrofit + Moshi setup
 * Firebase Analytics and Messaging setup
 * Splash screen setup: <https://developer.android.com/guide/topics/ui/splash-screen>
-* Google Play services' [Open Source Notices](#open-source-notices) activity
+* Google Play services [Open Source Notices](#open-source-notices) activity
 * (optional) [Texterify](#texterify) setup
 * [ktlint] integration via [ktlint-gradle-plugin]
 
 [AndroidX]: <https://developer.android.com/jetpack/androidx> "AndroidX Overview &nbsp;|&nbsp; Android Developers"
-[Glide]: <https://github.com/bumptech/glide> "bumptech/glide: An image loading and caching library for Android focused on smooth scrolling"
 [Retrofit]: <https://github.com/square/retrofit> "square/retrofit: A type-safe HTTP client for Android and the JVM"
 [Moshi]: <https://github.com/square/moshi> "square/moshi: A modern JSON library for Kotlin and Java."
 [Timber]: <https://github.com/JakeWharton/timber> "JakeWharton/timber: A logger with a small, extensible API which provides utility on top of Android's normal Log class."

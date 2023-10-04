@@ -10,7 +10,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":networking"))
+    implementation(project(":common:networking"))
 
     // Dagger
     implementation(libs.dagger)

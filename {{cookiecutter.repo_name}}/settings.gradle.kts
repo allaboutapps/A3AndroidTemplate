@@ -30,10 +30,9 @@ fun feature(path: String) = listOf(":features$path:impl", ":features$path:public
 fun screen(path: String) = listOf(":screens$path:impl", ":screens$path:public")
 
 include(":app")
-include(":networking")
-include(":unwrapretrofit")
-include(":envelope")
-include(":config")
+include(":common:networking")
+include(":common:envelope")
+include(":common:config")
 
 include(":common:navigation")
 include(":common:theme")

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import at.allaboutapps.moshi.converter.envelope.EnvelopeAdapterFactory
-import at.allaboutapps.retrofit.converter.unwrap.UnwrapConverterFactory
 import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.config.data.ConfigRepo
 import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
@@ -71,7 +70,7 @@ class AppModule {
 
     @Provides
     @Named(ConfigRepo.NAME_URL_CONFIG)
-    fun provideConfigUrl() = "${BuildConfig.URL_CONFIG}"
+    fun provideConfigUrl() = BuildConfig.URL_CONFIG
 
     @Singleton
     @Provides
@@ -82,7 +81,6 @@ class AppModule {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.SERVER_API_URL)
             .client(okHttp)
-            .addConverterFactory(UnwrapConverterFactory())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()

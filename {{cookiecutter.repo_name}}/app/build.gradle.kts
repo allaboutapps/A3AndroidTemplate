@@ -92,10 +92,10 @@ android {
 dependencies {
     coreLibraryDesugaring(libs.android.coreLibDesugaring)
 
-    implementation(project(":networking"))
-    implementation(project(":unwrapretrofit"))
-    implementation(project(":envelope"))
-    implementation(project(":config"))
+    implementation(project(":common:networking"))
+
+    implementation(project(":common:envelope"))
+    implementation(project(":common:config"))
 
     implementation(project(":common:theme"))
 

@@ -5,8 +5,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":unwrapretrofit"))
-    implementation(project(":envelope"))
+    implementation(project(":common:envelope"))
 
     implementation(libs.okhttp)
     implementation(libs.retrofit)

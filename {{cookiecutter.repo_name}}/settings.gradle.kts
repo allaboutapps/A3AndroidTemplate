@@ -41,4 +41,4 @@ include(feature(":home"))
 include(feature(":navigation"))
 
 include(screen(":about"))
-include(screen(":homescreen"))
+include(screen(":home"))

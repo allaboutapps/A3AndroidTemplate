@@ -19,12 +19,14 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.migration.DisableInstallInCheck
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.Date
 import javax.inject.Named
+import javax.inject.Provider
 import javax.inject.Singleton
 
 {%- if cookiecutter.firebase_messaging == "yes" %}
@@ -75,12 +77,16 @@ class AppModule {
     @Singleton
     @Provides
     fun provideApiService(
-        okHttp: OkHttpClient,
+        okHttpProvider: Provider<OkHttpClient>,
         moshi: Moshi,
     ): ApiService {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.SERVER_API_URL)
-            .client(okHttp)
+            .callFactory { request: Request ->
+                // using .callFactory() instead of .client() to defer the initialization of the OkHttp client to
+                // when the first API call is made
+                okHttpProvider.get().newCall(request)
+            }
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()

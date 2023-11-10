@@ -7,7 +7,7 @@ import androidx.preference.PreferenceManager
 import at.allaboutapps.moshi.converter.envelope.EnvelopeAdapterFactory
 import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.config.data.ConfigRepo
-import {{ cookiecutter.package_name }}.networking.UserAgentInterceptor
+import {{ cookiecutter.package_name }}.networking.CommonHeaderInterceptor
 import {{ cookiecutter.package_name }}.networking.services.ApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
@@ -59,7 +59,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideOkHttp(agentInterceptor: UserAgentInterceptor): OkHttpClient {
+    fun provideOkHttp(agentInterceptor: CommonHeaderInterceptor): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .addInterceptor(agentInterceptor)
 
